@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="https://github.com/DoskalAridin/WarEffort/blob/main/github%20Files/preview_1.png" width="480">
+</p>
+
 # WarEffort
 Arma 3 procedural &amp; persistent mission
 Sort of a "Mike Force light". Intended to be something left running on a dedicated server, providing passive activity for players to join anytime and have something to do, while also having a larger goal for when the community organizes a session.
