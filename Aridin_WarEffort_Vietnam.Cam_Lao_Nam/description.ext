@@ -1,0 +1,55 @@
+OnLoadIntroTime = 0;
+OnLoadMissionTime = 0;
+allowFunctionsLog=1;
+allowFunctionsRecompile = 1;
+enableDebugConsole = 1;
+
+#include "UI\defines.hpp"
+#include "UI\controls.hpp"
+
+class CfgFunctions {
+	#include "functions.hpp"
+};
+
+disabledAI = 1;
+disableChannels[] = {
+	{0, false, false },
+	{1, false, true },
+	{2, false, false },
+	{3, false, false },
+	{4, false, false },
+	{5, false, false }
+};
+briefing = 0;
+debriefing = 0;
+
+class CfgDebriefing
+{
+	class TimedOut
+	{
+		title = "ERROR";
+		subtitle = "Server Timeout";
+		description = "If you see this message please reconnect";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0.0,0.3,0.6,1};
+	};
+};
+
+class ACEX_Fortify_Presets {
+    class ARDN_Bunkers {
+        displayName = "Fortifications";
+        objects[] = {
+            {"Land_vn_b_trench_bunker_04_01", 50, "Fortifications"},
+			{"vn_camonet_blufor_f", 1, "Fortifications"},
+			{"vn_camonet_blufor_big_f", 2, "Fortifications"},
+			{"Land_vn_b_trench_revetment_05_01", 10, "Fortifications"},
+			{"Land_vn_b_trench_20_02", 30, "Trenches"},
+			{"Land_vn_b_trench_90_02", 20, "Trenches"},
+			{"Land_vn_b_trench_firing_02", 40, "Trenches"},
+			{"Land_vn_b_trench_firing_05", 20, "Trenches"},
+        };
+	};
+};
+
+#include "config\artillery.hpp"
