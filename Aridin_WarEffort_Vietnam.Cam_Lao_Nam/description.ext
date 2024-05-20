@@ -11,6 +11,59 @@ class CfgFunctions {
 	#include "functions.hpp"
 };
 
+class Params
+{
+	class hardcoreMode
+	{
+		title = "Hardcore Mode (not yet implemented)";
+		texts[] = {"True", "False"};
+		values[] = {true, false};
+		default = false;
+	};
+    class AO_size
+    {
+        title = "AO size";
+		texts[] = {"250m", "500m", "750m", "1000m"};
+		values[] = {250, 500, 750, 1000};
+		default = 500;
+    };
+    class missionReward
+    {
+        title = "Base supply points reward for completing missions";
+		texts[] = {"2", "5", "10", "15", "20"};
+		values[] = {2, 5, 10, 15, 20};
+		default = 10;
+    };
+    class deathPenalty
+    {
+        title = "Player death penatly. How much enemy strength increases when a player dies.";
+		texts[] = {"None", "Low", "Medium", "High", "Extreme"};
+		values[] = { 0, 1, 2, 4, 10 };
+		default = 2;
+    };
+    class enemyStrengthMissionSuccessReward
+    {
+        title = "Enemy strength: mission reward. (How much enemy strength decreases upon mission success.)";
+		texts[] = {"Low", "Medium", "High"};
+		values[] = {1, 5, 10};
+		default = 5;
+    };
+    class enemyStrengthMissionFailPenalty
+    {
+        title = "Enemy strength: mission penalty. (How much enemy strength increases upon mission failure.)";
+		texts[] = {"Low", "Medium", "High"};
+		values[] = {5, 10, 15};
+		default = 10;
+    };
+    class manualSideMissions
+    {
+        title = "Enable manual side missions. (Side missions won't automatically generate)";
+		texts[] = { "True", "False"};
+		values[] = { true, false };
+		default = false;
+    };
+};
+
 disabledAI = 1;
 disableChannels[] = {
 	{0, false, false },

@@ -33,18 +33,23 @@ array_BOAT_PAVN = ["vn_o_boat_03_02",
 "vn_o_boat_04_02", 
 "vn_o_boat_04_01"];
 
+array_heli_PAVN = ["vn_o_air_mi2_04_05", "vn_o_air_mi2_04_06", "vn_o_air_mi2_04_01", "vn_o_air_mi2_04_02", "vn_o_air_mi2_04_03", "vn_o_air_mi2_04_04", "vn_o_air_mi2_05_01", "vn_o_air_mi2_05_02", "vn_o_air_mi2_05_03", "vn_o_air_mi2_05_04", "vn_o_air_mi2_03_03", "vn_o_air_mi2_03_04"];
+
+array_jet_PAVN = ["vn_o_air_mig19_at", "vn_o_air_mig19_bmb", "vn_o_air_mig19_cap", "vn_o_air_mig19_cas", "vn_o_air_mig19_gun", "vn_o_air_mig19_hbmb", "vn_o_air_mig19_mr", "vn_o_air_mig21_at", "vn_o_air_mig21_atgm", "vn_o_air_mig21_bmb", "vn_o_air_mig21_cap", "vn_o_air_mig21_cas", "vn_o_air_mig21_gun", "vn_o_air_mig21_mr"];
+
 array_traps = ["vn_mine_cartridge_range","vn_mine_tripwire_m49_02","vn_mine_tripwire_m49_04","vn_mine_chicom_no8","vn_mine_pot_range","vn_mine_punji_01","vn_mine_punji_02","vn_mine_punji_02","vn_mine_punji_02","vn_mine_punji_02","vn_mine_punji_02","vn_mine_punji_02","vn_mine_punji_02","vn_mine_punji_02","vn_mine_punji_02","vn_mine_punji_02","vn_mine_punji_03","vn_mine_tripwire_f1_02","vn_mine_tripwire_f1_04","vn_mine_gboard","vn_mine_tripwire_arty"];
 
 array_ied = ["vn_mine_bike_range","vn_mine_jerrycan_range","vn_mine_chicom_no8","vn_mine_tm57","vn_mine_pot_range","vn_mine_tripwire_arty","vn_mine_jerrycan_range","vn_mine_chicom_no8","vn_mine_tm57","vn_mine_pot_range","vn_mine_tripwire_arty"];
 
 array_soldier_Army = ["vn_b_men_army_01","vn_b_men_army_14","vn_b_men_army_03","vn_b_men_army_04","vn_b_men_army_05","vn_b_men_army_06","vn_b_men_army_07","vn_b_men_army_08","vn_b_men_army_09","vn_b_men_army_10","vn_b_men_army_11","vn_b_men_army_11","vn_b_men_army_12","vn_b_men_army_16","vn_b_men_army_17","vn_b_men_army_18","vn_b_men_army_07","vn_b_men_army_19","vn_b_men_army_20","vn_b_men_army_10","vn_b_men_army_21","vn_b_men_army_12","vn_b_men_army_11"];
 
-array_vehicles_Army = ["vn_b_armor_m113_acav_04","vn_b_armor_m113_acav_02","vn_b_armor_m113_acav_01","vn_b_armor_m113_acav_06","vn_b_armor_m113_acav_03","vn_b_armor_m113_acav_05","vn_b_armor_m132_01","vn_b_wheeled_m151_mg_02","vn_b_wheeled_m151_mg_06","vn_b_wheeled_m54_mg_01","vn_b_wheeled_m54_mg_03","vn_b_wheeled_m54_mg_02","vn_b_armor_m41_01_01","vn_b_armor_m48_01_01","vn_b_armor_m67_01_01"];
+array_vehicles_Army = ["vn_b_wheeled_m151_mg_04", "vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_06", "vn_b_wheeled_m151_mg_03", "vn_b_wheeled_m151_mg_05", "vn_b_wheeled_m54_mg_01", "vn_b_wheeled_m54_mg_03", "vn_b_armor_m113_acav_04", "vn_b_armor_m113_acav_02", "vn_b_armor_m113_acav_01", "vn_b_armor_m113_acav_06", "vn_b_armor_m113_acav_03", "vn_b_armor_m113_acav_05", "vn_b_armor_m132_01", "vn_b_armor_m41_01_01", "vn_b_armor_m48_01_01", "vn_b_armor_m67_01_01"];
 
 array_aa_Army = ["vn_b_army_static_m45","vn_b_wheeled_m54_mg_02"];
 
-array_arty_Army =
-["vn_b_army_static_m101_02","vn_b_army_static_mortar_m2","vn_b_army_static_mortar_m29"];
+array_arty_Army = ["vn_b_armor_m125_01", "vn_b_army_static_m101_02", "vn_b_army_static_mortar_m2", "vn_b_army_static_mortar_m29"];
+
+array_air_Army = ["vn_b_air_ach47_04_01", "vn_b_air_ah1g_04", "vn_b_air_oh6a_04", "vn_b_air_uh1c_07_01", "vn_b_air_uh1c_06_01", "vn_b_air_uh1c_04_01", "vn_b_air_uh1c_02_01", "vn_b_air_uh1c_05_01", "vn_b_air_uh1c_01_01", "vn_b_air_uh1d_02_01"];
 
 array_soldiers_usmc = ["vn_b_men_usmc_68_02","vn_b_men_usmc_68_07","vn_b_men_usmc_68_14","vn_b_men_usmc_68_19","vn_b_men_usmc_68_15","vn_b_men_usmc_68_08","vn_b_men_usmc_68_14","vn_b_men_usmc_68_06","vn_b_men_usmc_68_05","vn_b_men_usmc_68_08","vn_b_men_usmc_68_14","vn_b_men_usmc_68_19","vn_b_men_usmc_68_12","vn_b_men_usmc_68_09"];
 
@@ -55,6 +60,8 @@ array_aa_usmc = ["vn_b_usmc_static_mortar_m2","vn_b_usmc_static_mortar_m29","vn_
 array_arty_usms =
 ["vn_b_usmc_static_m101_02","vn_b_usmc_static_mortar_m2","vn_b_usmc_static_mortar_m29"];
 
+array_air_usmc = ["vn_b_air_ah1g_02_usmc", "vn_b_air_ah1g_10_usmc", "vn_b_air_uh1d_02_04", "vn_b_air_uh1e_01_04", "vn_b_air_uh1e_02_04", "vn_b_air_uh1e_03_04", "vn_b_air_ch34_04_02", "vn_b_air_ch34_03_01"];
+
 array_soldiers_SOG = ["vn_b_men_usmc_68_02","vn_b_men_usmc_68_07","vn_b_men_usmc_68_14","vn_b_men_usmc_68_19","vn_b_men_usmc_68_15","vn_b_men_usmc_68_08","vn_b_men_usmc_68_14","vn_b_men_usmc_68_06","vn_b_men_usmc_68_05","vn_b_men_usmc_68_08","vn_b_men_usmc_68_14","vn_b_men_usmc_68_19","vn_b_men_usmc_68_12","vn_b_men_usmc_68_09"];
 
 array_vehicles_SOG = ["vn_b_armor_m113_acav_04","vn_b_armor_m113_acav_02","vn_b_armor_m113_acav_01","vn_b_armor_m113_acav_06","vn_b_armor_m113_acav_03","vn_b_armor_m113_acav_05","vn_b_armor_m132_01","vn_b_wheeled_m151_mg_02_usmc","vn_b_armor_m41_01_02","vn_b_armor_m48_01_02","vn_b_armor_m67_01_02"];
@@ -63,6 +70,10 @@ array_aa_SOG = ["vn_b_sf_static_m45"];
 
 array_arty_SOG =
 ["vn_b_sf_static_m101_02","vn_b_sf_static_mortar_m2","vn_b_sf_static_mortar_m29"];
+
+array_air_SOG = ["vn_b_air_uh1c_07_07", "vn_b_air_uh1d_02_07", "vn_i_air_ch34_02_01", "vn_i_air_ch34_01_02", "vn_i_air_ch34_02_02"];
+
+array_BOAT_macv = ["vn_b_boat_12_02", "vn_b_boat_12_04", "vn_b_boat_12_01", "vn_b_boat_13_02", "vn_b_boat_13_04", "vn_b_boat_13_01", "vn_b_boat_13_03", "vn_b_boat_06_02", "vn_b_boat_06_01", "vn_b_boat_05_02", "vn_b_boat_05_01"];
 
 AOmarkers = [];
 {	
@@ -125,11 +136,11 @@ listHeli =
     ["vn_b_air_uh1d_02_01", 5],
     ["vn_b_air_uh1d_03_06", 10],
     ["vn_b_air_uh1c_07_01", 5],
-    ["vn_b_air_uh1c_01_01", 10],
+    ["vn_b_air_uh1c_01_01", 15],
     ["vn_b_air_uh1c_04_01", 10],
-    ["vn_b_air_uh1c_05_01", 10],
-    ["vn_b_air_uh1c_06_01", 10],
-    ["vn_b_air_uh1c_02_01", 10],
+    ["vn_b_air_uh1c_05_01", 15],
+    ["vn_b_air_uh1c_06_01", 15],
+    ["vn_b_air_uh1c_02_01", 15],
     ["vn_b_air_uh1b_01_01", 0],
     ["vn_b_air_uh1d_01_01", 0],
     ["vn_b_air_uh1d_04_09", 0],
@@ -210,8 +221,8 @@ listBOAT =
 ];
 
 //SOG Nickle Steel
-if (isClass(configfile >> "CfgPatches" >> "air_f_vietnam_04_c")) then {
-    _NickleSteel = [
+if (compat_NickelSteel == true) then {
+    private _NickleSteel = [
         ["vnx_b_air_ac119_02_01", 0],
         ["vnx_b_air_ac119_03_01", 0],
         ["vnx_b_air_ac119_04_01", 10],
@@ -221,26 +232,26 @@ if (isClass(configfile >> "CfgPatches" >> "air_f_vietnam_04_c")) then {
 };
 
 {
-    _className = _x select 0;
-    _text = getText (configFile >> "CfgVehicles" >> _className >> "displayName");
+    private _className = _x select 0;
+    private _text = getText (configFile >> "CfgVehicles" >> _className >> "displayName");
     _x pushBack _text;
     listHeli set [_forEachIndex, _x];
 } forEach listHeli;
 {
-    _className = _x select 0;
-    _text = getText (configFile >> "CfgVehicles" >> _className >> "displayName");
+    private _className = _x select 0;
+    private _text = getText (configFile >> "CfgVehicles" >> _className >> "displayName");
     _x pushBack _text;
     listGround set [_forEachIndex, _x];
 } forEach listGround;
 {
-    _className = _x select 0;
-    _text = getText (configFile >> "CfgVehicles" >> _className >> "displayName");
+    private _className = _x select 0;
+    private _text = getText (configFile >> "CfgVehicles" >> _className >> "displayName");
     _x pushBack _text;
     listFixedWing set [_forEachIndex, _x];
 } forEach listFixedWing;
 {
-    _className = _x select 0;
-    _text = getText (configFile >> "CfgVehicles" >> _className >> "displayName");
+    private _className = _x select 0;
+    private _text = getText (configFile >> "CfgVehicles" >> _className >> "displayName");
     _x pushBack _text;
     listBOAT set [_forEachIndex, _x];
 } forEach listBOAT;
@@ -317,3 +328,92 @@ VCpow = [
 	["Land_vn_o_shelter_03",[3.64795,3.44287,0],152.663,1,0,[],"","",true,false], 
 	["Land_vn_fence_punji_02_03",[4.55493,-4.8075,0],306.509,1,0,[],"","",true,false]
 ];
+
+VCcamp_1 = [
+	["Land_vn_o_wallfoliage_01",[-7.49414,4.22461,0],354.223,1,0,[],"","",true,false], 
+	["Land_vn_o_shelter_06",[-7.81348,-3.70068,0],155.711,1,0,[],"","",true,false], 
+	["Land_vn_o_bunker_03",[-6.93262,-8.08643,0],251.062,1,0,[],"","",true,false], 
+	["Land_vn_o_shelter_04",[4.15039,-8.96436,0],246.785,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[7.93408,-7.14258,0],44.912,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_01_05",[-10.9844,1.00684,0],277.236,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[11.2188,0.993164,0],354.703,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[-4.26172,-11.0015,-4.76837e-07],75.9118,1,0,[],"","",true,false], 
+	["Land_vn_o_shelter_03",[7.67529,8.64307,0],136.262,1,0,[],"","",true,false], 
+	["Land_vn_o_bunker_02",[5.1626,12.2954,0],39.1864,1,0,[],"","",true,false], 
+	["Land_vn_o_shelter_03",[-8.01563,8.74707,0],23.2582,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_01_05",[12.4526,4.12988,0],256.963,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[0.131836,13.2095,0],256.332,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_01_05",[7.44971,15.4819,0],39.4566,1,0,[],"","",true,false]
+];
+
+VCcamp_2 = [
+	["Land_vn_o_shelter_01",[-5.23096,3.40234,0],4.11772,1,0,[],"","",true,false], 
+	["Land_vn_o_shelter_01",[0.134277,-6.77637,0],68.4668,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[-6.70703,3.44238,0],190.68,1,0,[],"","",true,false], 
+	["Land_vn_o_shelter_01",[7.91357,-3.18506,0],325.495,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[1.08643,-8.68652,0],64.8055,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[-9.06934,0.0634766,0],236.749,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[4.67822,7.81445,0],355.797,1,0,[],"","",true,false], 
+	["Land_vn_o_trench_firing_01",[-5.80322,4.47656,0],307.727,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[9.51611,-1.8584,0],321.528,1,0,[],"","",true,false], 
+	["Land_vn_o_trench_firing_01",[7.2168,2.99756,0],64.4986,1,0,[],"","",true,false], 
+	["Land_vn_o_trench_firing_01",[-0.498535,-8.39111,0],187.878,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_01_05",[9.16504,5.64795,-0.510847],54.7578,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[-0.141113,11.5815,0],239.96,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_01_05",[3.87012,-10.9355,-0.246259],179.633,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[-9.45068,-6.89258,0],116.548,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_01_05",[-4.20898,11.0435,-0.277052],313.009,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[10.8521,-5.35986,0],358.959,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_02_10",[-11.9087,3.67139,0],303.051,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_02_10",[-5.96191,11.4932,0],314.624,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_02_10",[-4.60791,-12.2358,0],187.527,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_02_10",[8.98535,9.66211,0],59.0729,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_02_10",[13.2969,0.625,0],68.9162,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_02_10",[4.16602,-13.2739,0],185.047,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_01_05",[4.74707,13.2705,-0.686551],355.799,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_01_05",[-11.8237,-9.28174,-0.381133],219.241,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_01_05",[-14.9985,-2.64453,0],263.628,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_01_05",[14.1968,-5.94189,-0.37789],87.7947,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_01_05",[10.8369,-12.6836,0],132.068,1,0,[],"","",true,false]
+];
+
+VCcamp_3 = [
+	["Land_vn_o_shelter_02",[-4.78613,-4.07617,0],224.416,1,0,[],"","",true,false], 
+	["Land_vn_o_bunker_03",[-3.69287,5.7002,0],343.643,1,0,[],"","",true,false], 
+	["Land_vn_o_shelter_03",[4.74219,-2.80713,9.53674e-07],215.379,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_01_10",[1.96143,6.1626,0],31.1248,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_01_05",[-9.39209,-0.259766,0],267.372,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_01_05",[-2.55615,-9.56006,0],183.957,1,0,[],"","",true,false]
+];
+
+VCcamp_4 = [
+	["Land_vn_o_wallfoliage_01",[3.49658,-0.992676,0],21.0456,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[-3.23584,-1.729,0],134.182,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_02_05",[-3.73145,-1.95068,0],42.6792,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_02_05",[3.34912,-2.5293,0],112.675,1,0,[],"","",true,false], 
+	["Land_vn_o_shelter_04",[-3.64502,4.89111,0],27.0066,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_02_05",[6.08545,0.514648,0],154.888,1,0,[],"","",true,false], 
+	["Land_vn_o_shelter_03",[5.23926,2.98389,0],169.816,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_02_05",[-1.4873,7.7876,0],164.923,1,0,[],"","",true,false]
+];
+
+VCcamp_5 = [
+	["Land_vn_o_wallfoliage_01",[-3.28076,-1.16162,9.53674e-07],134.182,1,0,[],"","",true,false], 
+	["Land_vn_o_shelter_01",[3.87109,2.37109,0],155.795,1,0,[],"","",true,false], 
+	["Land_vn_o_platform_06",[2.87256,-6.25781,0],70.3862,1,0,[],"","",true,false], 
+	["Land_vn_o_shelter_04",[-6.34766,1.49023,0],358.471,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[5.96191,3.44434,0],337.377,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[2.92773,6.24512,0],296.078,1,0,[],"","",true,false], 
+	["Land_vn_o_shelter_03",[5.60938,-2.875,0],199.953,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_02_05",[1.23828,-7.25342,0],228.801,1,0,[],"","",true,false], 
+	["Land_vn_o_wallfoliage_01",[-5.46484,5.98486,0],206.96,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_02_05",[4.82471,-7.1875,0],134.47,1,0,[],"","",true,false], 
+	["Land_vn_fence_punji_02_05",[-2.33594,8.82471,0],164.923,1,0,[],"","",true,false]
+];
+
+VCcamps = [VCcamp_1, VCcamp_2, VCcamp_3, VCcamp_4, VCcamp_5];
+
+textIntel_min = "Enemy presence in the AO is minimal. Expect small scatering of HMGs, mortars, trucks and armored cars, and a couple of patrols.";
+textIntel_low = "Enemy presence in the AO is low. Expect some HMGs, mortars, trucks and armored cars, and a few patrols.";
+textIntel_mid = "Expect AA guns with a possiblity of SAMs, tanks and APCs, mortars and artillery. Enemy will have plenty of patrols in the area.";
+textIntel_high = "Enemy presence is high. Plan for the worst.";

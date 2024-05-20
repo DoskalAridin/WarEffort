@@ -1,7 +1,7 @@
 
-_index = lbCurSel 1500;
+private _index = lbCurSel 1500;
 
-_array = [];
+private _array = [];
 
 switch (buyType) do
 {
@@ -11,9 +11,9 @@ switch (buyType) do
 	default { _array = listHeli };
 };
 
-_vicClass = _array select _index select 0;
-_vicCost = _array select _index select 1;
-_picture = getText (configFile >> "CfgVehicles" >> _vicClass >> "editorPreview");
+private _vicClass = _array select _index select 0;
+private _vicCost = _array select _index select 1;
+private _picture = getText (configFile >> "CfgVehicles" >> _vicClass >> "editorPreview");
 
 ctrlSetText [1002, str _vicCost];
 ctrlSetText [1200, _picture];

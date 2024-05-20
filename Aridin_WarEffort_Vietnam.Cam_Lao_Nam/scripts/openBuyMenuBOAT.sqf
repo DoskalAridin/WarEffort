@@ -1,9 +1,9 @@
 
-buyType = "fixedWing";
+buyType = "BOAT";
 createDialog "vicBuyMenu";
 
 {
-    _VicName = _x select 2;
+    private _VicName = _x select 2;
     lbAdd [1500, _VicName];
-} forEach listFixedWing;
+} forEach listBOAT;
 ctrlSetText [1005, str MACVresource];

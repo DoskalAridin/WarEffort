@@ -12,7 +12,7 @@
 */
 params ["_unit"];
 while {alive _unit} do {
-	_blood = "BloodTrail_01_New_F" createVehicle (getPos _unit);
+	private _blood = "BloodTrail_01_New_F" createVehicle (getPos _unit);
 	_blood setDir (getDir _unit);
 	sleep 30;
 };

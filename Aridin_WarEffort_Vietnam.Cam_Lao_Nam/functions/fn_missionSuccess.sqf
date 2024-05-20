@@ -12,8 +12,8 @@
 */
 params ["_obj"];
 
-_objectiveAO = _obj getVariable "objectiveAO";
-_objectiveNumber = _obj getVariable "objectiveNumber";
+private _objectiveAO = _obj getVariable "objectiveAO";
+private _objectiveNumber = _obj getVariable "objectiveNumber";
 [format ["Objective_%1",str _objectiveNumber] ,"SUCCEEDED"] call BIS_fnc_taskSetState;
 objectivesActive = objectivesActive - 1;
 publicVariable "objectivesActive";
@@ -21,7 +21,7 @@ publicVariable "objectivesActive";
 MACVresource = floor (MACVresource + missionReward);
 publicVariable "MACVresource";
 
-AO_enemyStrength = AO_enemyStrength - 0.5;
+AO_enemyStrength = AO_enemyStrength - enemyStrengthMissionSuccessReward;
 if (AO_enemyStrength < 1) then {AO_enemyStrength = 1};
 publicVariable "AO_enemyStrength";
 

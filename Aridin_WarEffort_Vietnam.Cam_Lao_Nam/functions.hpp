@@ -3,6 +3,9 @@ class ARDN{
 		class generateMainMission {
 			file = "functions\fn_generateMainMission.sqf";
 		};
+        class generateMainDefend {
+			file = "functions\fn_generateMainDefend.sqf";
+		};
         class generateSubMission {
 			file = "functions\fn_generateSubMission.sqf";
 		};
@@ -23,6 +26,15 @@ class ARDN{
         };
         class recoverSoldier {
           file = "functions\fn_recoverSoldier.sqf";  
+        };
+        class POWcaptive {
+          file = "functions\fn_POWcaptive.sqf";  
+        };
+        class populateAO {
+          file = "functions\fn_populateAO.sqf";  
+        };
+        class setDate {
+          file = "functions\fn_setDate.sqf";  
         };
 	};
 };

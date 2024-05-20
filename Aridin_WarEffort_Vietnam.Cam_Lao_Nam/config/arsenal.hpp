@@ -257,18 +257,34 @@ ArsenalBoxes = [ArsenalBox,ArsenalBox_1,ArsenalBox_2,ArsenalBox_3,ArsenalBox_4];
 "vn_prop_drink_05","vn_prop_drink_01","vn_prop_drink_03","vn_prop_drink_02","vn_prop_drink_04","vn_prop_drink_06","vn_prop_food_fresh_03","vn_prop_food_fresh_09","vn_prop_food_fresh_05","vn_prop_drink_07_02","vn_prop_food_lrrp_01_04","vn_prop_food_lrrp_01_01","vn_prop_food_lrrp_01_07","vn_prop_food_lrrp_01_08","vn_prop_food_lrrp_01_05","vn_prop_food_lrrp_01_02","vn_prop_food_lrrp_01_06","vn_prop_food_lrrp_01_03","vn_prop_food_meal_01_17","vn_prop_food_meal_01_04","vn_prop_food_meal_01_13","vn_prop_food_meal_01_03","vn_prop_food_meal_01_15","vn_prop_food_meal_02_04","vn_prop_food_meal_01_10","vn_prop_food_meal_02_01","vn_prop_food_meal_02_03","vn_prop_food_meal_02_05","vn_prop_food_meal_02_02","vn_prop_food_meal_01_08","vn_prop_food_meal_01_14","vn_prop_food_meal_01_09","vn_prop_food_meal_01_01","vn_prop_food_meal_01_12","vn_prop_food_meal_01_05","vn_prop_food_meal_01_11","vn_prop_food_meal_01_18","vn_prop_food_meal_02_06","vn_prop_food_meal_01_06","vn_prop_food_meal_01_16","vn_prop_food_meal_01_02","vn_prop_food_meal_01_07","vn_prop_med_antibiotics","vn_prop_med_antimalaria","vn_prop_med_antivenom","vn_prop_med_dysentery","vn_prop_med_painkillers","vn_prop_med_wormpowder","vn_prop_drink_07_03","vn_prop_food_fresh_01","vn_prop_food_pir_01_01","vn_prop_food_pir_01_02","vn_prop_food_pir_01_04","vn_prop_food_pir_01_05","vn_prop_food_pir_01_03","vn_prop_food_fresh_06","vn_prop_food_fresh_02","vn_prop_food_box_02_03","vn_prop_food_box_02_07","vn_prop_food_box_02_08","vn_prop_food_box_02_01","vn_prop_food_box_02_02","vn_prop_food_box_01_01","vn_prop_food_box_01_03","vn_prop_food_box_01_02","vn_prop_food_box_02_06","vn_prop_food_box_02_04","vn_prop_food_box_02_05","vn_prop_food_can_02_06","vn_prop_food_can_01_10","vn_prop_food_can_01_11","vn_prop_food_can_02_05","vn_prop_food_can_02_03","vn_prop_food_can_02_01","vn_prop_food_can_01_01","vn_prop_food_can_03_04","vn_prop_food_can_01_07","vn_prop_food_can_01_08","vn_prop_food_can_01_14","vn_prop_food_can_01_15","vn_prop_food_can_01_05","vn_prop_food_can_02_02","vn_prop_food_can_01_04","vn_prop_food_can_03_02","vn_prop_food_can_02_07","vn_prop_food_can_03_01","vn_prop_food_can_02_08","vn_prop_food_can_01_13","vn_prop_food_can_03_03","vn_prop_food_can_01_09","vn_prop_food_can_01_12","vn_prop_food_can_02_04","vn_prop_food_can_01_02","vn_prop_food_can_01_06","vn_prop_food_can_01_03","vn_prop_food_can_01_16","vn_prop_food_meal_01","vn_prop_food_fresh_10","vn_prop_food_sack_01","vn_prop_food_sack_02","vn_prop_fort_mag","vn_prop_drink_08_01","vn_prop_food_fresh_04","vn_prop_food_fresh_07","vn_prop_food_fresh_08","vn_prop_drink_07_01","vn_prop_drink_09_01",
 
 //Facewear
-"G_SWDG","G_SWDG_low","G_Anduk_1","G_Anduk_2",
-
-//ACE
-"ACE_painkillers","ACE_suture","ACE_fieldDressing","ACE_elasticBandage","ACE_packingBandage","ACE_quikclot","ACE_bloodIV","ACE_bloodIV_250","ACE_bloodIV_500","ACE_bodyBag","ACE_CableTie","ACE_DefusalKit","ACE_EarPlugs","ACE_EntrenchingTool","ACE_epinephrine","ACE_Flashlight_MX991","ACE_Clacker","ACE_MapTools","ACE_morphine","ACE_adenosine","ACE_RangeCard","ACE_salineIV","ACE_salineIV_250","ACE_salineIV_500","ACE_splint","ACE_surgicalKit","ACE_tourniquet","ACRE_VHF30108","ACE_Fortify","ACE_rope12","ACE_rope15","ACE_rope18","ACE_rope27","ACE_rope3","ACE_rope36","ACE_rope6","ace_marker_flags_black","ace_marker_flags_blue","ace_marker_flags_green","ace_marker_flags_orange","ace_marker_flags_purple","ace_marker_flags_red","ace_marker_flags_white","ace_marker_flags_yellow","acex_intelitems_notepad","ACE_PlottingBoard"
+"G_SWDG","G_SWDG_low","G_Anduk_1","G_Anduk_2"
 ], true] call ace_arsenal_fnc_addVirtualItems;
 
 [_x, false, [0, 0, 0], 0, false] call ace_dragging_fnc_setDraggable;
 [_x, false, [0, 0, 0], 0, false] call ace_dragging_fnc_setCarryable;
+    
+_x addAction ["<t color='#149616'>Reload Kit</t>", {  
+    if (isNil {player getVariable format ["%1_%2", getPlayerUID player, ARDN_varName]}) then {
+		player setUnitLoadout (player getVariable "ARDN_defaultKit");
+		systemChat "Loading default loadout";
+	}
+	else {
+		player setUnitLoadout (player getVariable format ["%1_%2", getPlayerUID player, ARDN_varName]);
+		systemChat "Loading saved loadout";
+	};
+},nil,6,true,true,"","true",2];
 
 } forEach ArsenalBoxes;
 
-if (isClass (configFile >> "CfgPatches" >> "murshun_cigs")) then {
+if (compat_ace == true) then {
+    {
+    [_x, [
+       "ACE_painkillers","ACE_suture","ACE_fieldDressing","ACE_elasticBandage","ACE_packingBandage","ACE_quikclot","ACE_bloodIV","ACE_bloodIV_250","ACE_bloodIV_500","ACE_bodyBag","ACE_CableTie","ACE_DefusalKit","ACE_EarPlugs","ACE_EntrenchingTool","ACE_epinephrine","ACE_Flashlight_MX991","ACE_Clacker","ACE_MapTools","ACE_morphine","ACE_adenosine","ACE_RangeCard","ACE_salineIV","ACE_salineIV_250","ACE_salineIV_500","ACE_splint","ACE_surgicalKit","ACE_tourniquet","ACRE_VHF30108","ACE_Fortify","ACE_rope12","ACE_rope15","ACE_rope18","ACE_rope27","ACE_rope3","ACE_rope36","ACE_rope6","ace_marker_flags_black","ace_marker_flags_blue","ace_marker_flags_green","ace_marker_flags_orange","ace_marker_flags_purple","ace_marker_flags_red","ace_marker_flags_white","ace_marker_flags_yellow","acex_intelitems_notepad","ACE_PlottingBoard","ACE_HandFlare_Green","ACE_HandFlare_Red","ACE_HandFlare_White","ACE_HandFlare_Yellow"
+    ], true] call ace_arsenal_fnc_addVirtualItems;
+    } forEach ArsenalBoxes;
+};
+
+if (compat_cigs == true) then {
     {
     [_x, [
        "murshun_cigs_cigpack","murshun_cigs_lighter","immersion_pops_poppack","murshun_cigs_matches","murshun_cigs_cig0_nv","immersion_cigs_cigar0","murshun_cigs_cig0","immersion_pops_pop0","immersion_cigs_cigar0_nv"
@@ -276,7 +292,7 @@ if (isClass (configFile >> "CfgPatches" >> "murshun_cigs")) then {
     } forEach ArsenalBoxes;
 };
 
-if (isClass (configFile >> "CfgPatches" >> "acre_main")) then {
+if (compat_acre == true) then {
     {
     [_x, [
         "ACRE_PRC77","ACRE_PRC343"
@@ -284,7 +300,7 @@ if (isClass (configFile >> "CfgPatches" >> "acre_main")) then {
     } forEach ArsenalBoxes;
 };
 
-if (isClass (configFile >> "CfgPatches" >> "tfar_core")) then {
+if (compat_tfar == true) then {
     {
     [_x, [
         "vn_b_item_radio_urc10"
@@ -292,7 +308,7 @@ if (isClass (configFile >> "CfgPatches" >> "tfar_core")) then {
     } forEach ArsenalBoxes;
 };
 
-if (isClass (configFile >> "CfgPatches" >> "simc_mc_67_core")) then {
+if (compat_SnS == true) then {
     {
     [_x, [
         "G_SWDG","G_SWDG_low","G_Anduk_1","G_Anduk_2","U_Simc_TCU_tee_top_weiss","U_Simc_TCU_tee_long_weiss","U_Simc_TCU_tee_long","U_Simc_TCU_tee_weiss","U_Simc_TCU_tee_top","U_Simc_TCU_mk1_blench","U_Simc_TCU_mk1_roll_blench","U_Simc_TCU_mk1_trop_blench","U_Simc_TCU_mk2_blench","U_Simc_TCU_mk2_trop_blench","U_Simc_TCU_mk2_roll_blench","U_Simc_TCU_mk3_poplijn_blench","U_Simc_TCU_mk3_trop_blench","U_Simc_TCU_mk3_blench","U_Simc_TCU_mk3_poplijn_trop_blench","U_Simc_TCU_mk3_tuck","U_Simc_TCU_mk3_erdl_H_low","U_Simc_TCU_mk3_erdl_H_top","U_Simc_TCU_mk3_erdl_H","U_Simc_TCU_mk3_erdl_H_trop","U_Simc_TCU_tee_erdl_high_long","U_Simc_TCU_tee_erdl_high","U_Simc_TCU_tee_erdl_high_top","U_Simc_TCU_mk3_leg","U_Simc_TCU_mk1_leg_roll","U_Simc_TCU_mk1_leg","U_Simc_TCU_mk3_leg_roll","V_Simc_56","V_Simc_56_ligt_zusp","V_Simc_56_alt","V_Simc_56_ligt_2","V_Simc_56_ligt","V_Simc_56_4cm","V_Simc_56_4cm_ligt_alt","V_Simc_56_4cm_ligt","V_Simc_56_bandoleer","V_Simc_56_frag","V_Simc_56_frag_alt","V_Simc_56_frag_3","V_Simc_56_frag_ligt","V_Simc_56_frag_ligt_3","V_Simc_56_frag_ligt_b","V_Simc_56_M43","V_Simc_56_M43_ligt","V_Simc_56_M43_ligt_2","V_Simc_56_M43_bandoleer","V_Simc_56_M43_frags_ass","V_Simc_56_M43_frags","V_Simc_56_M43_frags_zusp","V_Simc_56_M43_45_ass","V_Simc_56_M43_45","V_Simc_56_M43_45_ligt","V_Simc_67","V_Simc_67_ass","V_Simc_67_frag_ass","V_Simc_67_frag","V_Simc_67_frag_ligt","V_Simc_67_ligt","V_Simc_67_45","V_Simc_67_45_ass","V_Simc_67_45_ligt","V_Simc_56_claymore","V_Simc_56_claymore_band","V_Simc_56_med","V_Simc_56_med_side","V_Simc_56_med_side_ass","V_Simc_56_60_ligt_zusp","V_Simc_56_60_doppel_ligt","V_Simc_56_60","V_Simc_56_60_doppel","V_Simc_56_60_ligt","V_Simc_56_45","V_Simc_56_45_alt","V_Simc_56_45_ligt_alt","V_Simc_56_45_ligt","V_Simc_56_45_ligt_zusp","V_Simc_56_45_B_ass","V_Simc_56_45_B","V_Simc_56_claymore_45_band","V_Simc_56_claymore_45","B_simc_rajio_4","B_simc_rajio_2_a","B_simc_rajio_2","B_simc_rajio_base","B_simc_rajio_1","B_simc_rajio_3_alt","B_simc_rajio_M43_1","B_simc_rajio_3","B_simc_rajio_Frem_Ligt","B_simc_rajio_Frem","B_simc_rajio_Frem_2","B_simc_ARVN_ruck_gump","B_simc_ARVN_ruck_sheen","B_simc_pack_frem_3","B_simc_pack_frem_8","B_simc_pack_frem_2_alt","B_simc_pack_frem_1_alt","B_simc_pack_frem_1","B_simc_pack_frem_2","B_simc_pack_frem_empty","B_simc_pack_frem_qt","B_simc_pack_frem_5_alt","B_simc_pack_frem_4","B_simc_pack_frem_0","B_simc_pack_frem_6_alt","B_simc_pack_frem_7","B_simc_pack_frem_9","B_simc_pack_frem_3_b","B_simc_pack_frem_3_a","B_simc_pack_frem_med3","B_simc_pack_frem_med5","B_simc_pack_med_m3","B_simc_pack_med_m5","B_claymore_sack","B_simc_pack_trop_1_alt","B_simc_pack_trop_1","B_simc_pack_trop_2","B_simc_pack_trop_3","B_simc_pack_trop_4_alt","B_simc_pack_trop_4","B_simc_pack_trop_6","B_simc_pack_trop_5","B_simc_pack_trop_6_alt","B_simc_US_Bandoleer_556_1","B_simc_US_Bandoleer_556_fore","B_simc_US_Bandoleer_556_3","B_simc_US_Bandoleer_60_R","B_simc_US_Bandoleer_60_L","B_simc_US_Bandoleer_60","B_simc_US_Bandoleer_556_doppel_2","B_simc_US_Bandoleer_556_doppel_1v"
@@ -300,7 +316,7 @@ if (isClass (configFile >> "CfgPatches" >> "simc_mc_67_core")) then {
     } forEach ArsenalBoxes;
 };
 
-if (isClass (configFile >> "CfgPatches" >> "ARDN_sogpf")) then {
+if (compat_ARDNsogpf == true) then {
     {
     [_x, [
         "ARDN_ace_pak","ARDN_main_viper","ARDN_main_viper_rubber","ARDN_sogpf_b_pack_bike","ARDN_sogpf_h_m1_gar","ARDN_sogpf_h_m1_intrepid","ARDN_sogpf_b_u_macv_04_01_eff","ARDN_sogpf_b_u_macv_04_01_mummy","ARDN_sogpf_b_u_macv_04_01_watersnake","ARDN_sogpf_b_u_macv_05_01_anubis","ARDN_sogpf_b_u_macv_05_01_do","ARDN_sogpf_b_u_macv_05_01_eff","ARDN_sogpf_b_u_macv_05_01_mummy","ARDN_sogpf_b_u_macv_05_01_watersnake","ARDN_sogpf_b_u_macv_06_01_anubis","ARDN_sogpf_b_u_macv_06_01_do","ARDN_sogpf_b_u_macv_06_01_eff","ARDN_sogpf_b_u_macv_06_01_mummy","ARDN_sogpf_b_u_macv_06_01_watersnake","ARDN_sogpf_b_u_sog_01_blkTgr","ARDN_sogpf_b_u_sog_02_blkTgr","ARDN_sogpf_b_u_macv_01_01_anubis","ARDN_sogpf_b_u_macv_01_01_do","ARDN_sogpf_b_u_macv_01_01_eff","ARDN_sogpf_b_u_macv_01_01_mummy","ARDN_sogpf_b_u_macv_01_01_watersnake","ARDN_sogpf_b_u_macv_02_01_anubis","ARDN_sogpf_b_u_macv_02_01_do","ARDN_sogpf_b_u_macv_02_01_eff","ARDN_sogpf_b_u_macv_02_01_mummy","ARDN_sogpf_b_u_macv_02_01_watersnake","ARDN_sogpf_b_u_macv_03_01_anubis","ARDN_sogpf_b_u_macv_03_01_do","ARDN_sogpf_b_u_macv_03_01_eff","ARDN_sogpf_b_u_macv_03_01_mummy","ARDN_sogpf_b_u_macv_03_01_watersnake","ARDN_sogpf_b_u_macv_04_01_anubis","ARDN_sogpf_b_u_macv_04_01_do"

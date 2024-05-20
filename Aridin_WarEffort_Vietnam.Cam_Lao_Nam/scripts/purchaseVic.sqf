@@ -1,10 +1,10 @@
-_index = lbCurSel 1500;
+private _index = lbCurSel 1500;
 ctrlSetText [1005, str MACVresource];
 
-_array = [];
-_arrayMarkers = [];
-_spawnPos = [0,0,0];
-_spawnDir = 180;
+private _array = [];
+private _arrayMarkers = [];
+private _spawnPos = [0,0,0];
+private _spawnDir = 180;
 
 switch (buyType) do
 {
@@ -23,7 +23,7 @@ _vicName = _array select _index select 2;
 if (MACVresource >= _vicCost) then {
     MACVresource = MACVresource - _vicCost;
     publicVariable "MACVresource";
-    _vic = createVehicle [_vicClass, _spawnPos, _arrayMarkers, 0, "NONE"];
+    private _vic = createVehicle [_vicClass, _spawnPos, _arrayMarkers, 0, "NONE"];
     _vic setDir _spawnDir;
     closeDialog 1;
     hint format ["%1 Purchased", _vicName];

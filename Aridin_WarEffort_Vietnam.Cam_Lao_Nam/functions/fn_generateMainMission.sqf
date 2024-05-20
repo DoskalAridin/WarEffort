@@ -14,12 +14,23 @@
 // Select random faction and apply faction's arrays to approprate variables used by script
 OperationActive = true;
 publicVariable "OperationActive";
+private _playerCount_enemyStrength = ((count call BIS_fnc_listPlayers) / 2);
+private _AO_enemyStrength = AO_enemyStrength + _playerCount_enemyStrength;
+
+// Chance for Main Op to be a defense
+/**
+private _defendChance = 1.5^(-20+2*_AO_enemyStrength);
+private _mainOpType = selectRandomWeighted ["attack", 1, "defend", _defendChance];
+if (_mainOpType == "defend" && count MACVterritory > 1) exitWith {
+    call ARDN_fnc_generateMainDefend;
+};
+**/
 
 //Find and select near Main AO
-_mainAO_size = AO_size + 500;
-_availableMainAOs = [];
-_nearestMainAOs = [];
-_selectedAO = "";
+private _mainAO_size = AO_size + 500;
+private _availableMainAOs = [];
+private _nearestMainAOs = [];
+private _selectedAO = "";
 
 _availableMainAOs = AOmarkersMain - MACVterritory;
 {_nearest = [_availableMainAOs, _x] call BIS_fnc_nearestPosition; _nearestMainAOs pushBackUnique _nearest;} forEach MACVterritory;
@@ -27,19 +38,19 @@ _availableMainAOs = AOmarkersMain - MACVterritory;
 _selectedAO = selectRandom _nearestMainAOs;
 _missionArea = getMarkerPos _selectedAO;
 
-_enemyStrengthArea = 0;
+private _enemyStrengthArea = 0;
 {
     if (_missionArea inArea _x) then {_enemyStrengthArea = -2;}
 } forEach enemyStrengthMarker_low;
 {
     if (_missionArea inArea _x) then {_enemyStrengthArea = 2;}
 } forEach enemyStrengthMarker_high;
-_playerCount_enemyStrength = ((count call BIS_fnc_listPlayers) / 2);
-_AO_enemyStrength = AO_enemyStrength + _playerCount_enemyStrength + _enemyStrengthArea;
+
+_AO_enemyStrength = _AO_enemyStrength + _enemyStrengthArea;
 if (_AO_enemyStrength > 10) then {_AO_enemyStrength = 10};
 
 // Select random faction and apply faction's arrays to approprate variables used by script
-_selectedFaction = selectRandom array_factions;
+private _selectedFaction = selectRandom array_factions;
 
 switch (_selectedFaction) do
 {
@@ -50,6 +61,7 @@ switch (_selectedFaction) do
 		array_aa = array_aa_PAVN;
 		array_arty = array_arty_PAVN;
         array_BOAT = array_BOAT_VC;
+        array_air = array_heli_PAVN;
         if (_AO_enemyStrength > 5) then {
             array_vehicles append array_vehicles_strong_PAVN;
             array_aa append array_aa_strong_PAVN;
@@ -64,6 +76,7 @@ switch (_selectedFaction) do
 		array_aa = array_aa_VC;
 		array_arty = array_arty_VC;
         array_BOAT = array_BOAT_VC;
+        array_air = array_heli_PAVN;
         if (_AO_enemyStrength > 5) then {
             array_vehicles append array_vehicles_strong_VC;
             array_aa append array_aa_strong_VC;
@@ -78,6 +91,7 @@ switch (_selectedFaction) do
 		array_aa = array_aa_VC;
 		array_arty = array_arty_VC;
         array_BOAT = array_BOAT_VC;
+        array_air = array_heli_PAVN;
         if (_AO_enemyStrength > 5) then {
             array_vehicles append array_vehicles_strong_VC;
             array_aa append array_aa_VC;
@@ -95,242 +109,165 @@ if (activeAOs find _selectedAO >= 0) then {[_selectedAO] call ARDN_fnc_clearAO};
 activeAOs pushBack _selectedAO;
 publicVariable "activeAOs";
 
-_nearRoads = _missionArea nearRoads _mainAO_size;
-_roadsBlacklist = _missionArea nearRoads AO_size;
-_nearRoads = _nearRoads - _roadsBlacklist;
-_nearRoadsCount = count _nearRoads;
+private _nearRoads = _missionArea nearRoads _mainAO_size;
+private _roadsBlacklist = _missionArea nearRoads AO_size;
+private _nearRoads = _nearRoads - _roadsBlacklist;
+private _nearRoadsCount = count _nearRoads;
 
-_blackList = [];
+private _blackList = [];
 _blackList pushBack MACVterritory;
 
-// Spawn random number of patrols
-_numPatrols = ceil ((random _AO_enemyStrength * 1.5) + 5); // Adjust patrol count range as needed
-for "_i" from 1 to _numPatrols do
-{
-    _spawnPos = [_missionArea, 0, _mainAO_size, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
-    if (count _spawnPos != 3) then {
-        _patrolGroup = [_spawnPos, EAST, array_infantry, [], [], [], [], [2,0.01], 0, false, _AO_enemyStrength] call BIS_fnc_spawnGroup;	
-        [_patrolGroup, _spawnPos, ceil random [250, 500, 1000]] call BIS_fnc_taskPatrol;
-        sleep 0.05;
-    };
-};
-// Spawn idle squads (main infantry force)
-_numSquadUnits = ceil ((random _AO_enemyStrength) + 3); // Adjust garrison count range as needed
-for "_i" from 1 to _numSquadUnits do
-{
-    _spawnPos = [_missionArea, 0, _mainAO_size, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
-    if (count _spawnPos != 3) then {
-        _SquadUnit = [_spawnPos, EAST, array_infantry, [], [], [], [], [2,0.1]] call BIS_fnc_spawnGroup;
-        [_SquadUnit, _spawnPos] call BIS_fnc_taskDefend;
-        sleep 0.05;
-    };
-};
-// Spawn garrisoned units (in building locations w/ pathing disabled)
-_garrisonAvailablePos = nearestObjects [_missionArea, ["House", "Building", "Land_vn_cave_base"], _mainAO_size];
-if (count _garrisonAvailablePos != 0) then {
-    _numGarrisonedUnits = ceil (((random _AO_enemyStrength * 4) + 10) min count _garrisonAvailablePos);
-    for "_i" from 1 to _numGarrisonedUnits do
-    {
-        _garrisonClass = selectRandom array_infantry;
-		_garrisonBuilding = selectRandom _garrisonAvailablePos; 
-		_garrisonPos = selectrandom (_garrisonBuilding buildingPos -1); 
-		_GarrisonedGroup = createGroup east; 
-        _GarrisionedUnit = _GarrisonedGroup createUnit [_garrisonClass, _garrisonPos, [], 0, "NONE"];
-        _GarrisionedUnit disableAI "PATH";
-        sleep 0.05;
-    };
-};
-//Repeat last two, but concentrait around center of AO
-// Spawn idle squads (main infantry force)
-_numSquadUnits = ceil ((random _AO_enemyStrength) + 5); // Adjust garrison count range as needed
-for "_i" from 1 to _numSquadUnits do
-{
-    _spawnPos = [_missionArea, 0, AO_size, 2, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
-    if (count _spawnPos != 3) then {
-        _SquadUnit = [_spawnPos, EAST, array_infantry, [], [], [], [], [2,0.1]] call BIS_fnc_spawnGroup;
-        [_SquadUnit, _spawnPos] call BIS_fnc_taskDefend;
-        sleep 0.05;
-    };
-};
-// Spawn garrisoned units (in building locations w/ pathing disabled)
-_garrisonAvailablePos = nearestObjects [_missionArea, ["House", "Building", "Land_vn_cave_base"], AO_size];
-if (count _garrisonAvailablePos != 0) then {
-    _numGarrisonedUnits = ceil (((random _AO_enemyStrength * 4) + 10) min count _garrisonAvailablePos);
-    for "_i" from 1 to _numGarrisonedUnits do
-    {
-        _garrisonClass = selectRandom array_infantry;
-		_garrisonBuilding = selectRandom _garrisonAvailablePos; 
-		_garrisonPos = selectrandom (_garrisonBuilding buildingPos -1); 
-		_GarrisonedGroup = createGroup east; 
-        _GarrisionedUnit = _GarrisonedGroup createUnit [_garrisonClass, _garrisonPos, [], 0, "NONE"];
-        _GarrisionedUnit disableAI "PATH";
-        sleep 0.05;
-    };
-};
+private _AOpopulated = [_missionArea, AO_size, _blackList, _AO_enemyStrength, 2] spawn ARDN_fnc_populateAO;
+waitUntil {scriptDone _AOpopulated};
 
-// Spawn ground vehicles
-_numVehicles = ceil ((random _AO_enemyStrength) + 2);
-for "_i" from 1 to _numVehicles do
-{
-    _spawnPos = [_missionArea, AO_size, _mainAO_size, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
-    if (count _spawnPos != 3) then {
-        _vehicleClass = selectRandom array_vehicles; // Replace with your vehicle array name
-        _vehicle = createVehicle [_vehicleClass, _spawnPos, [], 0, "NONE"];
-        _vehicle setDir random 360;
-        createVehicleCrew  _vehicle;
-        sleep 0.05;
-    };
-};
 
-// Spawn anti-air units
-_numAA = ceil random ((random _AO_enemyStrength) + 1);
-for "_i" from 1 to _numAA do
-{
-    _spawnPos = [_missionArea, AO_size, _mainAO_size, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
-    if (count _spawnPos != 3) then {
-        _aaClass = selectRandom array_aa;
-        _aaUnit = createVehicle [_aaClass, _spawnPos, [], 0, "NONE"];
-        _aaUnit setDir random 360;
-        createVehicleCrew _aaUnit;
-        if (_aaClass == "vn_o_static_rsna75") then {
-            for "_i" from 1 to (ceil _AO_enemyStrength / 3) do {
-                _spawnPos = [_spawnPos, 0, 100, 5, 0, 0.3, 0, [], [_spawnPos, _spawnPos]] call BIS_fnc_findSafePos;
-                _aaUnit = createVehicle ["vn_sa2", _spawnPos, [], 0, "NONE"];
-                _aaUnit setDir random 360;
-                createVehicleCrew _aaUnit;
-            };
-        };
-        sleep 0.05;
-    };
-};
-
-// Spawn artillery
-_numArtillery = ceil ((random _AO_enemyStrength) + 1);
-for "_i" from 1 to _numArtillery do
-{
-    _spawnPos = [_missionArea, AO_size, _mainAO_size, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
-    if (count _spawnPos != 3) then {
-        _artilleryClass = selectRandom array_arty;
-        _artillery = createVehicle [_artilleryClass, _spawnPos, [], 0, "NONE"];
-        _artillery setDir random 360;
-        createVehicleCrew  _artillery;
-        sleep 0.05;
-    };
-};
-
-// Spawn B O A T
-_numBOAT = ceil (random _AO_enemyStrength);
-for "_i" from 1 to _numArtillery do
-{
-    _spawnPos = [_missionArea, AO_size, _mainAO_size, 5, 2, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
-    if (count _spawnPos != 3) then {
-        _BOATClass = selectRandom array_BOAT;
-        _BOAT = createVehicle [_artilleryClass, _spawnPos, [], 0, "NONE"];
-        _BOAT setDir random 360;
-        createVehicleCrew  _BOAT;
-        sleep 0.05;
-    };
-};
-
-// Randomly place mines around the mission area
-_numtrap = ceil (random [20, 40, 80] + (AO_size / 10) - (_AO_enemyStrength * 2));
-for "_i" from 1 to _numtrap do
-{
-    _trapPos = [_missionArea, AO_size, _mainAO_size, 1, 0, 0.1, 0, _blackList] call BIS_fnc_findSafePos;
-    if (count _spawnPos != 3) then {
-        _trapClass = selectRandom array_traps;
-        _trap = createMine [_trapClass, _trapPos, [], 0];
-    };
-};
-//place IEDs on roads
-if (_nearRoadsCount != 0) then {
-    for "_i" from 1 to (_AO_enemyStrength min (_nearRoadsCount - 1)) do
-    {
-        _IEDroad = _nearRoads select _i;
-        _IEDpos = getPos _IEDroad;
-        _IEDposValid = true;
-        {if (_IEDpos inArea _x == true) then {_IEDposValid = false;}} forEach MACVterritory;
-        if (_IEDposValid == true) then {
-            _IEDClass = selectRandom array_ied;
-            _IED = createMine [_IEDClass, _IEDpos, [], 0];
+private _textIntel = "";
+if (_AO_enemyStrength <= 2.5) then {
+    _textIntel = textIntel_min;
+} else {
+    if (_AO_enemyStrength <= 5) then {
+        _textIntel = textIntel_low;
+    } else {
+        if (_AO_enemyStrength <= 7.5) then {
+            _textIntel = textIntel_mid;
+        } else {
+            _textIntel = textIntel_high;
         };
     };
 };
-
 //Generate Objectives
-_OpName1st = selectRandom OpName1st;
-_OpName2nd = selectRandom OpName2nd;
-_MainOpTask = [BLUFOR, "mainOperation", ["All forces deploy to the area. Complete all tasks and secure the area.", format ["Operation %1 %2", _OpName1st, _OpName2nd]], _missionArea, "CREATED", 1, false, "attack", false] call BIS_fnc_taskCreate;
+private _OpName1st = selectRandom OpName1st;
+private _OpName2nd = selectRandom OpName2nd;
+private _MainOpTask = [BLUFOR, "mainOperation", [format ["All forces deploy to the area. Complete all tasks and secure the area.<br/><br/>Intel:<br/>Traps and IEDs will be scattered throught the AO, make sure to bring a Trapkit.<br/>%1", _textIntel], format ["Operation %1 %2", _OpName1st, _OpName2nd]], _missionArea, "CREATED", 1, false, "attack", false] call BIS_fnc_taskCreate;
 
 //Objective Anti-Air
-_POIaa = [_missionArea, 0, 500, 40, 0, 0.3, 0] call BIS_fnc_findSafePos;
+private _POIaa = [_missionArea, 0, 500, 30, 0, 0.3, 0] call BIS_fnc_findSafePos;
 if (count _POIaa != 3) then {
-    _UnitPos = [_POIaa, 0, 100, 40, 0, 0.3, 0] call BIS_fnc_findSafePos;
+    private _UnitPos = [_POIaa, 0, 100, 30, 0, 0.3, 0] call BIS_fnc_findSafePos;
     if (count _UnitPos != 3) then {
         [_UnitPos, random 360, VCsiteAA] call BIS_fnc_ObjectsMapper;
-        _numUnits = ceil ((random _AO_enemyStrength) + 1); // Adjust patrol count range as needed
+        private _numUnits = ceil ((random _AO_enemyStrength) + 1); // Adjust patrol count range as needed
         for "_i" from 1 to _numPatrols do
         {
-            _spawnPos = [_UnitPos, 0, 200, 5, 0, 0.3, 0] call BIS_fnc_findSafePos;
-            _aaClass = selectRandom array_aa; // Replace with your anti-air array name
-            _aaUnit = createVehicle [_aaClass, _spawnPos, [], 0, "NONE"];
+            private _spawnPos = [_UnitPos, 0, 200, 5, 0, 0.3, 0] call BIS_fnc_findSafePos;
+            private _aaClass = selectRandom array_aa;
+            private _aaUnit = createVehicle [_aaClass, _spawnPos, [], 0, "NONE"];
             _aaUnit setDir random 360;
             createVehicleCrew _aaUnit;
             sleep 0.5;
         };
-        _MainOpAA = [BLUFOR, ["mainOperation_aa", "mainOperation"], ["Looks like the enemy has SA-2s and other AA stationed here.", "Eliminate Anti-Air emplacment"], _POIaa, "CREATED", 1, false, "destroy", false] call BIS_fnc_taskCreate;
+        private _MainOpAA = [BLUFOR, ["mainOperation_aa", "mainOperation"], ["Looks like the enemy has SA-2s and other AA stationed here.", "Eliminate Anti-Air emplacment"], _POIaa, "CREATED", 1, false, "destroy", false] call BIS_fnc_taskCreate;
         _blackList pushBack [_POIaa, 40];
         OperationAA = true;
+        private _spawnPos = [_UnitPos, 0, 10, 5, 0, 0.5, 0] call BIS_fnc_findSafePos;
+        private _SquadUnit = [_spawnPos, EAST, array_infantry, [], [], [], [], [4,0.2], 0, false, 8] call BIS_fnc_spawnGroup;
+        [_SquadUnit, _spawnPos] call BIS_fnc_taskDefend;
     };
 };          
 
 //Objective Artillery
-_POIarty = [_missionArea, 0, 500, 40, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+private _POIarty = [_missionArea, 0, 500, 30, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
 if (count _POIarty != 3) then {
-    _UnitPos = [_POIarty, 0, 100, 40, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+    private _UnitPos = [_POIarty, 0, 100, 30, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
     if (count _UnitPos != 3) then {
         [_UnitPos, random 360, VCsiteArty] call BIS_fnc_ObjectsMapper;
-        _MainOpArty = [BLUFOR, ["mainOperation_arty", "mainOperation"], ["", "Eliminate artillery position"], _POIarty, "CREATED", 1, false, "destroy", false] call BIS_fnc_taskCreate;
+        private _MainOpArty = [BLUFOR, ["mainOperation_arty", "mainOperation"], ["", "Eliminate artillery position"], _POIarty, "CREATED", 1, false, "destroy", false] call BIS_fnc_taskCreate;
         _blackList pushBack [_POIarty, 40];
         OperationArty = true;
+        private _spawnPos = [_UnitPos, 0, 10, 5, 0, 0.5, 0] call BIS_fnc_findSafePos;
+        private _SquadUnit = [_spawnPos, EAST, array_infantry, [], [], [], [], [4,0.2], 0, false, 8] call BIS_fnc_spawnGroup;
+        [_SquadUnit, _spawnPos] call BIS_fnc_taskDefend;
     };
 };
 
 //Objective Officer
-_POIofficer = [_missionArea, 0, 500, 8, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+private _POIofficer = [_missionArea, 0, 500, 8, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
 if (count _POIofficer != 3) then {
-    _UnitPos = [_POIofficer, 0, 100, 8, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+    private _UnitPos = [_POIofficer, 0, 100, 8, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
     if (count _UnitPos != 3) then {
         [_UnitPos, random 360, VCsiteOfficer] call BIS_fnc_ObjectsMapper;
-        _objGroup = createGroup east;
-        "vn_o_men_nva_65_01" createUnit [_UnitPos, _objGroup, "this addEventHandler ['Killed', {['mainOperation_officer' ,'SUCCEEDED'] call BIS_fnc_taskSetState; MACVresource = floor (MACVresource + (missionReward * 2)); publicVariable 'MACVresource'; OperationOfficer = false; publicVariable 'OperationOfficer';['mainOperation_arty', true] call BIS_fnc_deleteTask;}];", 1, "COLONEL"];
-        _objUnit = [_UnitPos, EAST, array_infantry, [], [], [], [], [2,0.1], 0, false] call BIS_fnc_spawnGroup;
+        private _objGroup = createGroup east;
+        "vn_o_men_nva_65_01" createUnit [_UnitPos, _objGroup, "this addEventHandler ['Killed', {['mainOperation_officer' ,'SUCCEEDED'] call BIS_fnc_taskSetState; MACVresource = floor (MACVresource + (missionReward * 2)); publicVariable 'MACVresource'; OperationOfficer = false; publicVariable 'OperationOfficer';['mainOperation_officer', true] call BIS_fnc_deleteTask;}];", 1, "COLONEL"];
+        private _objUnit = [_UnitPos, EAST, array_infantry, [], [], [], [], [4,0.2], 0, false, 8] call BIS_fnc_spawnGroup;
         units _objUnit join _objGroup;
-        _MainOpOfficer = [BLUFOR, ["mainOperation_officer", "mainOperation"], ["", "Eliminate Officer"], _POIofficer, "CREATED", 1, false, "kill", false] call BIS_fnc_taskCreate;
+        private _MainOpOfficer = [BLUFOR, ["mainOperation_officer", "mainOperation"], ["", "Eliminate Officer"], _POIofficer, "CREATED", 1, false, "kill", false] call BIS_fnc_taskCreate;
         OperationOfficer = true;
     };
 };
 
 //Objective Secure Area
-_MainOpArea = [BLUFOR, ["mainOperation_area", "mainOperation"], ["Clear out enemy forces from the area and establish control of the area.", "Secure the area"], objNull, "CREATED", 1, false, "attack", false] call BIS_fnc_taskCreate;
+private _MainOpArea = [BLUFOR, ["mainOperation_area", "mainOperation"], ["Clear out enemy forces from the area and establish control of the area.", "Secure the area"], objNull, "CREATED", 1, false, "attack", false] call BIS_fnc_taskCreate;
 OperationArea = true;
 
+
+// Spawn idle squads (main infantry force)
+private _numSquadUnits = ceil ((random _AO_enemyStrength) + 5); // Adjust garrison count range as needed
+for "_i" from 1 to _numSquadUnits do
+{
+    private _spawnPos = [_missionArea, 0, AO_size, 2, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+    if (count _spawnPos != 3) then {
+        private _SquadUnit = [_spawnPos, EAST, array_infantry, [], [], [], [], [2,0.1]] call BIS_fnc_spawnGroup;
+        [_SquadUnit, _spawnPos] call BIS_fnc_taskDefend;
+        sleep 0.05;
+    };
+};
+// Spawn garrisoned units (in building locations w/ pathing disabled)
+private _garrisonAvailablePos = nearestObjects [_missionArea, ["House", "Building", "Land_vn_cave_base"], AO_size];
+if (count _garrisonAvailablePos != 0) then {
+    private _numGarrisonedUnits = ceil (((random _AO_enemyStrength * 4) + 10) min count _garrisonAvailablePos);
+    for "_i" from 1 to _numGarrisonedUnits do
+    {
+        private _garrisonClass = selectRandom array_infantry;
+		private _garrisonBuilding = selectRandom _garrisonAvailablePos; 
+		private _garrisonPos = selectrandom (_garrisonBuilding buildingPos -1); 
+		private _GarrisonedGroup = createGroup east; 
+        private _GarrisionedUnit = _GarrisonedGroup createUnit [_garrisonClass, _garrisonPos, [], 0, "NONE"];
+        _GarrisionedUnit disableAI "PATH";
+        sleep 0.05;
+    };
+};
+
+//Populate mortar/artiller pits
+private _mortarPit = nearestObjects [_missionArea, ["Land_vn_b_mortarpit_01"], AO_size];
+{
+    private _spawnPos = getPosATL _x;
+    _spawnPos set [2, (_spawnPos select 2) + 0.35];
+    private _mortarClass = selectRandom ["vn_o_nva_static_mortar_type63","vn_o_nva_static_mortar_type53"];
+    private _mortar = createVehicle [_mortarClass, _spawnPos, [], 0, "CAN_COLLIDE"];
+    private _crewChance = random _AO_enemyStrength;
+    if (_crewChance >= 2) then {
+        createVehicleCrew _mortar;
+    };
+} forEach _mortarPit;
+private _artilleryPit = nearestObjects [_missionArea, ["Land_vn_b_gunpit_01"], AO_size];
+{
+    private _spawnPos = getPosATL _x;
+    _spawnPos set [2, (_spawnPos select 2) + 1.007];
+    private _artillery = createVehicle ["vn_o_nva_static_d44_01", _spawnPos, [], 0, "CAN_COLLIDE"];
+    private _crewChance = random _AO_enemyStrength;
+    if (_crewChance >= 4) then {
+        createVehicleCrew _artillery;
+    };
+} forEach _artilleryPit;
+
 ["mainOperation" , "ASSIGNED"] call BIS_fnc_taskSetState;
+
+sleep 30;
 
 [_missionArea, _POIaa, _POIarty, _selectedAO] spawn {
     params ["_missionArea", "_POIaa", "_POIarty", "_selectedAO"];
     while {OperationActive == true} do {
-        if (count (units east inAreaArray [_missionArea, 500, 500]) < count units west) then {
+        if (count (units east inAreaArray [_missionArea, AO_size, AO_size]) < count (units west inAreaArray [_missionArea, AO_size, AO_size])) then {
             ["mainOperation_area" , "SUCCEEDED"] call BIS_fnc_taskSetState;
             OperationArea = false;
             ["mainOperation_area", true] call BIS_fnc_deleteTask;
         };
-        if (count (units east inAreaArray [_POIaa, 50, 50]) == 0) then {
+        if (count (vehicles select { _x isKindOf "vn_o_static_rsna75" } inAreaArray [_POIaa, 50, 50]) == 0) then {
             ["mainOperation_aa" , "SUCCEEDED"] call BIS_fnc_taskSetState;
             OperationAA = false;
             ["mainOperation_aa", true] call BIS_fnc_deleteTask;
         };
-        if (count (units east inAreaArray [_POIarty, 50, 50]) == 0) then {
+        if (count (vehicles select { _x isKindOf "vn_o_nva_static_d44_01" } inAreaArray [_POIarty, 50, 50]) == 0) then {
             ["mainOperation_arty" , "SUCCEEDED"] call BIS_fnc_taskSetState;
             OperationArea = false;
             ["mainOperation_arty", true] call BIS_fnc_deleteTask;
@@ -347,7 +284,7 @@ OperationArea = true;
             AO_enemyStrength = AO_enemyStrength - 1;
             if (AO_enemyStrength < 1) then {AO_enemyStrength = 1};
             publicVariable "AO_enemyStrength";
-            MACVresource = floor (MACVresource + missionReward) * 5;
+            MACVresource = MACVresource + floor (missionReward * 5);
             publicVariable "MACVresource";
             remoteExec ["ARDN_fnc_saveMission", 2];
         };

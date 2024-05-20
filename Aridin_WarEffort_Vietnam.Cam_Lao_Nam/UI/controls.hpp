@@ -25,7 +25,7 @@ class vicBuyMenu {
             y = 0.247 * safezoneH + safezoneY;
             w = 0.226875 * safezoneW;
             h = 0.451 * safezoneH;
-            onLBSelChanged = "execVM 'vicUpdate.sqf'";
+            onLBSelChanged = "execVM 'scripts\vicUpdate.sqf'";
         };
         class vicPreview: RscPicture
         {
@@ -45,7 +45,7 @@ class vicBuyMenu {
             w = 0.0928125 * safezoneW;
             h = 0.044 * safezoneH;
             colorBackground[] = {0.349,0.475,0.306,1};
-            action = "execVM 'purchaseVic.sqf'";
+            action = "execVM 'scripts\purchaseVic.sqf'";
         };
         class textCost: RscText
         {
