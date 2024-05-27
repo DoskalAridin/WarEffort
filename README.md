@@ -17,7 +17,8 @@ When ready a "main operation" can be started. Being a mission requiring multiple
 - Manually activated "Main Operations" to secure and capture territory
 - Basic economy for purchasing vehicles and soldier training
 - Deployable LP/OP "FOBs" for field respawns
-- Support for [ACE](https://steamcommunity.com/sharedfiles/filedetails/?id=463939057), [ACRE2](https://steamcommunity.com/sharedfiles/filedetails/?id=751965892), [TFAR](https://steamcommunity.com/sharedfiles/filedetails/?id=894678801), [S&S](https://steamcommunity.com/sharedfiles/filedetails/?id=2183975396) and [Aridin's SOG:PF](https://steamcommunity.com/sharedfiles/filedetails/?id=2524282029)
+- Support for [ACE](https://steamcommunity.com/sharedfiles/filedetails/?id=463939057), [ACRE2](https://steamcommunity.com/sharedfiles/filedetails/?id=751965892), [TFAR](https://steamcommunity.com/sharedfiles/filedetails/?id=894678801), [S&S](https://steamcommunity.com/sharedfiles/filedetails/?id=2183975396), [Immersion Cigs
+](https://steamcommunity.com/sharedfiles/filedetails/?id=753946944) and [Aridin's SOG:PF](https://steamcommunity.com/sharedfiles/filedetails/?id=2524282029)
 
 ### The Economy
 War Effort features a basic economy, where completing objectives rewards the team with "supply".<br/>
