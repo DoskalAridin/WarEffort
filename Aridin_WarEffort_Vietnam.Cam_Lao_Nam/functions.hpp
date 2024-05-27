@@ -36,5 +36,8 @@ class ARDN{
         class setDate {
           file = "functions\fn_setDate.sqf";  
         };
+        class reinforce {
+          file = "functions\fn_reinforce.sqf";  
+        };
 	};
 };

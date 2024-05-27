@@ -3,6 +3,16 @@
 #include "config\arrays.hpp"
 
 // Mission parameters
+WarEffortDifficulty = "WarEffortDifficulty" call BIS_fnc_getParamValue;
+if (WarEffortDifficulty == 0) then {
+    WarEffortDifficulty = -4;
+} else {
+    if (WarEffortDifficulty == 2) then {
+        WarEffortDifficulty = 0;
+    } else {
+        WarEffortDifficulty = 4;
+    };
+};
 hardcoreMode = false;
 if ("hardcoreMode" call BIS_fnc_getParamValue == 1) then {
     hardcoreMode = true;
@@ -16,6 +26,26 @@ manualSideMissions = false;
 if ("manualSideMissions" call BIS_fnc_getParamValue == 1) then {
     manualSideMissions = true
 };
+AIlimit = "AIlimit" call BIS_fnc_getParamValue;
+
+if (manualSideMissions == false) then {
+    AIlimit = AIlimit * 2;
+};
+
+// Setup global variables
+OperationActive = false;
+OperationAA = false;
+OperationArty = false;
+OperationOfficer = false;
+OperationArea = false;
+ObjectiveCount = 1;
+objectivesActive = 0;
+primaryAO = "";
+operationAO = "";
+activeAOs = [];
+cleanAOs = [];
+
+OPFORreserves = 0;
 
 // Load saved variabled from server
 if (isServer) then {
@@ -29,19 +59,26 @@ if (isServer) then {
     AO_enemyStrength = missionProfileNamespace getVariable ["AO_enemyStrength", 1];
     diag_log format ["MISSION: Enemy Strength: %1", MACVresource];
     publicVariable "AO_enemyStrength";
+    
+    // Reinforcement loop
+    [] spawn {
+        while {true} do {
+            private _AIlimit = AIlimit * (count activeAOs);
+            if (count units east < _AIlimit && OPFORreserves > 0) then {
+                if (operationAO != "") then {
+                    private _AOpos = getMarkerPos operationAO;
+                    [_AOpos] remoteExec ["ARDN_fnc_reinforce", 2];
+                } else {
+                    if (count activeAOs != 0) then {
+                        private _AOpos = getMarkerPos selectRandom activeAOs;
+                        [_AOpos] remoteExec ["ARDN_fnc_reinforce", 2];
+                    };
+                };
+            };
+            sleep 60;
+        };
+    };
 };
-
-// Setup global variables
-OperationActive = false;
-OperationAA = false;
-OperationArty = false;
-OperationOfficer = false;
-OperationArea = false;
-ObjectiveCount = 1;
-objectivesActive = 0;
-primaryAO = "";
-activeAOs = [];
-cleanAOs = [];
 
 // Hide and show map markers
 {

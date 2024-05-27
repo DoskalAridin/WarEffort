@@ -8,12 +8,8 @@
 		true - if mission is generated
 
 	Examples:
-		call ARDN_fnc_generateMainDefend;
+		remoteExec ["ARDN_fnc_generateMainDefend", 2];
 */
-OperationActive = false;
-publicVariable "OperationActive";
-["Defend Op not yet implimented"] remoteExec ["systemChat"];
-
 private _playerCount_enemyStrength = ((count call BIS_fnc_listPlayers) / 2);
 private _AO_enemyStrength = AO_enemyStrength + _playerCount_enemyStrength;
 
@@ -23,10 +19,13 @@ private _availableMainAOs = [];
 private _nearestMainAOs = [];
 private _selectedAO = "";
 
-_availableMainAOs = MACVterritory - "markerHQ";
+_availableMainAOs = MACVterritory - ["markerHQ"];
 //_selectedAO = marker string | _missionArea = marker pos [x,y,z]
 _selectedAO = selectRandom _availableMainAOs;
 _missionArea = getMarkerPos _selectedAO;
+
+operationAO = _selectedAO;
+publicvariable "operationAO";
 
 private _enemyStrengthArea = 0;
 {
@@ -83,8 +82,8 @@ switch (_selectedFaction) do
         array_air = array_heli_PAVN;
         if (_AO_enemyStrength > 5) then {
             array_vehicles append array_vehicles_strong_VC;
-            array_aa append array_aa_VC;
-            array_arty append array_arty_VC;
+            array_aa append array_aa_strong_VC;
+            array_arty append array_arty_strong_VC;
             array_BOAT append array_BOAT_PAVN;
         };
 	};
@@ -92,7 +91,7 @@ switch (_selectedFaction) do
 
 private _selectedFactionBLUFOR = selectRandom array_factions_blufor;
 
-switch (_selectedFactionMACV) do
+switch (_selectedFactionBLUFOR) do
 {
     default {
         blufor_sl = "vn_b_men_army_02";
@@ -134,7 +133,7 @@ publicVariable "activeAOs";
 private _blackList = [];
 
 // Spawn garrisoned units (in building locations w/ pathing disabled)
-private _garrisonAvailableBuildings = nearestObjects [_missionArea, ["House", "Building", "Land_vn_cave_base"], _aoSize];
+private _garrisonAvailableBuildings = nearestObjects [_missionArea, ["House", "Building", "Land_vn_cave_base"], 200];
 private _garrisonAvailablePos = [];
 {
     private _garrisionPos = _x buildingPos -1;
@@ -156,10 +155,10 @@ if (count _garrisonAvailablePos != 0) then {
 };
 
 // Spawn idle squads (main infantry force)
-private _numSquadUnits = ceil ((random 5) + 5); // Adjust garrison count range as needed
+private _numSquadUnits = ceil ((random 3) + 2); // Adjust garrison count range as needed
 for "_i" from 1 to _numSquadUnits do
 {
-    private _spawnPos = [_missionArea, 0, _aoSize, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+    private _spawnPos = [_missionArea, 0, AO_size, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
     if (count _spawnPos == 2) then {
          private _SquadUnit = [_spawnPos, WEST, array_infantry_blufor, [], [], [], [], [2,0.1]] call BIS_fnc_spawnGroup;
         [_SquadUnit, _spawnPos] call BIS_fnc_taskDefend;
@@ -168,10 +167,10 @@ for "_i" from 1 to _numSquadUnits do
 };
 
 // Spawn anti-air units
-private _numAA = ceil ((random 4) + 1); // Adjust anti-air count range as needed
+private _numAA = ceil ((random 2) + 1); // Adjust anti-air count range as needed
 for "_i" from 1 to _numAA do
 {
-    private _spawnPos = [_missionArea, 0, _aoSize, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+    private _spawnPos = [_missionArea, 0, AO_size, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
     if (count _spawnPos == 2) then {
         private _aaClass = selectRandom array_aa_blufor;
         private _aaUnit = createVehicle [_aaClass, _spawnPos, [], 0, "NONE"];
@@ -187,9 +186,9 @@ for "_i" from 1 to _numAA do
 private _numVehicles = ceil ((random 2) + 2);
 for "_i" from 1 to _numVehicles do
 {
-    private _spawnPos = [_missionArea, 0, _aoSize, 6, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+    private _spawnPos = [_missionArea, 0, AO_size, 6, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
     if (count _spawnPos == 2) then {
-        private _vehicleClass = selectRandom array_vehicles_blufor; // Replace with your vehicle array name
+        private _vehicleClass = selectRandom array_vehicles_blufor;
         private _vehicle = createVehicle [_vehicleClass, _spawnPos, [], 0, "NONE"];
         _vehicle setDir random 360;
         createVehicleCrew  _vehicle;
@@ -200,12 +199,21 @@ private _OpName1st = selectRandom OpName1st;
 private _MainOpTask = [BLUFOR, "mainOperation", ["All forces deploy to the area. Defend against an enemy counter attack.", format ["Operation %1 Defense", _OpName1st]], _missionArea, "CREATED", 1, false, "defend", false] call BIS_fnc_taskCreate;
 
 // Spawn officer to defend
-private _objGroup = createGroup east;
-blufor_sl createUnit [_UnitPos, _objGroup, "this addEventHandler ['Killed', {['mainOperation_officer' ,'FAILED'] call BIS_fnc_taskSetState; MACVresource = floor (MACVresource - (enemyStrengthMissionFailPenalty * 2)); publicVariable 'MACVresource'; OperationOfficer = false; publicVariable 'OperationOfficer';['mainOperation_officer', true] call BIS_fnc_deleteTask;}];", 1, "COLONEL"];
-private _objUnit = [_missionArea, WEST, array_infantry, [], [], [], [], [2,0.1], 0, false] call BIS_fnc_spawnGroup;
+private _POIofficer = selectrandom _garrisonAvailablePos;
+private _objGroup = createGroup west;
+private _objOfficer = _objGroup createUnit [blufor_sl, _POIofficer, [], 0, "NONE"];
+_objOfficer addEventHandler ["Killed", {["mainOperation_officer" ,"FAILED"] call BIS_fnc_taskSetState; MACVresource = floor (MACVresource - (enemyStrengthMissionFailPenalty * 2)); publicVariable "MACVresource"; OperationOfficer = false; publicVariable "OperationOfficer";}];
+private _objUnit = [_POIofficer, WEST, array_infantry_blufor, [], [], [], [], [4,0.1], 0, false] call BIS_fnc_spawnGroup;
 units _objUnit join _objGroup;
- private _MainOpOfficer = [BLUFOR, ["mainOperation_officer", "mainOperation"], ["", "Defend Officer"], _POIofficer, "CREATED", 1, false, "defend", false] call BIS_fnc_taskCreate;
+ private _MainOpOfficer = [BLUFOR, ["mainOperation_officer", "mainOperation"], ["", "Defend Officer"], [_objOfficer, true], "CREATED", 1, false, "defend", false] call BIS_fnc_taskCreate;
 OperationOfficer = true;
+
+private _MainOpArea = [BLUFOR, ["mainOperation_area", "mainOperation"], ["Prevent enemy forces from over running the area.", "Defend area"], objNull, "CREATED", 1, false, "defend", false] call BIS_fnc_taskCreate;
+OperationArea = true;
+
+// Spawn assaulting force
+[_missionArea,_AO_enemyStrength] execVM "scripts\OPFORassault.sqf";
+OPFORreserves = OPFORreserves + (_AO_enemyStrength * 2);
 
 ["mainOperation" , "ASSIGNED"] call BIS_fnc_taskSetState;
 
@@ -215,13 +223,15 @@ sleep 30;
 [_missionArea, _selectedAO] spawn {
     params ["_missionArea", "_selectedAO"];
     while {OperationActive == true} do {
-        if (count (units west inAreaArray [_missionArea, 500, 500]) < 5) then {
+        if (count (units east inAreaArray [_missionArea, AO_size, AO_size]) > count (units west inAreaArray [_missionArea, AO_size, AO_size])) then {
             ["mainOperation_area" , "FAILED"] call BIS_fnc_taskSetState;
             OperationArea = false;
-            ["mainOperation_area", true] call BIS_fnc_deleteTask;
         };
         if (OperationOfficer == false && OperationArea == false) then {
             ["mainOperation" , "FAILED"] call BIS_fnc_taskSetState;
+            ["mainOperation_area", true] call BIS_fnc_deleteTask;
+            ["mainOperation_officer", true] call BIS_fnc_deleteTask;
+            ["mainOperation" , "FAILED"] call BIS_fnc_deleteTask;
             OperationActive = false;
             publicVariable "OperationActive";
             cleanAOs pushBack _selectedAO;
@@ -232,6 +242,8 @@ sleep 30;
             AO_enemyStrength = AO_enemyStrength + (enemyStrengthMissionFailPenalty * 2.5);
             if (AO_enemyStrength > 10) then {AO_enemyStrength = 10};
             publicVariable "AO_enemyStrength";
+            operationAO = "";
+            publicvariable "operationAO";
             remoteExec ["ARDN_fnc_saveMission", 2];
         };
         sleep 30;
@@ -256,6 +268,8 @@ sleep 30;
         publicVariable "AO_enemyStrength";
         MACVresource = MACVresource + floor (missionReward * 5);
         publicVariable "MACVresource";
+        operationAO = "";
+        publicvariable "operationAO";
         remoteExec ["ARDN_fnc_saveMission", 2];
     };
 };

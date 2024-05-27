@@ -13,6 +13,14 @@ class CfgFunctions {
 
 class Params
 {
+    class WarEffortDifficulty
+    {
+        title = "Difficulty";
+		texts[] = {"Easy", "Medium", "Hard"};
+		values[] = {0, 1, 2};
+		default = "Medium";
+    };
+    /**
 	class hardcoreMode
 	{
 		title = "Hardcore Mode (not yet implemented)";
@@ -20,12 +28,20 @@ class Params
 		values[] = {true, false};
 		default = false;
 	};
+    **/
     class AO_size
     {
         title = "AO size";
 		texts[] = {"250m", "500m", "750m", "1000m"};
 		values[] = {250, 500, 750, 1000};
 		default = 500;
+    };
+    class AIlimit
+    {
+        title = "AI limit";
+		texts[] = {"Low", "Medium", "High"};
+		values[] = {50, 100, 200};
+		default = 100;
     };
     class missionReward
     {

@@ -1,6 +1,7 @@
 
 [] execVM "scripts\timeCycle.sqf";
 call ARDN_fnc_setDate;
+// Side mission and AO cleanup loop
 [] spawn {
     while {true} do {
         waitUntil {
@@ -17,3 +18,4 @@ call ARDN_fnc_setDate;
         sleep 10;
     };
 };
+

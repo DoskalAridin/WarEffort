@@ -132,8 +132,8 @@ private _enemyStrengthArea = 0;
 {
     if (_missionArea inArea _x) then {_enemyStrengthArea = 2;}
 } forEach enemyStrengthMarker_high;
-private _playerCount_enemyStrength = ((count call BIS_fnc_listPlayers) / 2);
-private _AO_enemyStrength = AO_enemyStrength + _playerCount_enemyStrength + _enemyStrengthArea;
+private _playerCount_enemyStrength = ((count call BIS_fnc_listPlayers) / 8);
+private _AO_enemyStrength = AO_enemyStrength + _playerCount_enemyStrength + _enemyStrengthArea + WarEffortDifficulty;
 if (_AO_enemyStrength > 10) then {_AO_enemyStrength = 10};
 
 // Select random faction and apply faction's arrays to approprate variables used by script
@@ -223,18 +223,28 @@ switch (_objectiveType) do {
         _spawnPos = [_spawnPos, 0, 25, 5, 0, 0.3, 0, MACVterritory] call BIS_fnc_findSafePos;
         private _objUnit = [_spawnPos, EAST, array_infantry, [], [], [], [], [2,0.1], 0, false] call BIS_fnc_spawnGroup;
         [_objUnit, _spawnPos] call BIS_fnc_taskDefend;
-        if (selectRandomWeighted [true, 0.25, false, 1] == true) then {
-            [_spawnPos, 0, SelectRandom VCcamps, 0.1] call BIS_fnc_objectsMapper;
-        };
+        [_spawnPos, 0, SelectRandom VCcamps, 0.05] call BIS_fnc_objectsMapper;
     };
     case "hvt": {
+        private _array_infantry = [];
+        _array_infantry pushBack (array_infantry select 0);
+        for "_i" from 1 to 10 do {
+            _array_infantry pushBack (selectRandom array_infantry);
+        };
         private _objectiveTask = [BLUFOR, format ["Objective_%1",str ObjectiveCount], [format ["Objective %1:<br/>Intel indicates an enemy officer is in the area.<br/>Locate and eliminate them.<br/><br/>Intel:<br/>Traps and IEDs will be scattered throught the AO, make sure to bring a Trapkit.<br/>%2", str ObjectiveCount, _textIntel], "Eliminate enemy officer"], _missionArea, "AUTOASSIGNED", 0, true, "kill", false] call BIS_fnc_taskCreate;
+        private _spawnPos = [_missionArea, 0, 200, 5, 0, 0.3, 0, MACVterritory] call BIS_fnc_findSafePos;
+        [_spawnPos, 0, SelectRandom VCcamps, 0.05] call BIS_fnc_objectsMapper;
         private _objGroup = createGroup east;
-        "vn_o_men_nva_65_01" createUnit [_missionArea, _objGroup, "this setVariable ['objectiveNumber', ObjectiveCount]; this setVariable ['objectiveAO', _selectedAO]; this addEventHandler ['Killed', {_obj = _this select 0; [_obj] remoteExec  ['ARDN_fnc_missionSuccess', 2];}];", 1, "COLONEL"];
-        private _objUnit = [_missionArea, EAST, array_infantry, [], [], [], [], [2,0.1], 0, false] call BIS_fnc_spawnGroup;
+        opfor_sl createUnit [_spawnPos, _objGroup, "this setVariable ['objectiveNumber', ObjectiveCount]; this setVariable ['objectiveAO', _selectedAO]; this addEventHandler ['Killed', {_obj = _this select 0; [_obj] remoteExec  ['ARDN_fnc_missionSuccess', 2];}];", 1, "COLONEL"];
+        private _objUnit = [_spawnPos, EAST, _array_infantry, [], [], [], [], [2,0.1], 0, false] call BIS_fnc_spawnGroup;
         units _objUnit join _objGroup;
     };
     case "eldestSon": {
+        private _array_infantry = [];
+        _array_infantry pushBack (array_infantry select 0);
+        for "_i" from 1 to 10 do {
+            _array_infantry pushBack (selectRandom array_infantry);
+        };
         private _objectiveTask = [BLUFOR, format ["Objective_%1",str ObjectiveCount], [format ["Objective %1:<br/>Locate an enemy ammo truck and leave a booby-trapped ammobox nearby.<br/><br/>Intel:<br/>Traps and IEDs will be scattered throught the AO, make sure to bring a Trapkit.<br/>%2", str ObjectiveCount, _textIntel], "Sabotage enemy ammo supply"], _missionArea, "AUTOASSIGNED", 0, true, "box", false] call BIS_fnc_taskCreate;
         private _spawnPos = [_missionArea, 0, 200, 8, 0, 0.3, 0, MACVterritory] call BIS_fnc_findSafePos;
         private _objObject = createVehicle ["vn_o_wheeled_z157_ammo_nva65", _spawnPos, [], 0, "NONE"];
@@ -245,7 +255,7 @@ switch (_objectiveType) do {
             [_obj] remoteExec  ["ARDN_fnc_missionFailed", 2];
         }];
         _spawnPos = [_spawnPos, 0, 50, 5, 0, 0.3, 0, MACVterritory] call BIS_fnc_findSafePos;
-        private _objUnit = [_spawnPos, EAST, array_infantry, [], [], [], [], [2,0.1], 0, false] call BIS_fnc_spawnGroup;
+        private _objUnit = [_spawnPos, EAST, _array_infantry, [], [], [], [], [2,0.1], 0, false] call BIS_fnc_spawnGroup;
         [_objUnit, _spawnPos] call BIS_fnc_taskDefend;
         [_objObject] spawn {
             params ["_objObject"];
@@ -260,9 +270,14 @@ switch (_objectiveType) do {
         };
     };
     case "pow": {
+        private _array_infantry = [];
+        _array_infantry pushBack (array_infantry select 0);
+        for "_i" from 1 to 10 do {
+            _array_infantry pushBack (selectRandom array_infantry);
+        };
         private _objectiveTask = [BLUFOR, format ["Objective_%1",str ObjectiveCount], [format ["Objective %1:<br/>The enemy is holding a prisoner of war in the area.<br/>Locate and extract them back to base.<br/><br/>Intel:<br/>Traps and IEDs will be scattered throught the AO, make sure to bring a Trapkit.<br/>%2", str ObjectiveCount, _textIntel], "Rescue POW"], _missionArea, "AUTOASSIGNED", 0, true, "danger", false] call BIS_fnc_taskCreate;
         private _spawnPos = [_missionArea, 0, 200, 9, 0, 0.1, 0, MACVterritory] call BIS_fnc_findSafePos;
-        private _objCage = [_spawnPos, 0, VCpow] call BIS_fnc_objectsMapper;
+        private _objCage = [_spawnPos, 0, SelectRandom VCcamps, 0.05] call BIS_fnc_objectsMapper;
         private _objGroup = createGroup west;
         private _objObject = _objGroup createUnit ["vn_b_men_lrrp_01", _spawnPos, [], 0, "NONE"];
         [_objObject] remoteExec ["ARDN_fnc_POWcaptive", 2];
@@ -278,7 +293,7 @@ switch (_objectiveType) do {
         }, nil,6,true,true,"","true",4];
         _objObject addEventHandler ["Killed", {_obj = _this select 0; [_obj] remoteExec  ["ARDN_fnc_missionFailed", 2];}];
         _spawnPos = [_spawnPos, 0, 50, 5, 0, 0.3, 0, MACVterritory] call BIS_fnc_findSafePos;
-        private _objUnit = [_spawnPos, EAST, array_infantry, [], [], [], [], [2,0.1], 0, false] call BIS_fnc_spawnGroup;
+        private _objUnit = [_spawnPos, EAST, _array_infantry, [], [], [], [], [2,0.1], 0, false] call BIS_fnc_spawnGroup;
         [_objUnit, _spawnPos] call BIS_fnc_taskDefend;
     };
     case "pilot": {

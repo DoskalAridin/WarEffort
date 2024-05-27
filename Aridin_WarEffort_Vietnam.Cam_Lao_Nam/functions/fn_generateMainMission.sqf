@@ -14,17 +14,17 @@
 // Select random faction and apply faction's arrays to approprate variables used by script
 OperationActive = true;
 publicVariable "OperationActive";
-private _playerCount_enemyStrength = ((count call BIS_fnc_listPlayers) / 2);
-private _AO_enemyStrength = AO_enemyStrength + _playerCount_enemyStrength;
+private _playerCount_enemyStrength = ((count call BIS_fnc_listPlayers) / 8);
+private _AO_enemyStrength = AO_enemyStrength + _playerCount_enemyStrength + WarEffortDifficulty;
+
+private _AIlimit = AIlimit + (count activeAOs);
 
 // Chance for Main Op to be a defense
-/**
 private _defendChance = 1.5^(-20+2*_AO_enemyStrength);
 private _mainOpType = selectRandomWeighted ["attack", 1, "defend", _defendChance];
 if (_mainOpType == "defend" && count MACVterritory > 1) exitWith {
-    call ARDN_fnc_generateMainDefend;
+    remoteExec ["ARDN_fnc_generateMainDefend", 2];
 };
-**/
 
 //Find and select near Main AO
 private _mainAO_size = AO_size + 500;
@@ -36,6 +36,8 @@ _availableMainAOs = AOmarkersMain - MACVterritory;
 {_nearest = [_availableMainAOs, _x] call BIS_fnc_nearestPosition; _nearestMainAOs pushBackUnique _nearest;} forEach MACVterritory;
 //_selectedAO = marker string | _missionArea = marker pos [x,y,z]
 _selectedAO = selectRandom _nearestMainAOs;
+operationAO = _selectedAO;
+publicvariable "operationAO";
 _missionArea = getMarkerPos _selectedAO;
 
 private _enemyStrengthArea = 0;
@@ -94,8 +96,8 @@ switch (_selectedFaction) do
         array_air = array_heli_PAVN;
         if (_AO_enemyStrength > 5) then {
             array_vehicles append array_vehicles_strong_VC;
-            array_aa append array_aa_VC;
-            array_arty append array_arty_VC;
+            array_aa append array_aa_strong_VC;
+            array_arty append array_arty_strong_VC;
             array_BOAT append array_BOAT_PAVN;
         };
 	};
@@ -147,7 +149,7 @@ if (count _POIaa != 3) then {
     if (count _UnitPos != 3) then {
         [_UnitPos, random 360, VCsiteAA] call BIS_fnc_ObjectsMapper;
         private _numUnits = ceil ((random _AO_enemyStrength) + 1); // Adjust patrol count range as needed
-        for "_i" from 1 to _numPatrols do
+        for "_i" from 1 to _numUnits do
         {
             private _spawnPos = [_UnitPos, 0, 200, 5, 0, 0.3, 0] call BIS_fnc_findSafePos;
             private _aaClass = selectRandom array_aa;
@@ -159,8 +161,13 @@ if (count _POIaa != 3) then {
         private _MainOpAA = [BLUFOR, ["mainOperation_aa", "mainOperation"], ["Looks like the enemy has SA-2s and other AA stationed here.", "Eliminate Anti-Air emplacment"], _POIaa, "CREATED", 1, false, "destroy", false] call BIS_fnc_taskCreate;
         _blackList pushBack [_POIaa, 40];
         OperationAA = true;
+        private _array_infantry = [];
+        _array_infantry pushBack (array_infantry select 0);
+        for "_i" from 1 to 10 do {
+            _array_infantry pushBack (selectRandom array_infantry);
+        };
         private _spawnPos = [_UnitPos, 0, 10, 5, 0, 0.5, 0] call BIS_fnc_findSafePos;
-        private _SquadUnit = [_spawnPos, EAST, array_infantry, [], [], [], [], [4,0.2], 0, false, 8] call BIS_fnc_spawnGroup;
+        private _SquadUnit = [_spawnPos, EAST, _array_infantry, [], [], [], [], [4,0.2], 0, false, 8] call BIS_fnc_spawnGroup;
         [_SquadUnit, _spawnPos] call BIS_fnc_taskDefend;
     };
 };          
@@ -174,8 +181,13 @@ if (count _POIarty != 3) then {
         private _MainOpArty = [BLUFOR, ["mainOperation_arty", "mainOperation"], ["", "Eliminate artillery position"], _POIarty, "CREATED", 1, false, "destroy", false] call BIS_fnc_taskCreate;
         _blackList pushBack [_POIarty, 40];
         OperationArty = true;
+        private _array_infantry = [];
+        _array_infantry pushBack (array_infantry select 0);
+        for "_i" from 1 to 10 do {
+            _array_infantry pushBack (selectRandom array_infantry);
+        };
         private _spawnPos = [_UnitPos, 0, 10, 5, 0, 0.5, 0] call BIS_fnc_findSafePos;
-        private _SquadUnit = [_spawnPos, EAST, array_infantry, [], [], [], [], [4,0.2], 0, false, 8] call BIS_fnc_spawnGroup;
+        private _SquadUnit = [_spawnPos, EAST, _array_infantry, [], [], [], [], [4,0.2], 0, false, 8] call BIS_fnc_spawnGroup;
         [_SquadUnit, _spawnPos] call BIS_fnc_taskDefend;
     };
 };
@@ -188,7 +200,12 @@ if (count _POIofficer != 3) then {
         [_UnitPos, random 360, VCsiteOfficer] call BIS_fnc_ObjectsMapper;
         private _objGroup = createGroup east;
         "vn_o_men_nva_65_01" createUnit [_UnitPos, _objGroup, "this addEventHandler ['Killed', {['mainOperation_officer' ,'SUCCEEDED'] call BIS_fnc_taskSetState; MACVresource = floor (MACVresource + (missionReward * 2)); publicVariable 'MACVresource'; OperationOfficer = false; publicVariable 'OperationOfficer';['mainOperation_officer', true] call BIS_fnc_deleteTask;}];", 1, "COLONEL"];
-        private _objUnit = [_UnitPos, EAST, array_infantry, [], [], [], [], [4,0.2], 0, false, 8] call BIS_fnc_spawnGroup;
+        private _array_infantry = [];
+        _array_infantry pushBack (array_infantry select 0);
+        for "_i" from 1 to 10 do {
+            _array_infantry pushBack (selectRandom array_infantry);
+        };
+        private _objUnit = [_UnitPos, EAST, _array_infantry, [], [], [], [], [4,0.2], 0, false, 8] call BIS_fnc_spawnGroup;
         units _objUnit join _objGroup;
         private _MainOpOfficer = [BLUFOR, ["mainOperation_officer", "mainOperation"], ["", "Eliminate Officer"], _POIofficer, "CREATED", 1, false, "kill", false] call BIS_fnc_taskCreate;
         OperationOfficer = true;
@@ -201,20 +218,27 @@ OperationArea = true;
 
 
 // Spawn idle squads (main infantry force)
-private _numSquadUnits = ceil ((random _AO_enemyStrength) + 5); // Adjust garrison count range as needed
+private _numSquadUnits = ceil ((random _AO_enemyStrength / 2) + 5); // Adjust garrison count range as needed
 for "_i" from 1 to _numSquadUnits do
 {
-    private _spawnPos = [_missionArea, 0, AO_size, 2, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
-    if (count _spawnPos != 3) then {
-        private _SquadUnit = [_spawnPos, EAST, array_infantry, [], [], [], [], [2,0.1]] call BIS_fnc_spawnGroup;
-        [_SquadUnit, _spawnPos] call BIS_fnc_taskDefend;
-        sleep 0.05;
-    };
+    if (count groups east < _AIlimit) then {
+        private _spawnPos = [_missionArea, 0, 250, 2, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+        if (count _spawnPos != 3) then {
+            private _array_infantry = [];
+            _array_infantry pushBack (array_infantry select 0);
+            for "_i" from 1 to 10 do {
+                _array_infantry pushBack (selectRandom array_infantry);
+            };
+            private _SquadUnit = [_spawnPos, EAST, _array_infantry, [], [], [], [], [2,0.1]] call BIS_fnc_spawnGroup;
+            [_SquadUnit, _spawnPos] call BIS_fnc_taskDefend;
+            sleep 0.1;
+        };
+    } else {OPFORreserves = OPFORreserves + 1; publicVariable "OPFORreserves"};
 };
 // Spawn garrisoned units (in building locations w/ pathing disabled)
 private _garrisonAvailablePos = nearestObjects [_missionArea, ["House", "Building", "Land_vn_cave_base"], AO_size];
 if (count _garrisonAvailablePos != 0) then {
-    private _numGarrisonedUnits = ceil (((random _AO_enemyStrength * 4) + 10) min count _garrisonAvailablePos);
+    private _numGarrisonedUnits = ceil (((random _AO_enemyStrength * 5) + 20) min count _garrisonAvailablePos);
     for "_i" from 1 to _numGarrisonedUnits do
     {
         private _garrisonClass = selectRandom array_infantry;
@@ -223,8 +247,28 @@ if (count _garrisonAvailablePos != 0) then {
 		private _GarrisonedGroup = createGroup east; 
         private _GarrisionedUnit = _GarrisonedGroup createUnit [_garrisonClass, _garrisonPos, [], 0, "NONE"];
         _GarrisionedUnit disableAI "PATH";
-        sleep 0.05;
+        sleep 0.1;
     };
+};
+
+// Spawn patrols
+
+private _numPatrols = ceil ((random _AO_enemyStrength) + 5); // Adjust patrol count range as needed
+for "_i" from 1 to _numPatrols do
+{
+    if (count groups east < _AIlimit) then {
+        private _spawnPos = [_missionArea, AO_size, _mainAO_size, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+        if (count _spawnPos == 2) then {
+            private _array_infantry = [];
+            _array_infantry pushBack (array_infantry select 0);
+            for "_i" from 1 to 10 do {
+                _array_infantry pushBack (selectRandom array_infantry);
+            };
+            private _patrolGroup = [_spawnPos, EAST, _array_infantry, [], [], [], [], [2,0.01], 0, false, _enemyStrength] call BIS_fnc_spawnGroup;	
+            [_patrolGroup, _spawnPos, ceil random [250, 500, 1000]] call BIS_fnc_taskPatrol;
+            sleep 0.1;
+        };
+    } else {OPFORreserves = OPFORreserves + 1; publicVariable "OPFORreserves"};
 };
 
 //Populate mortar/artiller pits
@@ -277,6 +321,8 @@ sleep 30;
             OperationActive = false;
             publicVariable "OperationActive";
             cleanAOs pushBack _selectedAO;
+            operationAO = "";
+            publicVariable "operationAO";
             publicVariable "cleanAOs";
             MACVterritory pushBackUnique _selectedAO;
             publicVariable "MACVterritory";
@@ -288,6 +334,8 @@ sleep 30;
             publicVariable "MACVresource";
             remoteExec ["ARDN_fnc_saveMission", 2];
         };
+        diag_log format ["MISSION: Main OP -OPFOR: %1", count (units east inAreaArray [_missionArea, AO_size, AO_size])];
+        diag_log format ["MISSION: Main OP - BLUFOR: %1", count (units west inAreaArray [_missionArea, AO_size, AO_size])];
         sleep 30;
     };
 };
