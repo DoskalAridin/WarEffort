@@ -3,12 +3,12 @@
 </p>
 
 # WarEffort
-Arma 3 procedural &amp; persistent mission
+Arma 3 procedural &amp; persistent mission.<br/>
 Sort of a Mike Force "light" / Dynamic Recon Ops scenario. Intended to be something left running on a dedicated server, providing passive activity for players to join freely at anytime and have something to do, while also having a larger goal for when your community has an Ops night.
 
 Players start at a base with the ability to purchase vehicles and training (medic, engineer, EOD, etc.),
 and are provided with a constant set of side missions to complete, generated in proximity to the base. Rewarded with supply points used to make purchases and lowering the enemy strength.
-When ready a "main operation" can be started. Being a mission requiring multiple objectes to be completed. Once complete, the operation area is marked as captured, expanding the area where side missions can generated.
+When ready a "main operation" can be started. Being a mission requiring multiple objectes to be completed. Once complete, the operation area is marked as captured, expanding the area where side missions can generated.<br/>
 *side missions generate in proxmity relative to all player controlled areas. And only generate when all players are at base.
 
 ## Features
