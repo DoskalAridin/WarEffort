@@ -55,3 +55,8 @@ The objectives will be;<br/>
 Secure the area: Simply elimiate enemy forces and establish superiority in numbers.<br/>
 Elminate officer: Self explanatory.<br/>
 Destory artillery & destory SAM site: Self explanatory. These objective don't always generate due to map terrain.<br/>
+<br/>
+**Defense Operation:**<br/>
+There's a rare chance (which increases with enemy strength), that a defense mission will generate. One of your previously captured areas will come under attack. Occupied by friendly forces, you will be required to assist them to hold out long enough.<br/>
+The defense will fail once two tasks fail; "Defend area", when the enemy has over run the area, out numbering friendly forces. and "defend officer", once a designated officer has been killed.<br/>
+Failure means losing that territory, and a significant spike in enemy strength.
