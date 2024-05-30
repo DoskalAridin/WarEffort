@@ -39,5 +39,8 @@ class ARDN{
         class reinforce {
           file = "functions\fn_reinforce.sqf";  
         };
+        class giveCommanderZeus {
+          file = "functions\fn_giveCommanderZeus.sqf";  
+        };
 	};
 };

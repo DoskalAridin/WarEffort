@@ -1,6 +1,8 @@
 #include "config\compats.hpp"
-#include "config\arsenal.hpp"
 #include "config\arrays.hpp"
+
+ArsenalBoxes = [ArsenalBox,ArsenalBox_1,ArsenalBox_2,ArsenalBox_3,ArsenalBox_4];
+[ArsenalBoxes] execVM "scripts\addArsenals.sqf";
 
 // Mission parameters
 WarEffortDifficulty = "WarEffortDifficulty" call BIS_fnc_getParamValue;
@@ -28,8 +30,13 @@ if ("manualSideMissions" call BIS_fnc_getParamValue == 1) then {
 };
 AIlimit = "AIlimit" call BIS_fnc_getParamValue;
 
-if (manualSideMissions == false) then {
-    AIlimit = AIlimit * 2;
+commanderZeus = true;
+if ("commanderZeus" call BIS_fnc_getParamValue == 0) then {
+    commanderZeus = false
+};
+adminMainOps = true;
+if ("adminMainOps" call BIS_fnc_getParamValue == 0) then {
+    adminMainOps = false
 };
 
 // Setup global variables
@@ -46,6 +53,8 @@ activeAOs = [];
 cleanAOs = [];
 
 OPFORreserves = 0;
+
+cmdr setVariable ["isCommander", true, true];
 
 // Load saved variabled from server
 if (isServer) then {
@@ -75,7 +84,7 @@ if (isServer) then {
                     };
                 };
             };
-            sleep 60;
+            sleep 120;
         };
     };
 };
@@ -110,7 +119,7 @@ player createDiaryRecord [
     "WarEffort", 
     [
         "Base Guide",
-        "Virtual arsenals can be found at marked S4 logistics buildings, <marker name='marker_S4'>here</marker> and <marker name='marker_S4_1'>here</marker>. As well as at every vehicle shop;<br/><marker name='marker_Helicopters'>Helicopter shop</marker><br/><marker name='marker_GroundVehicles'>Ground vehicle shop</marker><br/><marker name='marker_FixedWing'>Fixed wing shop</marker><br/><marker name='marker_BOAT'>Boat shop</marker><br/><br/><marker name='marker_medical'>Medical Tents:</marker> Provides an instant full heal.<br/><marker name='marker_mess'>Mess Hall:</marker> Restores hunger and thurst if field rations are enabled.<br/><br/><marker name='marker_Processing'>Processing:</marker> Bring recovered POWs, downed pilots and captured enemy officers here to secure them and complete related objectives.<br/><br/><marker name='marker_operations'>Operations:</marker> The Commander or admin can start a main operation here."
+        "Virtual arsenals can be found at marked S4 logistics buildings, <marker name='marker_S4'>here</marker> and <marker name='marker_S4_1'>here</marker>. As well as at every vehicle shop;<br/><marker name='marker_Helicopters'>Helicopter shop</marker><br/><marker name='marker_GroundVehicles'>Ground vehicle shop</marker><br/><marker name='marker_FixedWing'>Fixed wing shop</marker><br/><marker name='marker_BOAT'>Boat shop</marker><br/><br/><marker name='marker_medical'>Medical Tents:</marker> Provides an instant full heal.<br/><marker name='marker_mess'>Mess Hall:</marker> Restores hunger and thurst if field rations are enabled.<br/><br/><marker name='marker_Processing'>Processing:</marker> Bring recovered POWs, downed pilots and captured enemy officers here to secure them and complete related objectives.<br/>A deployable LP/OP, which acts as a respawn, can be purchased next to the <marker name='marker_GroundVehicles'>Ground vehicle shop</marker>. It can only be deployed ouside of Pleiku Airbase.<br/><br/><marker name='marker_operations'>Operations:</marker> The Commander or admin can start a main operation here."
     ], 
     taskNull, 
     "", 

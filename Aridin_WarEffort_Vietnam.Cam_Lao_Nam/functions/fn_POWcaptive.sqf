@@ -14,30 +14,25 @@
 		true
 
 	Examples:
-		[this] remoteExec ["ARDN_fnc_POWcaptive", 2];
+		[arsenalBoxes] remoteExec ["ARDN_fnc_POWcaptive", player];
 */
 params ["_unit"];
 
 if (_unit getVariable ["captive", false] == false) then {
-    if (isClass (configFile >> "CfgPatches" >> "ace_main")) then {
+    if (compat_ace == true) then {
         [_unit, true, _unit] call ACE_captives_fnc_setHandcuffed;
         _unit setVariable ["captive", true, true];
     } else {
         [_unit] joinSilent createGroup civilian;
-        _unit disableAI "PATH";
-        _unit disableAI "WEAPONAIM";
-        _unit disableAI "FIREWEAPON";
+        _unit disableAI "ALL";
         _unit setVariable ["captive", true, true];
     };
 } else {
-    if (isClass (configFile >> "CfgPatches" >> "ace_main")) then {
+    if (compat_ace == true) then {
         [_unit, false, _unit] call ACE_captives_fnc_setHandcuffed;
         _unit setVariable ["captive", false, true];
     } else {
-        [_unit] joinSilent createGroup west;
-        _unit enableAI "PATH";
-        _unit enableAI "WEAPONAIM";
-        _unit enableAI "FIREWEAPON";
         _unit setVariable ["captive", false, true];
+        _unit enableAI "ALL";        
     };
 };

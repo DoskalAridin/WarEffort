@@ -13,12 +13,26 @@ class CfgFunctions {
 
 class Params
 {
+    class commanderZeus
+    {
+        title = "Commander has Zeus";
+		texts[] = {"True", "False"};
+		values[] = {true, false};
+		default = true;
+    };
+    class adminMainOps
+    {
+        title = "Commander can start Main Ops (admin always can regardless of role)";
+		texts[] = {"True", "False"};
+		values[] = {true, false};
+		default = true;
+    };
     class WarEffortDifficulty
     {
         title = "Difficulty";
 		texts[] = {"Easy", "Medium", "Hard"};
 		values[] = {0, 1, 2};
-		default = "Medium";
+		default = 1;
     };
     /**
 	class hardcoreMode

@@ -6,3 +6,9 @@ if (AO_enemyStrength > 10) then {
     publicVariable "AO_enemyStrength";
 };
 diag_log format ["MISSION: Enemy strength increased to %1!", AO_enemyStrength];
+
+private _cmdr = _this select 0;
+
+if (player getVariable ["isCommander", false] == true && commanderZeus == true) then {
+  [_cmdr] remoteExec ["ARDN_fnc_giveCommanderZeus"];
+};

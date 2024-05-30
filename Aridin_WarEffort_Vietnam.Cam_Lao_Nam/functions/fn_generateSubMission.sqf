@@ -277,20 +277,22 @@ switch (_objectiveType) do {
         };
         private _objectiveTask = [BLUFOR, format ["Objective_%1",str ObjectiveCount], [format ["Objective %1:<br/>The enemy is holding a prisoner of war in the area.<br/>Locate and extract them back to base.<br/><br/>Intel:<br/>Traps and IEDs will be scattered throught the AO, make sure to bring a Trapkit.<br/>%2", str ObjectiveCount, _textIntel], "Rescue POW"], _missionArea, "AUTOASSIGNED", 0, true, "danger", false] call BIS_fnc_taskCreate;
         private _spawnPos = [_missionArea, 0, 200, 9, 0, 0.1, 0, MACVterritory] call BIS_fnc_findSafePos;
-        private _objCage = [_spawnPos, 0, SelectRandom VCcamps, 0.05] call BIS_fnc_objectsMapper;
+        private _objCamp = [_spawnPos, 0, SelectRandom VCcamps, 0.05] call BIS_fnc_objectsMapper;
+        private _objCage = createVehicle ["Land_vn_o_prop_cong_cage_01", _spawnPos, [], 0, "CAN_COLLIDE"];
         private _objGroup = createGroup west;
-        private _objObject = _objGroup createUnit ["vn_b_men_lrrp_01", _spawnPos, [], 0, "NONE"];
+        private _objObject = _objGroup createUnit ["vn_b_men_lrrp_01", _spawnPos, [], 0, "CAN_COLLIDE"];
         [_objObject] remoteExec ["ARDN_fnc_POWcaptive", 2];
         _objObject setVariable ["objectiveNumber", ObjectiveCount];
         _objObject setVariable ["objectiveAO", _selectedAO];
         _objObject setVariable ["pow", true];
+        _objObject setUnitRank "PRIVATE";
         _objObject addAction ["<t color='#149616'>Follow me!</t>", {
              _pow = _this select 0;
              [_pow] remoteExec ["ARDN_fnc_POWcaptive", 2];
              _player = _this select 1;
              _group = group _player;
              [_pow] join _group;
-        }, nil,6,true,true,"","true",4];
+        }, nil,6,true,true,"","_target getVariable ['captive', false] == true",4];
         _objObject addEventHandler ["Killed", {_obj = _this select 0; [_obj] remoteExec  ["ARDN_fnc_missionFailed", 2];}];
         _spawnPos = [_spawnPos, 0, 50, 5, 0, 0.3, 0, MACVterritory] call BIS_fnc_findSafePos;
         private _objUnit = [_spawnPos, EAST, _array_infantry, [], [], [], [], [2,0.1], 0, false] call BIS_fnc_spawnGroup;
