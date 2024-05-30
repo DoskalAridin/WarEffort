@@ -60,3 +60,26 @@ Destory artillery & destory SAM site: Self explanatory. These objective don't al
 There's a rare chance (which increases with enemy strength), that a defense mission will generate. One of your previously captured areas will come under attack. Occupied by friendly forces, you will be required to assist them to hold out long enough.<br/>
 The defense will fail once two tasks fail; "Defend area", when the enemy has over run the area, out numbering friendly forces. and "defend officer", once a designated officer has been killed.<br/>
 Failure means losing that territory, and a significant spike in enemy strength.
+
+### Mission Parameters
+For server hosts:
+```
+class Missions {
+    class Mission1 {
+        template ="Aridin_WarEffort_Vietnam.Cam_Lao_Nam";
+        difficulty = "Regular";
+        class Params {
+            commanderZeus = true; // (true, false) Sets if the Commander slot should have access to Zues
+            adminMainOps = true; // (true, false) If true, Commander can start Main Ops, if false, only admin can start Main Ops
+            WarEffortDifficulty = 1; // (0,1,2) "Easy, Medium, Hard". Influences how much AI spawns.
+            AO_size = 500; // (250,500,750,1000) AO radius. Smaller means higher density of AI, as it doesn't change how much AI spawns, only how large of an area they spawn in.
+            AIlimit = 100; // (50,100,200) Not a hard cap on AI spawns, as objective specific AI will always spawn. Used to limit how much AI spawns (patrols, squads, etc). If cap is hit, turns them into "reinforcement budget" allowing for reinforements once the AI count drops below the limit.
+            missionReward = 10; // (2,5,10,15,20) How much Supply is rewarded for completing objectives.
+            deathPenalty = 2; // (0,1,2,4,10) How much the enemy strenght value increases when a player dies. Higher value means tougher fights in the future.
+            enemyStrengthMissionSuccessReward = 5; // (1,5,10) values are converted to "0.1, 0.5, 1". How much enemy strength decreases upon mission success.
+            enemyStrengthMissionFailPenalty = 10; // (5,10,15) values are converted to "0.5, 1, 1.5". How much enemy strength increases upon mission failure.
+            manualSideMissions = false; // Enable manual side missions, if "true" side missions will need to be manually started at the Operations hootch.
+        };
+    };
+};
+```
