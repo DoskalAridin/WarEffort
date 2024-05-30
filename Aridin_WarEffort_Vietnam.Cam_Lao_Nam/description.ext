@@ -3,6 +3,7 @@ OnLoadMissionTime = 0;
 allowFunctionsLog=1;
 allowFunctionsRecompile = 1;
 enableDebugConsole = 1;
+cba_settings_hasSettingsFile = 1;
 
 #include "UI\defines.hpp"
 #include "UI\controls.hpp"
