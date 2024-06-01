@@ -1,0 +1,137 @@
+OnLoadIntroTime = 0;
+OnLoadMissionTime = 0;
+allowFunctionsLog=1;
+allowFunctionsRecompile = 1;
+enableDebugConsole = 1;
+cba_settings_hasSettingsFile = 1;
+
+#include "UI\defines.hpp"
+#include "UI\controls.hpp"
+
+class CfgFunctions {
+	#include "functions.hpp"
+};
+
+class Params
+{
+    class commanderZeus
+    {
+        title = "Commander has Zeus";
+		texts[] = {"True", "False"};
+		values[] = {true, false};
+		default = true;
+    };
+    class adminMainOps
+    {
+        title = "Commander can start Main Ops (admin always can regardless of role)";
+		texts[] = {"True", "False"};
+		values[] = {true, false};
+		default = true;
+    };
+    class WarEffortDifficulty
+    {
+        title = "Difficulty";
+		texts[] = {"Easy", "Medium", "Hard"};
+		values[] = {0, 1, 2};
+		default = 1;
+    };
+    /**
+	class hardcoreMode
+	{
+		title = "Hardcore Mode (not yet implemented)";
+		texts[] = {"True", "False"};
+		values[] = {true, false};
+		default = false;
+	};
+    **/
+    class AO_size
+    {
+        title = "AO size";
+		texts[] = {"250m", "500m", "750m", "1000m"};
+		values[] = {250, 500, 750, 1000};
+		default = 500;
+    };
+    class AIlimit
+    {
+        title = "AI limit";
+		texts[] = {"Low", "Medium", "High"};
+		values[] = {50, 100, 200};
+		default = 100;
+    };
+    class missionReward
+    {
+        title = "Base supply points reward for completing missions";
+		texts[] = {"2", "5", "10", "15", "20"};
+		values[] = {2, 5, 10, 15, 20};
+		default = 10;
+    };
+    class deathPenalty
+    {
+        title = "Player death penatly. How much enemy strength increases when a player dies.";
+		texts[] = {"None", "Low", "Medium", "High", "Extreme"};
+		values[] = { 0, 1, 2, 4, 10 };
+		default = 2;
+    };
+    class enemyStrengthMissionSuccessReward
+    {
+        title = "Enemy strength: mission reward. (How much enemy strength decreases upon mission success.)";
+		texts[] = {"Low", "Medium", "High"};
+		values[] = {1, 5, 10};
+		default = 5;
+    };
+    class enemyStrengthMissionFailPenalty
+    {
+        title = "Enemy strength: mission penalty. (How much enemy strength increases upon mission failure.)";
+		texts[] = {"Low", "Medium", "High"};
+		values[] = {5, 10, 15};
+		default = 10;
+    };
+    class manualSideMissions
+    {
+        title = "Enable manual side missions. (Side missions won't automatically generate)";
+		texts[] = { "True", "False"};
+		values[] = { true, false };
+		default = false;
+    };
+};
+
+disabledAI = 1;
+disableChannels[] = {
+	{0, false, false },
+	{1, false, true },
+	{2, false, false },
+	{3, false, false },
+	{4, false, false },
+	{5, false, false }
+};
+briefing = 0;
+debriefing = 0;
+
+class CfgDebriefing
+{
+	class TimedOut
+	{
+		title = "ERROR";
+		subtitle = "Server Timeout";
+		description = "If you see this message please reconnect";
+		pictureBackground = "";
+		picture = "";
+		pictureColor[] = {0.0,0.3,0.6,1};
+	};
+};
+
+class ACEX_Fortify_Presets {
+    class ARDN_Bunkers {
+        displayName = "Fortifications";
+        objects[] = {
+            {"Land_vn_b_trench_bunker_04_01", 50, "Fortifications"},
+			{"vn_camonet_blufor_f", 1, "Fortifications"},
+			{"vn_camonet_blufor_big_f", 2, "Fortifications"},
+			{"Land_vn_b_trench_revetment_05_01", 10, "Fortifications"},
+			{"Land_vn_b_trench_20_02", 30, "Trenches"},
+			{"Land_vn_b_trench_90_02", 20, "Trenches"},
+			{"Land_vn_b_trench_firing_02", 40, "Trenches"},
+			{"Land_vn_b_trench_firing_05", 20, "Trenches"},
+        };
+	};
+};
