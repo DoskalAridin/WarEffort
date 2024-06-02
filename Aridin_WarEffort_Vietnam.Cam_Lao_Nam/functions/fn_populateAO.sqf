@@ -200,6 +200,7 @@ for "_i" from 1 to _numtrap do
     if (count _trapPos == 2) then {
         private _trapClass = selectRandom array_traps;
         private _trap = createMine [_trapClass, _trapPos, [], 0];
+        east revealMine _trap;
     };
 };
 //place IEDs on roads
@@ -213,6 +214,7 @@ if (_nearRoadsCount != 0) then {
         if (_IEDposValid == true) then {
             private _IEDClass = selectRandom array_ied;
             private _IED = createMine [_IEDClass, _IEDpos, [], 0];
+            east revealMine _IED;
         };
     };
 };

@@ -232,6 +232,60 @@ if (compat_NickelSteel == true) then {
     ];
     listFixedWing append _NickleSteel;
 };
+if (compat_unsung == true) then {
+    private _fixedWing = [
+        ["uns_A1J_CAS", 20], 
+        ["uns_a37_sbmb", 20], 
+        ["uns_A7_CAP", 20], 
+        ["uns_f105F_SEAD", 20], 
+        ["UNS_F111_CAS", 20], 
+        ["uns_A6_Intruder_USMC_CAS", 20], 
+        ["uns_f8e_USMC", 20], 
+        ["uns_EA6B", 20],
+        ["uns_o1", 0], 
+        ["UNS_skymaster_CBU", 5], 
+        ["uns_skymaster_psyop", 5], 
+        ["uns_ov10_usaf", 5], 
+        ["uns_a3avah1", 5], 
+        ["uns_c1a6", 5], 
+        ["uns_c1a6cargo", 5], 
+        ["UNS_Hawkeye", 5],
+        ["uns_AC47", 15], 
+        ["uns_ac47_flare", 5], 
+        ["uns_b52h", 20], 
+        ["uns_c123b", 10], 
+        ["uns_c123b_can", 10], 
+        ["uns_c123", 10], 
+        ["uns_c123b_bmb", 10], 
+        ["uns_c123k_can", 10], 
+        ["uns_c123k_bmb", 10], 
+        ["uns_C130_H", 10], 
+        ["uns_c130_h_blu82", 10], 
+        ["uns_C130_H_cargo", 10], 
+        ["uns_KC130_H", 10]
+    ];
+    listFixedWing append _fixedWing;
+    private _heli = [
+        ["uns_H13_gunship_Army", 5], 
+        ["uns_h21c", 0], 
+        ["uns_h21c_mg", 5], 
+        ["uns_H13_amphib_Army", 0], 
+        ["uns_H13_transport_Army", 5]
+    ];
+    listHeli append _heli;
+    private _ground = [
+        ["uns_xm706e1", 10], 
+        ["uns_xm706e2", 10], 
+        ["uns_M113_ENG", 10], 
+        ["uns_m551", 20],
+        ["uns_m107sp", 15], 
+        ["uns_m110sp", 15],
+        ["uns_m163", 10]
+    ];
+    listGround append _ground;
+};
+
+
 
 {
     private _className = _x select 0;

@@ -38,89 +38,11 @@ private _enemyStrengthArea = 0;
 _AO_enemyStrength = _AO_enemyStrength + _enemyStrengthArea;
 if (_AO_enemyStrength > 10) then {_AO_enemyStrength = 10};
 
-private _selectedFaction = selectRandom array_factions;
 
-switch (_selectedFaction) do
-{
-	case "PAVN": {
-		opfor_sl = "vn_o_men_nva_15";
-		array_infantry = array_soldier_PAVN;
-		array_vehicles = array_vehicles_PAVN;
-		array_aa = array_aa_PAVN;
-		array_arty = array_arty_PAVN;
-        array_BOAT = array_BOAT_VC;
-        array_air = array_heli_PAVN;
-        if (_AO_enemyStrength > 5) then {
-            array_vehicles append array_vehicles_strong_PAVN;
-            array_aa append array_aa_strong_PAVN;
-            array_arty append array_arty_strong_PAVN;
-            array_BOAT append array_BOAT_PAVN;
-        };
-	};
-	case "DacCong": {
-		opfor_sl = "vn_o_men_nva_dc_01";
-		array_infantry = array_soldier_DacCong;
-		array_vehicles = array_vehicles_VC;
-		array_aa = array_aa_VC;
-		array_arty = array_arty_VC;
-        array_BOAT = array_BOAT_VC;
-        array_air = array_heli_PAVN;
-        if (_AO_enemyStrength > 5) then {
-            array_vehicles append array_vehicles_strong_VC;
-            array_aa append array_aa_strong_VC;
-            array_arty append array_arty_strong_VC;
-            array_BOAT append array_BOAT_PAVN;
-        };
-	};
-	default {
-		opfor_sl = "vn_o_men_vc_01";
-		array_infantry = array_soldier_VC;
-		array_vehicles = array_vehicles_VC;
-		array_aa = array_aa_VC;
-		array_arty = array_arty_VC;
-        array_BOAT = array_BOAT_VC;
-        array_air = array_heli_PAVN;
-        if (_AO_enemyStrength > 5) then {
-            array_vehicles append array_vehicles_strong_VC;
-            array_aa append array_aa_strong_VC;
-            array_arty append array_arty_strong_VC;
-            array_BOAT append array_BOAT_PAVN;
-        };
-	};
-};
+// select Factions
+call ARDN_fnc_selectOPFOR;
 
-private _selectedFactionBLUFOR = selectRandom array_factions_blufor;
-
-switch (_selectedFactionBLUFOR) do
-{
-    default {
-        blufor_sl = "vn_b_men_army_02";
-		array_infantry_blufor = array_soldier_Army;
-		array_vehicles_blufor = array_vehicles_Army;
-		array_aa_blufor = array_aa_Army;
-		array_arty_blufor = array_arty_Army;
-        array_BOAT_blufor = array_BOAT_macv;
-        array_air_blufor = array_air_Army;
-    };
-    case "USMC": {
-        blufor_sl = "vn_b_men_usmc_68_02";
-		array_infantry_blufor = array_soldiers_usmc;
-		array_vehicles_blufor = array_vehicles_usmc;
-		array_aa_blufor = array_aa_usmc;
-		array_arty_blufor = array_arty_usms;
-        array_BOAT_blufor = array_BOAT_macv;
-        array_air_blufor = array_air_usmc;
-    };
-    case "SOG": {
-        blufor_sl = "vn_b_men_sog_04";
-		array_infantry_blufor = array_soldiers_SOG;
-		array_vehicles_blufor = array_vehicles_SOG;
-		array_aa_blufor = array_aa_SOG;
-		array_arty_blufor = array_arty_SOG;
-        array_BOAT_blufor = array_BOAT_macv;
-        array_air_blufor = array_air_SOG;
-    };
-};
+call ARDN_fnc_selectBLUFOR;
 
 if (!isNil _selectedAO || _selectedAO == "") then {
     _objectiveTask = [BLUFOR, "Objective_MissionComplete", ["We have successfully captured all key locations.", "War Effort"], objNull, "SUCCEEDED", 1, true, "default", false] call BIS_fnc_taskCreate;

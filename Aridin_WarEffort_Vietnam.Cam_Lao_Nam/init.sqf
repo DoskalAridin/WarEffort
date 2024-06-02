@@ -56,6 +56,23 @@ OPFORreserves = 0;
 
 cmdr setVariable ["isCommander", true, true];
 
+// default faction arrays
+opfor_sl = "vn_o_men_nva_15";
+array_infantry = array_soldier_PAVN;
+array_vehicles = array_vehicles_PAVN;
+array_aa = array_aa_PAVN;
+array_arty = array_arty_PAVN;
+array_BOAT = array_BOAT_VC;
+array_air = array_heli_PAVN;
+
+blufor_sl = "vn_b_men_army_02";
+array_infantry_blufor = array_soldier_Army;
+array_vehicles_blufor = array_vehicles_Army;
+array_aa_blufor = array_aa_Army;
+array_arty_blufor = array_arty_Army;
+array_BOAT_blufor = array_BOAT_macv;
+array_air_blufor = array_air_Army;
+
 // Load saved variabled from server
 if (isServer) then {
     MACVresource = missionProfileNamespace getVariable ["MACVresource", 20];
@@ -72,7 +89,7 @@ if (isServer) then {
     // Reinforcement loop
     [] spawn {
         while {true} do {
-            private _AIlimit = AIlimit * (count activeAOs);
+            private _AIlimit = AIlimit + (count activeAOs * 0.5);
             if (count units east < _AIlimit && OPFORreserves > 0) then {
                 if (operationAO != "") then {
                     private _AOpos = getMarkerPos operationAO;

@@ -42,5 +42,11 @@ class ARDN{
         class giveCommanderZeus {
           file = "functions\fn_giveCommanderZeus.sqf";  
         };
+        class selectOPFOR {
+          file = "functions\fn_selectOPFOR.sqf";  
+        };
+        class selectBLUFOR {
+          file = "functions\fn_selectBLUFOR.sqf";  
+        };
 	};
 };

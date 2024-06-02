@@ -132,61 +132,12 @@ private _enemyStrengthArea = 0;
 {
     if (_missionArea inArea _x) then {_enemyStrengthArea = 2;}
 } forEach enemyStrengthMarker_high;
-private _playerCount_enemyStrength = ((count call BIS_fnc_listPlayers) / 8);
+private _playerCount_enemyStrength = floor ((count call BIS_fnc_listPlayers) / 8);
 private _AO_enemyStrength = AO_enemyStrength + _playerCount_enemyStrength + _enemyStrengthArea + WarEffortDifficulty;
 if (_AO_enemyStrength > 10) then {_AO_enemyStrength = 10};
 
 // Select random faction and apply faction's arrays to approprate variables used by script
-private _selectedFaction = selectRandom array_factions;
-
-switch (_selectedFaction) do
-{
-	case "PAVN": {
-		opfor_sl = "vn_o_men_nva_15";
-		array_infantry = array_soldier_PAVN;
-		array_vehicles = array_vehicles_PAVN;
-		array_aa = array_aa_PAVN;
-		array_arty = array_arty_PAVN;
-        array_BOAT = array_BOAT_VC;
-        array_air = array_heli_PAVN;
-        if (_AO_enemyStrength > 5) then {
-            array_vehicles append array_vehicles_strong_PAVN;
-            array_aa append array_aa_strong_PAVN;
-            array_arty append array_arty_strong_PAVN;
-            array_BOAT append array_BOAT_PAVN;
-        };
-	};
-	case "DacCong": {
-		opfor_sl = "vn_o_men_nva_dc_01";
-		array_infantry = array_soldier_DacCong;
-		array_vehicles = array_vehicles_VC;
-		array_aa = array_aa_VC;
-		array_arty = array_arty_VC;
-        array_BOAT = array_BOAT_VC;
-        array_air = array_heli_PAVN;
-        if (_AO_enemyStrength > 5) then {
-            array_vehicles append array_vehicles_strong_VC;
-            array_aa append array_aa_strong_VC;
-            array_arty append array_arty_strong_VC;
-            array_BOAT append array_BOAT_PAVN;
-        };
-	};
-	default {
-		opfor_sl = "vn_o_men_vc_01";
-		array_infantry = array_soldier_VC;
-		array_vehicles = array_vehicles_VC;
-		array_aa = array_aa_VC;
-		array_arty = array_arty_VC;
-        array_BOAT = array_BOAT_VC;
-        array_air = array_heli_PAVN;
-        if (_AO_enemyStrength > 5) then {
-            array_vehicles append array_vehicles_strong_VC;
-            array_aa append array_aa_VC;
-            array_arty append array_arty_VC;
-            array_BOAT append array_BOAT_PAVN;
-        };
-	};
-};
+call ARDN_fnc_selectOPFOR;
 
 private _blackList = MACVterritory;
 private _AOpopulated = [_missionArea, AO_size, _blackList, _AO_enemyStrength, 1] spawn ARDN_fnc_populateAO;

@@ -5,6 +5,7 @@ compat_acre = false;
 compat_tfar = false;
 compat_SnS = false;
 compat_ARDNsogpf = false;
+compat_unsung = false;
 if (isClass(configfile >> "CfgPatches" >> "air_f_vietnam_04_c")) then {
   compat_NickelSteel = true;  
 };
@@ -25,4 +26,7 @@ if (isClass (configFile >> "CfgPatches" >> "simc_mc_67_core")) then {
 };
 if (isClass (configFile >> "CfgPatches" >> "ARDN_sogpf")) then {
   compat_ARDNsogpf = true;  
+};
+if (isClass (configFile >> "CfgPatches" >> "uns_A1J_c")) then {
+  compat_unsung = true;  
 };
