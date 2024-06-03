@@ -323,49 +323,48 @@ OpName1st = ["Crimson","Silver","Iron","Midnight","Golden","Azure","Jade","Ruby"
 OpName2nd = ["Tiger","Rain","Eagle","Panther","Serpent","Storm","Falcon","Ridge","Thunder","Mirage","Tide","Peak","Dawn","Sky","Fury","Shadow","Cascade","Spear","Horizon"];
 
 OPFORsiteAA = [
-	["vn_o_static_rsna75",[2.11157,-1.44653,-5.17413],0,1,0,[],"","createVehicleCrew this",true,false],
-	["vn_sa2",[-0.124878,14.6333,-0.0749979],0,1,0,[],"","createVehicleCrew this",true,false], 
-	["vn_sa2",[-0.690674,-17.6155,-0.0749998],179.656,1,0,[],"","createVehicleCrew this",true,false], 
-	["Land_vn_o_trench_firing_01",[-3.93384,17.0603,0],284.471,1,0,[0,0],"","",true,false], 
-	["Land_vn_o_trench_firing_01",[4.62329,17.8357,-9.53674e-07],71.3419,1,0,[0,0],"","",true,false], 
-	["vn_sa2",[-19.2419,-0.126953,-0.0749998],270.468,1,0,[],"","createVehicleCrew this",true,false], 
-	["vn_sa2",[20.1296,-0.0297852,-0.0749998],90.2563,1,0,[],"","createVehicleCrew this",true,false], 
-	["Land_vn_o_trench_firing_01",[3.13281,-20.0197,-1.90735e-06],104.127,1,0,[0,0],"","",true,false], 
-	["Land_vn_o_trench_firing_01",[-5.41956,-20.8463,-2.86102e-06],250.998,1,0,[0,0],"","",true,false], 
-	["Land_vn_o_trench_firing_01",[-21.7,-3.91577,-1.90735e-06],194.938,1,0,[0,0],"","",true,false], 
-	["Land_vn_o_trench_firing_01",[-22.4054,4.64722,-2.86102e-06],341.81,1,0,[0,0],"","",true,false], 
-	["Land_vn_o_trench_firing_01",[22.5737,3.76831,-1.90735e-06],14.7269,1,0,[0,0],"","",true,false], 
-	["Land_vn_o_trench_firing_01",[23.3108,-4.79199,-2.86102e-06],161.598,1,0,[0,0],"","",true,false], 
-	["Land_vn_o_bunker_03",[-0.0045166,25.7832,0],0,1,0,[0,0],"","",true,false],
-	["Land_vn_o_bunker_03",[-0.744141,-28.7657,-1.90735e-06],179.656,1,0,[0,0],"","",true,false], 
-	["Land_vn_o_bunker_03",[-30.3905,0.0847168,-1.90735e-06],270.468,1,0,[0,0],"","",true,false],
-	["Land_vn_o_bunker_03",[31.2789,-0.200195,-1.90735e-06],90.2563,1,0,[0,0],"","",true,false]
+	["Land_HBarrier_Big_F",[3.5708,1.05664,0],270.004,1,0,[0,0],"","",true,false], 
+	["O_Radar_System_02_F",[0.0170898,1.0127,-1.87827],0,1,0,[0,0],"","",true,false], 
+	["Land_HBarrier_Big_F",[-3.61426,1.11279,0],270.004,1,0,[0,0],"","",true,false], 
+	["Land_HBarrier_Big_F",[-0.269043,-4.07275,0],180.882,1,0,[0,0],"","",true,false], 
+	["O_UAV_AI",[9.90088,-2.24463,2.17692],179.483,1,0,[0,-0],"","",true,false], 
+	["O_UAV_AI",[0.0170898,1.0127,-0.0251875],0,1,0,[0,0],"","",true,false], 
+	["O_SAM_System_04_F",[9.90088,-2.24463,-0.0750003],179.483,1,0,[0,-0],"","",true,false], 
+	["O_SAM_System_04_F",[-10.7813,-1.99219,-0.0750003],179.483,1,0,[0,-0],"","",true,false], 
+	["Land_HBarrier_Big_F",[-0.453125,13.2993,0],179.338,1,0,[0,-0],"","",true,false], 
+	["Land_HBarrier_Big_F",[13.7725,-2.05176,0],270.004,1,0,[0,0],"","",true,false], 
+	["Land_HBarrier_Big_F",[-14.1909,-1.271,0],270.004,1,0,[0,0],"","",true,false], 
+	["Land_BagBunker_Small_F",[14.644,3.94971,0],271.149,1,0,[0,0],"","",true,false], 
+	["O_UAV_AI",[-10.7813,-1.99219,2.17692],179.483,1,0,[0,-0],"","",true,false], 
+	["Land_BagBunker_Small_F",[-15.9785,5.03076,0],88.7751,1,0,[0,0],"","",true,false], 
+	["O_APC_Tracked_02_AA_F",[-0.275391,-17.6128,0.105],181.737,1,0,[0,0],"","this disableAI 'MOVE';",true,false], 
+	["CamoNet_OPFOR_F",[-12.8438,13.6445,0],315.038,1,0,[0,0],"","",true,false], 
+	["Land_HBarrier_Big_F",[-4.51904,-18.3286,0],87.4814,1,0,[0,0],"","",true,false], 
+	["Land_HBarrier_Big_F",[3.43262,-18.8672,0],277.101,1,0,[0,0],"","",true,false], 
+	["CamoNet_OPFOR_F",[12.5815,14.7319,0],31.3722,1,0,[0,0],"","",true,false], 
+	["Land_HBarrier_Big_F",[-12.8921,14.7651,0],142.792,1,0,[0,-0],"","",true,false], 
+	["Land_HBarrier_Big_F",[12.9502,15.6533,0],213.61,1,0,[0,0],"","",true,false], 
+	["Land_HBarrier_Big_F",[13.8999,-16.6372,0],125.634,1,0,[0,-0],"","",true,false], 
+	["CamoNet_OPFOR_F",[13.5474,-17.2773,0],124.919,1,0,[0,-0],"","",true,false], 
+	["Land_HBarrier_Big_F",[-0.630371,-22.3335,0],3.84082,1,0,[0,0],"","",true,false], 
+	["Land_HBarrier_Big_F",[-14.9561,-17.4023,0],235.377,1,0,[0,0],"","",true,false], 
+	["CamoNet_OPFOR_F",[-15.3374,-18.3276,0],224.207,1,0,[0,0],"","",true,false]
 ];
 OPFORsiteArty = [
-	["Land_vn_b_trench_revetment_05_01",[3.12598,0.418335,0],112.95,1,0,[0,0],"","",true,false], 
-	["Land_vn_b_trench_revetment_05_01",[1.2644,4.98169,0],131.028,1,0,[0,0],"","",true,false], 
-	["Land_vn_b_trench_revetment_05_01",[-3.49438,-3.91931,0],78.6829,1,0,[0,0],"","",true,false], 
-	["Land_vn_b_trench_revetment_05_01",[6.36865,0.345581,0],203.165,1,0,[0,0],"","",true,false], 
-	["Land_vn_b_trench_revetment_05_01",[-1.21362,6.67798,0],222.045,1,0,[0,0],"","",true,false], 
-	["Land_vn_b_trench_revetment_05_01",[-6.54956,-4.17053,0],0,1,0,[0,0],"","",true,false], 
-	["vn_o_nva_static_d44_01",[-7.34961,4.6814,-0.0750003],307.898,1,0,[],"","createVehicleCrew this",true,false], 
-	["vn_o_nva_static_d44_01",[7.92163,-5.73206,-0.0750003],118.154,1,0,[],"","createVehicleCrew this",true,false], 
-	["Land_vn_b_trench_revetment_05_01",[-0.0114746,-10.1837,0],88.6575,1,0,[0,0],"","",true,false], 
-	["Land_vn_b_trench_revetment_05_01",[-9.83936,-4.15161,0],0,1,0,[0,0],"","",true,false], 
-	["Land_vn_b_trench_revetment_05_01",[2.94263,-10.2058,0],177.55,1,0,[0,0],"","",true,false], 
-	["Land_vn_b_trench_revetment_05_01",[-4.65479,9.81421,0],222.045,1,0,[0,0],"","",true,false], 
-	["Land_vn_b_trench_revetment_05_01",[11.3059,-1.62427,0],203.165,1,0,[0,0],"","",true,false], 
-	["Land_vn_b_trench_revetment_05_01",[7.59644,-9.99609,0],177.55,1,0,[0,0],"","",true,false], 
-	["vn_o_nva_static_d44_01",[-9.3938,-8.47668,-0.0750003],273.681,1,0,[],"","createVehicleCrew this",true,false], 
-	["vn_o_nva_static_d44_01",[11.2629,6.31335,-0.0750003],75.4257,1,0,[],"","createVehicleCrew this",true,false], 
-	["Land_vn_b_trench_revetment_05_01",[5.6001,11.6825,0],102.669,1,0,[0,0],"","",true,false], 
-	["vn_o_nva_static_d44_01",[0.984863,13.7676,-0.0750003],3.40085,1,0,[],"","createVehicleCrew this",true,false], 
-	["Land_vn_o_trench_firing_01",[-12.2009,-0.300171,0.525753],278.113,1,0,[0,0],"","",true,false], 
-	["Land_vn_b_trench_revetment_05_01",[-6.19092,-12.948,0],194.331,1,0,[0,0],"","",true,false], 
-	["Land_vn_o_trench_firing_01",[13.8096,-0.11438,0.525753],108.88,1,0,[0,0],"","",true,false], 
-	["Land_vn_b_trench_revetment_05_01",[-11.1738,-11.6682,0],194.331,1,0,[0,0],"","",true,false], 
-	["Land_vn_o_trench_firing_01",[-4.04858,14.0055,0.525753],319.188,1,0,[0,0],"","",true,false], 
-	["Land_vn_o_trench_firing_01",[9.28247,12.5586,0.525753],33.3083,1,0,[0,0],"","",true,false]
+	["Land_HBarrier_Big_F",[-7.4624,2.86914,0],228.843,1,0,[0,0],"","",true,false], 
+	["Land_HBarrier_Big_F",[8.28613,1.02344,0],123.291,1,0,[0,-0],"","",true,false], 
+	["O_MBT_02_arty_F",[0.773926,8.20508,0.105],0,1,0,[0,0],"","this disableAI 'MOVE';",true,false], 
+	["Land_HBarrier_Big_F",[-3.1958,8.37354,0],93.682,1,0,[0,-0],"","",true,false], 
+	["Land_HBarrier_Big_F",[4.77344,8.31055,0],264.062,1,0,[0,0],"","",true,false], 
+	["O_MBT_02_arty_F",[-10.6689,0.476074,0.105],324.781,1,0,[0,0],"","this disableAI 'MOVE';",true,false], 
+	["Land_HBarrier_5_F",[-1.53662,11.6143,0],0,1,0,[0,0],"","",true,false], 
+	["O_MBT_02_arty_F",[11.6543,-1.08447,0.105],29.6095,1,0,[0,0],"","this disableAI 'MOVE';",true,false], 
+	["Land_HBarrier_5_F",[-14.5225,1.92871,0],324.781,1,0,[0,0],"","",true,false], 
+	["Land_HBarrier_5_F",[11.3296,3.021,0],29.6095,1,0,[0,0],"","",true,false], 
+	["Land_HBarrier_Big_F",[6.8042,-12.2861,0],339.935,1,0,[0,0],"","",true,false], 
+	["Land_HBarrier_Big_F",[-14.0098,-1.67578,0],58.463,1,0,[0,0],"","",true,false], 
+	["Land_BagBunker_Tower_F",[-7.30371,-11.8867,0],299.009,1,0,[0,0],"","",true,false], 
+	["Land_HBarrier_Big_F",[15.1841,-2.96875,0],293.672,1,0,[0,0],"","",true,false]
 ];
 OPFORsitePOW = [
 	["CamoNet_OPFOR_big_F",[0.0625,-0.48291,0],180,1,0,[0,-0],"","",true,false], 
@@ -509,7 +508,7 @@ BLUFORfob = [
 ];
 BLUFORfobs = [BLUFORfob];
 
-textIntel_min = "Enemy presence in the AO is minimal. Expect small scatering of HMGs, mortars, trucks and armored cars, and a couple of patrols.";
-textIntel_low = "Enemy presence in the AO is low. Expect some HMGs, mortars, trucks and armored cars, and a few patrols.";
-textIntel_mid = "Expect AA guns with a possiblity of SAMs, tanks and APCs, mortars and artillery. Enemy will have plenty of patrols in the area.";
+textIntel_min = "Enemy presence in the AO is minimal. Expect small scatering of mortars, manpads, Ifrits and APCs, and a couple of patrols.";
+textIntel_low = "Enemy presence in the AO is low. Expect some mortars, manpads, Ifrits and APCs, and a few patrols.";
+textIntel_mid = "Expect AA guns with a possiblity of SAMs, tanks, APCs, and artillery. Enemy will have plenty of patrols in the area.";
 textIntel_high = "Enemy presence is high. Plan for the worst.";

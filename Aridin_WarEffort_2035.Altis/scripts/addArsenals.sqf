@@ -99,7 +99,7 @@ if (compat_cigs == true) then {
 
 if (compat_acre == true) then {
     arsenalItems append [
-    "ACRE_VHF30108","ACRE_PRC77","ACRE_PRC343"
+    "ACRE_VHF30108","ACRE_PRC117F","ACRE_PRC343","ACRE_PRC152"
     ];
     arsenalBackpacks append [
         "TFAR_anarc210","TFAR_mr3000_bwmod","TFAR_mr3000_bwmod_tropen","TFAR_rt1523g","TFAR_rt1523g_big","TFAR_rt1523g_big_bwmod","TFAR_rt1523g_big_bwmod_tropen","TFAR_rt1523g_big_rhs","TFAR_rt1523g_black","TFAR_rt1523g_bwmod","TFAR_rt1523g_fabric","TFAR_rt1523g_green","TFAR_rt1523g_rhs","TFAR_rt1523g_sage"
