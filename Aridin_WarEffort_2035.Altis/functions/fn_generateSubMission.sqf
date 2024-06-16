@@ -139,7 +139,8 @@ if (_AO_enemyStrength > 10) then {_AO_enemyStrength = 10};
 // Select random faction and apply faction's arrays to approprate variables used by script
 call ARDN_fnc_selectOPFOR;
 
-private _blackList = BLUFORterritory;
+private _blackList = [];
+_blackList pushBack BLUFORterritory;
 private _AOpopulated = [_missionArea, AO_size, _blackList, _AO_enemyStrength, 1] spawn ARDN_fnc_populateAO;
 waitUntil {scriptDone _AOpopulated};
 
@@ -161,8 +162,11 @@ if (_AO_enemyStrength <= 2.5) then {
 //Spawn objective
 switch (_objectiveType) do {
     default {
-        private _objectiveTask = [BLUFOR, format ["Objective_%1",str ObjectiveCount], [format ["Objective %1:<br/>Locate and destroy an enemy ammo cache in the area.<br/><br/>Intel:<br/>Traps and IEDs will be scattered throught the AO, make sure to bring a Trapkit.<br/>%2", str ObjectiveCount, _textIntel], "Destroy enemy ammo cache"], _missionArea, "AUTOASSIGNED", 0, true, "destroy", false] call BIS_fnc_taskCreate;
-        private _spawnPos = [_missionArea, 0, 200, 5, 0, 0.3, 0, BLUFORterritory] call BIS_fnc_findSafePos;
+        private _objectiveTask = [BLUFOR, format ["Objective_%1",str ObjectiveCount], [format ["Objective %1:<br/>Locate and destroy an enemy ammo cache in the area.<br/><br/>Intel:<br/>%2", str ObjectiveCount, _textIntel], "Destroy enemy ammo cache"], _missionArea, "AUTOASSIGNED", 0, true, "destroy", false] call BIS_fnc_taskCreate;
+        private _spawnPos = [_missionArea, 0, 200, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+        if (count _spawnPos != 2) then {
+            _spawnPos = [_missionArea, 0, 200, 0, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+        };
         private _objObject = createVehicle ["O_supplyCrate_F", _spawnPos, [], 0, "NONE"];
         private _bunkerCache = createVehicle ["CamoNet_OPFOR_F", _spawnPos, [], 0, "CAN_COLLIDE"];
         _objObject setVariable ["objectiveNumber", ObjectiveCount];
@@ -171,7 +175,7 @@ switch (_objectiveType) do {
             _obj = _this select 0;
             [_obj] remoteExec  ["ARDN_fnc_missionSuccess", 2];
         }];
-        _spawnPos = [_spawnPos, 0, 25, 5, 0, 0.3, 0, BLUFORterritory] call BIS_fnc_findSafePos;
+        _spawnPos = [_spawnPos, 0, 25, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
         private _objUnit = [_spawnPos, EAST, array_infantry, [], [], [], [], [2,0.1], 0, false] call BIS_fnc_spawnGroup;
         [_objUnit, _spawnPos] call BIS_fnc_taskDefend;
         [_spawnPos, 0, SelectRandom OPFORcamps, 0.05] call BIS_fnc_objectsMapper;
@@ -182,8 +186,11 @@ switch (_objectiveType) do {
         for "_i" from 1 to 10 do {
             _array_infantry pushBack (selectRandom array_infantry);
         };
-        private _objectiveTask = [BLUFOR, format ["Objective_%1",str ObjectiveCount], [format ["Objective %1:<br/>Intel indicates an enemy officer is in the area.<br/>Locate and eliminate them.<br/><br/>Intel:<br/>Traps and IEDs will be scattered throught the AO, make sure to bring a Trapkit.<br/>%2", str ObjectiveCount, _textIntel], "Eliminate enemy officer"], _missionArea, "AUTOASSIGNED", 0, true, "kill", false] call BIS_fnc_taskCreate;
-        private _spawnPos = [_missionArea, 0, 200, 5, 0, 0.3, 0, BLUFORterritory] call BIS_fnc_findSafePos;
+        private _objectiveTask = [BLUFOR, format ["Objective_%1",str ObjectiveCount], [format ["Objective %1:<br/>Intel indicates an enemy officer is in the area.<br/>Locate and eliminate them.<br/><br/>Intel:<br/>%2", str ObjectiveCount, _textIntel], "Eliminate enemy officer"], _missionArea, "AUTOASSIGNED", 0, true, "kill", false] call BIS_fnc_taskCreate;
+        private _spawnPos = [_missionArea, 0, 200, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+        if (count _spawnPos != 2) then {
+            _spawnPos = [_missionArea, 0, 200, 0, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+        };
         [_spawnPos, 0, SelectRandom OPFORcamps, 0.05] call BIS_fnc_objectsMapper;
         private _objGroup = createGroup east;
         opfor_sl createUnit [_spawnPos, _objGroup, "this setVariable ['objectiveNumber', ObjectiveCount]; this setVariable ['objectiveAO', _selectedAO]; this addEventHandler ['Killed', {_obj = _this select 0; [_obj] remoteExec  ['ARDN_fnc_missionSuccess', 2];}];", 1, "COLONEL"];
@@ -196,8 +203,11 @@ switch (_objectiveType) do {
         for "_i" from 1 to 10 do {
             _array_infantry pushBack (selectRandom array_infantry);
         };
-        private _objectiveTask = [BLUFOR, format ["Objective_%1",str ObjectiveCount], [format ["Objective %1:<br/>Locate an enemy ammo truck and leave a booby-trapped ammobox nearby.<br/><br/>Intel:<br/>Traps and IEDs will be scattered throught the AO, make sure to bring a Trapkit.<br/>%2", str ObjectiveCount, _textIntel], "Sabotage enemy ammo supply"], _missionArea, "AUTOASSIGNED", 0, true, "box", false] call BIS_fnc_taskCreate;
-        private _spawnPos = [_missionArea, 0, 200, 8, 0, 0.3, 0, BLUFORterritory] call BIS_fnc_findSafePos;
+        private _objectiveTask = [BLUFOR, format ["Objective_%1",str ObjectiveCount], [format ["Objective %1:<br/>Locate an enemy ammo truck and leave a booby-trapped ammobox nearby.<br/><br/>Intel:<br/>%2", str ObjectiveCount, _textIntel], "Sabotage enemy ammo supply"], _missionArea, "AUTOASSIGNED", 0, true, "box", false] call BIS_fnc_taskCreate;
+        private _spawnPos = [_missionArea, 0, 200, 8, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+        if (count _spawnPos != 2) then {
+            _spawnPos = [_missionArea, 0, 200, 0, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+        };
         private _objObject = createVehicle ["vn_o_wheeled_z157_ammo_nva65", _spawnPos, [], 0, "NONE"];
         _objObject setVariable ["objectiveNumber", ObjectiveCount];
         _objObject setVariable ["objectiveAO", _selectedAO];
@@ -205,7 +215,7 @@ switch (_objectiveType) do {
             _obj = _this select 0;
             [_obj] remoteExec  ["ARDN_fnc_missionFailed", 2];
         }];
-        _spawnPos = [_spawnPos, 0, 50, 5, 0, 0.3, 0, BLUFORterritory] call BIS_fnc_findSafePos;
+        _spawnPos = [_spawnPos, 0, 50, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
         private _objUnit = [_spawnPos, EAST, _array_infantry, [], [], [], [], [2,0.1], 0, false] call BIS_fnc_spawnGroup;
         [_objUnit, _spawnPos] call BIS_fnc_taskDefend;
         [_objObject] spawn {
@@ -226,37 +236,37 @@ switch (_objectiveType) do {
         for "_i" from 1 to 10 do {
             _array_infantry pushBack (selectRandom array_infantry);
         };
-        private _objectiveTask = [BLUFOR, format ["Objective_%1",str ObjectiveCount], [format ["Objective %1:<br/>The enemy is holding a prisoner of war in the area.<br/>Locate and extract them back to base.<br/><br/>Intel:<br/>Traps and IEDs will be scattered throught the AO, make sure to bring a Trapkit.<br/>%2", str ObjectiveCount, _textIntel], "Rescue POW"], _missionArea, "AUTOASSIGNED", 0, true, "danger", false] call BIS_fnc_taskCreate;
-        private _spawnPos = [_missionArea, 0, 200, 9, 0, 0.1, 0, BLUFORterritory] call BIS_fnc_findSafePos;
+        private _objectiveTask = [BLUFOR, format ["Objective_%1",str ObjectiveCount], [format ["Objective %1:<br/>The enemy is holding a prisoner of war in the area.<br/>Locate and extract them back to base.<br/><br/>Intel:<br/>%2", str ObjectiveCount, _textIntel], "Rescue POW"], _missionArea, "AUTOASSIGNED", 0, true, "danger", false] call BIS_fnc_taskCreate;
+        private _spawnPos = [_missionArea, 0, 200, 9, 0, 0.1, 0, _blackList] call BIS_fnc_findSafePos;
+        if (count _spawnPos != 2) then {
+            _spawnPos = [_missionArea, 0, 200, 0, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+        };
         private _objCamp = [_spawnPos, 0, OPFORsitePOW] call BIS_fnc_objectsMapper;
         private _objGroup = createGroup west;
         private _objObject = _objGroup createUnit ["B_Soldier_lite_F", _spawnPos, [], 0, "CAN_COLLIDE"];
-        [_objObject] remoteExec ["ARDN_fnc_POWcaptive", 2];
+        [_objObject] remoteExec ["ARDN_fnc_POWcaptive"];
         _objObject setVariable ["objectiveNumber", ObjectiveCount];
         _objObject setVariable ["objectiveAO", _selectedAO];
         _objObject setVariable ["pow", true];
         _objObject setUnitRank "PRIVATE";
-        _objObject addAction ["<t color='#149616'>Follow me!</t>", {
-             _pow = _this select 0;
-             [_pow] remoteExec ["ARDN_fnc_POWcaptive", 2];
-             _player = _this select 1;
-             _group = group _player;
-             [_pow] join _group;
-        }, nil,6,true,true,"","_target getVariable ['captive', false] == true",4];
         _objObject addEventHandler ["Killed", {_obj = _this select 0; [_obj] remoteExec  ["ARDN_fnc_missionFailed", 2];}];
-        _spawnPos = [_spawnPos, 0, 50, 5, 0, 0.3, 0, BLUFORterritory] call BIS_fnc_findSafePos;
+        _spawnPos = [_spawnPos, 0, 50, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
         private _objUnit = [_spawnPos, EAST, _array_infantry, [], [], [], [], [2,0.1], 0, false] call BIS_fnc_spawnGroup;
         [_objUnit, _spawnPos] call BIS_fnc_taskDefend;
     };
     case "pilot": {
         private _wreckCraft = "Land_Wreck_Heli_Attack_01_F";
         private _wreckPilot = "B_Helipilot_F";
-        private _objectiveTask = [BLUFOR, format ["Objective_%1",str ObjectiveCount], [format ["Objective %1:<br/>A friendly pilot has been shot down.<br/>Locate them, and extract them back to base.<br/><br/>Intel:<br/>Traps and IEDs will be scattered throught the AO, make sure to bring a Trapkit.<br/>%2", str ObjectiveCount, _textIntel], "Recover downed Pilot"], _missionArea, "AUTOASSIGNED", 0, true, "heli", false] call BIS_fnc_taskCreate;
-        private _spawnPos = [_missionArea, 0, 250, 10, 0, 0.2, 0, BLUFORterritory] call BIS_fnc_findSafePos;
-        private _wreck = createVehicle [_wreckCraft, m_spawnPos, [], 0, "CAN_COLLIDE"];
+        private _objectiveTask = [BLUFOR, format ["Objective_%1",str ObjectiveCount], [format ["Objective %1:<br/>A friendly pilot has been shot down.<br/>Locate them, and extract them back to base.<br/><br/>Intel:<br/>%2", str ObjectiveCount, _textIntel], "Recover downed Pilot"], _missionArea, "AUTOASSIGNED", 0, true, "heli", false] call BIS_fnc_taskCreate;
+        private _spawnPos = [_missionArea, 0, 250, 10, 0, 0.2, 0, _blackList] call BIS_fnc_findSafePos;
+        if (count _spawnPos != 2) then {
+            _spawnPos = [_missionArea, 0, 200, 0, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+        };
+        private _wreck = createVehicle [_wreckCraft, _spawnPos, [], 0, "CAN_COLLIDE"];
         private _smoke = createVehicle ["test_EmptyObjectForSmoke", getPos _wreck, [], 0, "CAN_COLLIDE"];
         private _objGroup = createGroup west;
         private _objPilot = _objGroup createUnit [_wreckPilot, _spawnPos, [], 0, "NONE"];
+        [_objPilot, false] remoteExec ["ARDN_fnc_POWcaptive"];
         _objPilot setSkill 1;
         _objPilot setUnitTrait ["camouflageCoef", 0];
         _objPilot setUnitTrait ["audibleCoef", 0];
@@ -264,12 +274,7 @@ switch (_objectiveType) do {
         _objPilot setVariable ["objectiveAO", _selectedAO];
         _objPilot setVariable ["pow", true];
         _objPilot setVariable ["bleeding", true];
-        _objPilot addAction ["<t color='#149616'>Follow me!</t>", {
-             private _pilot = _this select 0;
-             private _player = _this select 1;
-             private _group = group _player;
-             [_pilot] join _group;
-        }, nil,6,true,true,"","true",4];
+        _objPilot setUnitRank "PRIVATE";
         private _blood = createVehicle ["BloodPool_01_Medium_New_F", getPos _objPilot, [], 0, "NONE"];
         [_objPilot] spawn {
             params ["_objPilot"];

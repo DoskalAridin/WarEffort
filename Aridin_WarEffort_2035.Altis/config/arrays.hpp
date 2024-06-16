@@ -246,7 +246,7 @@ if (compat_WS == true) then {
 if (compat_RF == true) then {
     private _RF_vic = [
         ["B_Pickup_aat_rf", 0],
-        ["B_Pickup_rf"], 
+        ["B_Pickup_rf", 0], 
         ["B_Pickup_Comms_rf", 0], 
         ["B_Pickup_mmg_rf", 0]
     ];

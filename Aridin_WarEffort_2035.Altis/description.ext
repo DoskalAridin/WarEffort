@@ -61,9 +61,9 @@ class Params
     class missionReward
     {
         title = "Base supply points reward for completing missions";
-		texts[] = {"2", "5", "10", "15", "20"};
-		values[] = {2, 5, 10, 15, 20};
-		default = 10;
+		texts[] = {"2", "5", "10", "15", "20", "30", "40", "50"};
+		values[] = {2, 5, 10, 15, 201 30, 40, 50};
+		default = 20;
     };
     class deathPenalty
     {

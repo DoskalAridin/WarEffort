@@ -7,7 +7,8 @@ call ARDN_fnc_setDate;
         waitUntil {
             sleep 10;
             private _AllPlayers = call BIS_fnc_listPlayers;
-            private _PlayersAtBase = _AllPlayers inAreaArray "markerHQ";
+            private _PlayersAtBase = [];
+            {_PlayersAtBase append (_AllPlayers inAreaArray _x)} forEach BLUFORterritory;
             (count _AllPlayers == count _PlayersAtBase);
         };
         if (manualSideMissions == false) then {

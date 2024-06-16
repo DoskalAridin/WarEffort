@@ -111,6 +111,7 @@ private _carrierSpawnPos = ["spawnPoint_carrier","spawnPoint_carrier_1","spawnPo
     _pos set [2, 209.498];
     _x setMarkerPos _pos;
 } forEach _carrierSpawnPos;
+
 // Hide and show map markers
 {
     _x setMarkerAlpha 0;
@@ -131,7 +132,7 @@ player createDiaryRecord [
     "WarEffort", 
     [
         "Side Objectives",
-        "Destroy ammo cache:<br/>Straight forward objective. Simply find and destroy the enemy’s ammo cache hidden somewhere in the area.<br/><br/>Eliminate enemy officer:<br/>Enemy officer is in the area, find and eliminate him.<br/>Alternatively, capture and bring him to <marker name='marker_Processing'>Processing</marker>.<br/><br/>Sabotage enemy ammo supply:<br/>Locate an ammo truck in the area. Simply leave a Mine Ammobox (booby-trapped) next to it to complete the objective.<br/><br/>Rescue POW:<br/>A friendly has been captured. Locate and extract him back to base.<br/>Bring him to <marker name='marker_Processing'>Processing</marker> to complete the objective.<br/><br/>Recover downed Pilot:<br/>A friendly pilot has been shot down. Locate the wreck, and search the area for the pilot.</br>Extract him and bring him to <marker name='marker_Processing'>Processing</marker> to complete the objective.<br/>The pilot is unlikely to stay near the wreckage, SOP will have him dropping purple smoke once in a safer location."
+        "Destroy ammo cache:<br/>Straight forward objective. Simply find and destroy the enemy’s ammo cache hidden somewhere in the area.<br/><br/>Eliminate enemy officer:<br/>Enemy officer is in the area, find and eliminate him.<br/>Alternatively, capture and bring him to <marker name='marker_Processing'>Processing</marker>.<br/><br/>Rescue POW:<br/>A friendly has been captured. Locate and extract him back to base.<br/>Bring him to <marker name='marker_Processing'>Processing</marker> to complete the objective.<br/><br/>Recover downed Pilot:<br/>A friendly pilot has been shot down. Locate the wreck, and search the area for the pilot.</br>Extract him and bring him to <marker name='marker_Processing'>Processing</marker> to complete the objective.<br/>The pilot is unlikely to stay near the wreckage, SOP will have him dropping purple smoke once in a safer location."
     ], 
     taskNull, 
     "", 
@@ -141,7 +142,7 @@ player createDiaryRecord [
     "WarEffort", 
     [
         "Base Guide",
-        "Virtual arsenals can be found at marked S4 logistics buildings, <marker name='marker_S4'>here</marker> and <marker name='marker_S4_1'>here</marker>. As well as at every vehicle shop;<br/><marker name='marker_Helicopters'>Helicopter shop</marker><br/><marker name='marker_GroundVehicles'>Ground vehicle shop</marker><br/><marker name='marker_FixedWing'>Fixed wing shop</marker><br/><marker name='marker_BOAT'>Boat shop</marker><br/><br/><marker name='marker_medical'>Medical Tents:</marker> Provides an instant full heal.<br/><marker name='marker_mess'>Mess Hall:</marker> Restores hunger and thurst if field rations are enabled.<br/><br/><marker name='marker_Processing'>Processing:</marker> Bring recovered POWs, downed pilots and captured enemy officers here to secure them and complete related objectives.<br/>A deployable LP/OP, which acts as a respawn, can be purchased next to the <marker name='marker_GroundVehicles'>Ground vehicle shop</marker>. It can only be deployed ouside of Pleiku Airbase.<br/><br/><marker name='marker_operations'>Operations:</marker> The Commander or admin can start a main operation here."
+        "<marker name='marker_Helicopters'>Fixed Wing, Rotarty and UAV shop</marker><br/><marker name='marker_GroundVehicles'>Ground vehicle shop, field respawn, resupply crates and soldier training</marker><br/><marker name='marker_medical'>Medical Cargo House:</marker> Provides an instant full heal.<br/><marker name='marker_mess'>Food tables:</marker> Restores hunger and thurst if ACE field rations are enabled.<br/><br/><marker name='marker_Processing'>Processing:</marker> Bring recovered POWs, downed pilots and captured enemy officers here to secure them and complete related objectives.<br/><marker name='marker_operations'>Operations:</marker> Purchase USS Liberty rearm, and the commander can purchase friendly AI units (command them with Arma 3's High Command). The Commander or admin can start a main operation from here."
     ], 
     taskNull, 
     "", 

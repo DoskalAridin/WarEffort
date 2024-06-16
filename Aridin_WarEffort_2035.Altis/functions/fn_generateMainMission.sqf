@@ -128,7 +128,7 @@ private _POIarty = [_missionArea, 0, 500, 30, 0, 0.3, 0, _blackList] call BIS_fn
 if (count _POIarty != 3) then {
     private _UnitPos = [_POIarty, 0, 100, 30, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
     if (count _UnitPos != 3) then {
-        [_UnitPos, random 360, VCsiteArty] call BIS_fnc_ObjectsMapper;
+        [_UnitPos, random 360, OPFORsiteArty] call BIS_fnc_ObjectsMapper;
         private _MainOpArty = [BLUFOR, ["mainOperation_arty", "mainOperation"], ["", "Eliminate artillery position"], _POIarty, "CREATED", 1, false, "destroy", false] call BIS_fnc_taskCreate;
         _blackList pushBack [_POIarty, 40];
         OperationArty = true;
@@ -222,28 +222,9 @@ for "_i" from 1 to _numPatrols do
     } else {OPFORreserves = OPFORreserves + 1; publicVariable "OPFORreserves"};
 };
 
-//Populate mortar/artiller pits
-private _mortarPit = nearestObjects [_missionArea, ["Land_vn_b_mortarpit_01"], AO_size];
-{
-    private _spawnPos = getPosATL _x;
-    _spawnPos set [2, (_spawnPos select 2) + 0.35];
-    private _mortarClass = selectRandom ["vn_o_nva_static_mortar_type63","vn_o_nva_static_mortar_type53"];
-    private _mortar = createVehicle [_mortarClass, _spawnPos, [], 0, "CAN_COLLIDE"];
-    private _crewChance = random _AO_enemyStrength;
-    if (_crewChance >= 2) then {
-        createVehicleCrew _mortar;
-    };
-} forEach _mortarPit;
-private _artilleryPit = nearestObjects [_missionArea, ["Land_vn_b_gunpit_01"], AO_size];
-{
-    private _spawnPos = getPosATL _x;
-    _spawnPos set [2, (_spawnPos select 2) + 1.007];
-    private _artillery = createVehicle ["vn_o_nva_static_d44_01", _spawnPos, [], 0, "CAN_COLLIDE"];
-    private _crewChance = random _AO_enemyStrength;
-    if (_crewChance >= 4) then {
-        createVehicleCrew _artillery;
-    };
-} forEach _artilleryPit;
+private _ViperSpawnPos = [_missionArea, AO_size, _mainAO_size, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
+private _Viper = [_spawnPos, EAST, array_soldier_Viper, [], [], [], [], [4,0.1], 0, false, _enemyStrength] call BIS_fnc_spawnGroup;	
+[_Viper, _ViperSpawnPos, AO_size] call BIS_fnc_taskPatrol;
 
 ["mainOperation" , "ASSIGNED"] call BIS_fnc_taskSetState;
 

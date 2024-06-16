@@ -9,7 +9,7 @@ if (BLUFORresource > 100) then {
      true,
      {},
      {},
-     {_pos = getPos _target; deleteVehicle _target; [_pos, 0, SelectRandom BLUFORfobs] remoteExec ["BIS_fnc_objectsMapper", 2]; [west, _pos, "LP/OP"] remoteExec ["BIS_fnc_addRespawnPosition",2]},
+     {_pos = getPos _target; deleteVehicle _target; [_pos, 0, SelectRandom BLUFORfobs] remoteExec ["BIS_fnc_objectsMapper", 2]; [west, _pos] remoteExec ["BIS_fnc_addRespawnPosition",2]},
      {},
      [],
      15,
@@ -17,5 +17,5 @@ if (BLUFORresource > 100) then {
      true,
      false,
      true] call BIS_fnc_holdActionAdd;
-    hint "Deployable LP/OP purchased"
+    hint "Deployable respawn purchased"
 } else {hint "Insufficient funds"};

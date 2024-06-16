@@ -16,6 +16,13 @@
 params ["_pos"];
 
 diag_log "MISSION: Spawning reinforcements";
+
+private _playerCount_enemyStrength = floor ((count call BIS_fnc_listPlayers) / 8);
+private _AO_enemyStrength = AO_enemyStrength + _playerCount_enemyStrength + WarEffortDifficulty;
+if (_AO_enemyStrength > 10) then {_AO_enemyStrength = 10};
+
+if (OPFORreserves > (10 + _AO_enemyStrength)) then {OPFORreserves = (10 + _AO_enemyStrength)};
+
 private _vicClass = selectRandom array_heliTransport;
 
 private _dir = (getMarkerPos "markerHQ") getDir _pos;
