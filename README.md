@@ -9,7 +9,7 @@ Sort of a Mike Force "light" / Dynamic Recon Ops scenario. Intended to be someth
 Players start at a base with the ability to purchase vehicles and training (medic, engineer, EOD, etc.),
 and are provided with a constant set of side missions to complete, generated in proximity to the base. Success rewards supply points (used to make purchases) and lowers the enemy strength.<br/>
 When ready, a "main operation" can be started. Being a mission requiring multiple objectes to be completed. Once complete, the operation area is marked as captured, expanding the area where side missions can generated.<br/>
-*side missions generate in proxmity relative to all player controlled areas. And only generate when all players are at base.
+*side missions generate in proxmity relative to all player controlled areas. And only generate when all players are back in controlled territory.
 
 ## Features
 
