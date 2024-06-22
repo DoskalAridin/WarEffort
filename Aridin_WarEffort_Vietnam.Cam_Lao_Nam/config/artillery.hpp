@@ -1,3 +1,319 @@
+#define US_FORCES items[] = \
+{ \
+        "vn_m14_mag", 40, \
+        "vn_m14_t_mag", 10, \
+        "vn_m16_20_mag", 40, \
+        "vn_m16_20_t_mag", 10, \
+        "vn_m16_40_mag", 40, \
+        "vn_m16_40_t_mag", 10, \
+        "vn_m3a1_mag", 40, \
+        "vn_m3a1_t_mag", 10, \
+        "vn_m1897_fl_mag", 40, \
+        "vn_m1897_buck_mag", 40, \
+\
+        "vn_m60_100_mag", 20, \
+\
+        "vn_m1911_mag", 10, \
+        "vn_m10_mag", 10, \
+\
+        "vn_40mm_m381_he_mag", 20, \
+        "vn_40mm_m406_he_mag", 20, \
+        "vn_40mm_m397_ab_mag", 20, \
+        "vn_40mm_m433_hedp_mag", 20, \
+        "vn_40mm_m576_buck_mag", 20, \
+        "vn_40mm_m651_cs_mag", 20, \
+        "vn_40mm_m583_flare_w_mag", 10, \
+        "vn_40mm_m661_flare_g_mag", 10, \
+        "vn_40mm_m662_flare_r_mag", 10, \
+        "vn_40mm_m695_flare_y_mag", 10, \
+        "vn_40mm_m680_smoke_w_mag", 10, \
+        "vn_40mm_m682_smoke_r_mag", 10, \
+        "vn_40mm_m715_smoke_g_mag", 10, \
+        "vn_40mm_m716_smoke_y_mag", 10, \
+        "vn_40mm_m716_smoke_y_mag", 10, \
+        "vn_40mm_m717_smoke_p_mag", 10, \
+\
+        "vn_m14_early_grenade_mag", 20, \
+        "vn_m34_grenade_mag", 20, \
+        "vn_m61_grenade_mag", 20, \
+        "vn_m67_grenade_mag", 20, \
+        "vn_m7_grenade_mag", 20, \
+        "vn_v40_grenade_mag", 20, \
+        "vn_m18_white_mag", 20, \
+        "vn_m18_green_mag", 20, \
+        "vn_m18_purple_mag", 20, \
+        "vn_m18_red_mag", 20, \
+        "vn_m18_yellow_mag", 20, \
+\
+        "vn_mine_m14_mag", 10, \
+        "vn_mine_m16_mag", 10, \
+        "vn_mine_m18_range_mag", 10, \
+        "vn_mine_m18_mag", 10, \
+        "vn_mine_m18_x3_range_mag", 10, \
+        "vn_mine_m18_x3_mag", 10, \
+        "vn_mine_m112_remote_mag", 10, \
+};
+#define SF_FORCES  items[] = \
+{ \
+        "vn_type56_mag", 40, \
+        "vn_type56_t_mag", 10, \
+        "vn_carbine_15_mag", 40, \
+        "vn_carbine_15_t_mag", 10, \
+        "vn_carbine_30_mag", 40, \
+        "vn_carbine_30_t_mag", 10, \
+        "vn_m14_mag", 40, \
+        "vn_m14_t_mag", 10, \
+        "vn_m16_20_mag", 40, \
+        "vn_m16_20_t_mag", 10, \
+        "vn_m16_30_mag", 40, \
+        "vn_m16_30_t_mag", 10, \
+        "vn_m3a1_mag", 40, \
+        "vn_m3a1_t_mag", 10, \
+        "vn_m45_mag", 40, \
+        "vn_m45_t_mag", 10, \
+        "vn_sten_mag", 40, \
+        "vn_sten_t_mag", 10, \
+        "vn_mat49_mag", 40, \
+        "vn_mat49_t_mag", 10, \
+        "vn_mpu_mag", 40, \
+        "vn_mpu_t_mag", 10, \
+        "vn_m1897_fl_mag", 40, \
+        "vn_m1897_buck_mag", 40, \
+\
+        "vn_rpd_125_mag", 20, \
+        "vn_rpd_100_mag", 20, \
+        "vn_m60_100_mag", 20, \
+\
+        "vn_m1911_mag", 10, \
+        "vn_hp_mag", 10, \
+        "vn_hd_mag", 10, \
+\
+        "vn_40mm_m381_he_mag", 20, \
+        "vn_40mm_m406_he_mag", 20, \
+        "vn_40mm_m397_ab_mag", 20, \
+        "vn_40mm_m433_hedp_mag", 20, \
+        "vn_40mm_m651_cs_mag", 20, \
+        "vn_40mm_m583_flare_w_mag", 10, \
+        "vn_40mm_m661_flare_g_mag", 10, \
+        "vn_40mm_m662_flare_r_mag", 10, \
+        "vn_40mm_m695_flare_y_mag", 10, \
+        "vn_40mm_m680_smoke_w_mag", 10, \
+        "vn_40mm_m682_smoke_r_mag", 10, \
+        "vn_40mm_m715_smoke_g_mag", 10, \
+        "vn_40mm_m716_smoke_y_mag", 10, \
+        "vn_40mm_m716_smoke_y_mag", 10, \
+        "vn_40mm_m717_smoke_p_mag", 10, \
+\
+        "vn_m14_early_grenade_mag", 20, \
+        "vn_m34_grenade_mag", 20, \
+        "vn_m61_grenade_mag", 20, \
+        "vn_m67_grenade_mag", 20, \
+        "vn_m7_grenade_mag", 20, \
+        "vn_v40_grenade_mag", 20, \
+        "vn_m18_white_mag", 20, \
+        "vn_m18_green_mag", 20, \
+        "vn_m18_purple_mag", 20, \
+        "vn_m18_red_mag", 20, \
+        "vn_m18_yellow_mag", 20, \
+\
+        "vn_mine_m14_mag", 10, \
+        "vn_mine_m16_mag", 10, \
+        "vn_mine_m18_range_mag", 10, \
+        "vn_mine_m18_mag", 10, \
+        "vn_mine_m18_x3_range_mag", 10, \
+        "vn_mine_m18_x3_mag", 10, \
+        "vn_mine_m112_remote_mag", 10, \
+};
+#define SEAL_FORCES  items[] = \
+{ \
+        "vn_type56_mag", 40, \
+        "vn_type56_t_mag", 10, \
+        "vn_m16_20_mag", 40, \
+        "vn_m16_20_t_mag", 10, \
+        "vn_m16_30_mag", 40, \
+        "vn_m16_30_t_mag", 10, \
+        "vn_m63a_30_mag", 40, \
+        "vn_m63a_30_t_mag", 10, \
+        "vn_m1a1_20_mag", 40, \
+        "vn_m1a1_20_t_mag", 10, \
+        "vn_m1a1_30_mag", 40, \
+        "vn_m1a1_30_t_mag", 10, \
+        "vn_m45_mag", 40, \
+        "vn_m45_t_mag", 10, \
+        "vn_mpu_mag", 40, \
+        "vn_mpu_t_mag", 10, \
+\
+        "vn_rpd_125_mag", 20, \
+        "vn_rpd_100_mag", 20, \
+        "vn_m60_100_mag", 20, \
+        "vn_m63a_100_mag", 20, \
+        "vn_m63a_100_t_mag", 5, \
+        "vn_m63a_150_mag", 20, \
+        "vn_m63a_150_t_mag", 5, \
+\
+        "vn_m1911_mag", 10, \
+        "vn_mk22_mag", 10, \
+        "vn_m10_mag", 10, \
+\
+        "vn_40mm_m381_he_mag", 20, \
+        "vn_40mm_m406_he_mag", 20, \
+        "vn_40mm_m397_ab_mag", 20, \
+        "vn_40mm_m433_hedp_mag", 20, \
+        "vn_40mm_m576_buck_mag", 20, \
+        "vn_40mm_m651_cs_mag", 20, \
+        "vn_40mm_m583_flare_w_mag", 10, \
+        "vn_40mm_m661_flare_g_mag", 10, \
+        "vn_40mm_m662_flare_r_mag", 10, \
+        "vn_40mm_m695_flare_y_mag", 10, \
+        "vn_40mm_m680_smoke_w_mag", 10, \
+        "vn_40mm_m682_smoke_r_mag", 10, \
+        "vn_40mm_m715_smoke_g_mag", 10, \
+        "vn_40mm_m716_smoke_y_mag", 10, \
+        "vn_40mm_m716_smoke_y_mag", 10, \
+        "vn_40mm_m717_smoke_p_mag", 10, \
+\
+        "vn_m14_early_grenade_mag", 20, \
+        "vn_m34_grenade_mag", 20, \
+        "vn_m61_grenade_mag", 20, \
+        "vn_m67_grenade_mag", 20, \
+        "vn_m7_grenade_mag", 20, \
+        "vn_v40_grenade_mag", 20, \
+        "vn_m18_white_mag", 20, \
+        "vn_m18_green_mag", 20, \
+        "vn_m18_purple_mag", 20, \
+        "vn_m18_red_mag", 20, \
+        "vn_m18_yellow_mag", 20, \
+\
+        "vn_mine_m14_mag", 10, \
+        "vn_mine_m16_mag", 10, \
+        "vn_mine_m18_range_mag", 10, \
+        "vn_mine_m18_mag", 10, \
+        "vn_mine_m18_x3_range_mag", 10, \
+        "vn_mine_m18_x3_mag", 10, \
+        "vn_mine_m112_remote_mag", 10, \
+};
+#define AUS_FORCES  items[] = \
+{ \
+        "vn_f1_smg_mag", 40, \
+        "vn_f1_smg_t_mag", 10, \
+        "vn_m16_20_mag", 40, \
+        "vn_m16_20_t_mag", 10, \
+        "vn_l1a1_20_mag", 40, \
+        "vn_l1a1_20_t_mag", 10, \
+        "vn_l1a1_30_mag", 40, \
+        "vn_l1a1_30_t_mag", 10, \
+        "vn_l1a1_30_02_mag", 40, \
+        "vn_l1a1_30_02_t_mag", 10, \
+\
+        "vn_m60_100_mag", 20, \
+\
+        "vn_m1911_mag", 10, \
+        "vn_m10_mag", 10, \
+\
+        "vn_22mm_m61_frag_mag", 20, \
+        "vn_22mm_n94_heat_mag", 20, \
+        "vn_40mm_m381_he_mag", 20, \
+        "vn_40mm_m406_he_mag", 20, \
+        "vn_40mm_m397_ab_mag", 20, \
+        "vn_40mm_m433_hedp_mag", 20, \
+        "vn_40mm_m576_buck_mag", 20, \
+        "vn_40mm_m651_cs_mag", 20, \
+        "vn_40mm_m583_flare_w_mag", 10, \
+        "vn_40mm_m661_flare_g_mag", 10, \
+        "vn_40mm_m662_flare_r_mag", 10, \
+        "vn_40mm_m695_flare_y_mag", 10, \
+        "vn_40mm_m680_smoke_w_mag", 10, \
+        "vn_40mm_m682_smoke_r_mag", 10, \
+        "vn_40mm_m715_smoke_g_mag", 10, \
+        "vn_40mm_m716_smoke_y_mag", 10, \
+        "vn_40mm_m716_smoke_y_mag", 10, \
+        "vn_40mm_m717_smoke_p_mag", 10, \
+\
+        "vn_m14_early_grenade_mag", 20, \
+        "vn_m34_grenade_mag", 20, \
+        "vn_m61_grenade_mag", 20, \
+        "vn_m67_grenade_mag", 20, \
+        "vn_m7_grenade_mag", 20, \
+        "vn_v40_grenade_mag", 20, \
+        "vn_m18_white_mag", 20, \
+        "vn_m18_green_mag", 20, \
+        "vn_m18_purple_mag", 20, \
+        "vn_m18_red_mag", 20, \
+        "vn_m18_yellow_mag", 20, \
+\
+        "vn_mine_m14_mag", 10, \
+        "vn_mine_m16_mag", 10, \
+        "vn_mine_m18_range_mag", 10, \
+        "vn_mine_m18_mag", 10, \
+        "vn_mine_m18_x3_range_mag", 10, \
+        "vn_mine_m18_x3_mag", 10, \
+        "vn_mine_m112_remote_mag", 10, \
+};
+#define CIDG_FORCES  items[] = \
+{ \
+        "vn_m1_garand_mag", 40, \
+        "vn_m1_garand_t_mag", 10, \
+        "vn_carbine_15_mag", 40, \
+        "vn_carbine_15_t_mag", 10, \
+        "vn_carbine_30_mag", 40, \
+        "vn_carbine_30_t_mag", 10, \
+        "vn_m14_mag", 40, \
+        "vn_m14_t_mag", 10, \
+        "vn_m16_20_mag", 40, \
+        "vn_m16_20_t_mag", 10, \
+        "vn_m1918_mag", 40, \
+        "vn_m1918_t_mag", 10, \
+        "vn_m3a1_mag", 40, \
+        "vn_m3a1_t_mag", 10, \
+        "vn_m1897_fl_mag", 40, \
+        "vn_m1897_buck_mag", 40, \
+\
+        "vn_m60_100_mag", 20, \
+\
+        "vn_m1911_mag", 10, \
+        "vn_m10_mag", 10, \
+\
+        "vn_22mm_m1a2_frag_mag", 20, \
+        "vn_22mm_m9_heat_mag", 20, \
+        "vn_22mm_m17_frag_mag", 20, \
+        "vn_22mm_m19_wp_mag", 20, \
+        "vn_22mm_m22_smoke_mag", 20, \
+        "vn_40mm_m381_he_mag", 20, \
+        "vn_40mm_m406_he_mag", 20, \
+        "vn_40mm_m397_ab_mag", 20, \
+        "vn_40mm_m433_hedp_mag", 20, \
+        "vn_40mm_m576_buck_mag", 20, \
+        "vn_40mm_m651_cs_mag", 20, \
+        "vn_40mm_m583_flare_w_mag", 10, \
+        "vn_40mm_m661_flare_g_mag", 10, \
+        "vn_40mm_m662_flare_r_mag", 10, \
+        "vn_40mm_m695_flare_y_mag", 10, \
+        "vn_40mm_m680_smoke_w_mag", 10, \
+        "vn_40mm_m682_smoke_r_mag", 10, \
+        "vn_40mm_m715_smoke_g_mag", 10, \
+        "vn_40mm_m716_smoke_y_mag", 10, \
+        "vn_40mm_m716_smoke_y_mag", 10, \
+        "vn_40mm_m717_smoke_p_mag", 10, \
+\
+        "vn_m34_grenade_mag", 20, \
+        "vn_m61_grenade_mag", 20, \
+        "vn_m7_grenade_mag", 20, \
+        "vn_m18_white_mag", 20, \
+        "vn_m18_green_mag", 20, \
+        "vn_m18_purple_mag", 20, \
+        "vn_m18_red_mag", 20, \
+        "vn_m18_yellow_mag", 20, \
+\
+        "vn_mine_m14_mag", 10, \
+        "vn_mine_m16_mag", 10, \
+        "vn_mine_m18_range_mag", 10, \
+        "vn_mine_m18_mag", 10, \
+        "vn_mine_m18_x3_range_mag", 10, \
+        "vn_mine_m18_x3_mag", 10, \
+        "vn_mine_m112_remote_mag", 10, \
+};
+ 
+
 class vn_artillery_settings
 {
         // Add your NUMBER variable that will be used as a cost variable - leave empty if you don't want the cost to matter.
@@ -24,6 +340,7 @@ class vn_artillery_settings
                                 description = $STR_VN_ARTILLERY_AIRCRAFT_HE_COMMANDO_VAULT_DESCRIPTION;
                                 function = "vn_fnc_artillery_commando_vault";
                                 divergence = -45;
+                                delay_max = 120;
                                 cooldown = (60*5);
                                 cost = 50;
                         };
@@ -39,7 +356,7 @@ class vn_artillery_settings
                         };
                         class rambler
                         {
-				                        displayname = $STR_VN_ARTILLERY_AIRCRAFT_CLUSTER_RAMBLER_NAME;
+                                displayname = $STR_VN_ARTILLERY_AIRCRAFT_CLUSTER_RAMBLER_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_433tfs_ca.paa";
                                 description = $STR_VN_ARTILLERY_AIRCRAFT_HE_VESPA_DESCRIPTION;
                                 magazines[] = {"vn_bomb_500_mk82_he_mag_x1","vn_bomb_500_mk82_he_mag_x1"};
@@ -52,7 +369,7 @@ class vn_artillery_settings
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_HE_SUNDOWNER_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_vf111_ca.paa";
                                 description = $STR_VN_ARTILLERY_AIRCRAFT_HE_SUNDOWNER_DESCRIPTION;
-                                magazines[] = {"vn_bomb_500_blu1b_fb_mag_x1", "vn_bomb_500_blu1b_fb_mag_x1"};
+                                magazines[] = {"vn_bomb_500_blu1b_fb_mag_x1", ""};
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 allow_double = 1;
                                 cooldown = (60*5);
@@ -131,7 +448,7 @@ class vn_artillery_settings
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_COMBAT_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_vmfa314_ca.paa";
                                 description = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_COMBAT_DESCRIPTION;
-                                magazines[] = {"","","vn_rocket_ffar_f4_lau3_wdu4_flechette_x19","vn_rocket_ffar_f4_lau3_wdu4_flechette_x19"};
+                                magazines[] = {"","","vn_rocket_ffar_wdu4_flechette_x7",""};
                                 vehicleclass = "vn_b_air_f4c_cas";
                                 allow_double = 1;
                                 cooldown = (5*60);
@@ -142,7 +459,7 @@ class vn_artillery_settings
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_BANSHEE_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_29tas_ca.paa";
                                 description = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_BANSHEE_DESCRIPTION;
-                                magazines[] = {"vn_rocket_ffar_wdu4_flechette_x7","vn_rocket_ffar_wdu4_flechette_x7"};
+                                magazines[] = {"vn_rocket_ffar_wdu4_flechette_x7",""};
                                 vehicleclass = "vn_b_air_ah1g_04";
                                 allow_double = 1;
                                 cooldown = (5*60);
@@ -153,8 +470,8 @@ class vn_artillery_settings
                                 displayname = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_SCARFACE_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_vmo3_co.paa";
                                 description = $STR_VN_ARTILLERY_AIRCRAFT_FLECHETTE_SCARFACE_DESCRIPTION;
-                                magazines[] = {"vn_rocket_ffar_wdu4_flechette_x19","vn_rocket_ffar_wdu4_flechette_x19"};
-                                vehicleclass = "vn_b_air_uh1c_01_07";
+                                magazines[] = {"vn_rocket_ffar_wdu4_flechette_x7",""};
+                                vehicleclass = "vn_b_air_uh1c_01_01";
                                 allow_double = 1;
                                 cooldown = (5*60);
                                 cost = 12;
@@ -190,8 +507,8 @@ class vn_artillery_settings
                                 illumination = 1;
                                 cost = 0;
                         };
-                class dawn_1
-                {
+                        class dawn_1
+                        {
                                 displayname = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_DAWN_1_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_usarmy_ca.paa";
                                 description = $STR_VN_ARTILLERY_ARTILLERY_ILLUMINATION_DAWN_1_DESCRIPTION;
@@ -203,6 +520,38 @@ class vn_artillery_settings
                                 cost = 0;
                         };
                 };
+ 
+                // The following config block is for missions running "S.O.G. Nickel Steel"
+                // Avaliable at https://steamcommunity.com/sharedfiles/filedetails/?id=3083451905
+                // This section is commented out by default, to enable it in your mission, remove the '/*' and '*/' below
+                /*
+                class support
+                {
+                        displayname = $STR_VN_ARTILLERY_AIRCRAFT_SUPPORT_NAME;
+                        class ac119_bomb
+                        {
+                                displayname = $STR_VN_ARTILLERY_AIRCRAFT_SUPPORT_AC119_BOMB_NAME;
+                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_29tas_ca.paa";
+                                description = $STR_VN_ARTILLERY_AIRCRAFT_SUPPORT_AC119_BOMB_DESCRIPTION;
+                                function = "vnx_fnc_artillery_ac119_bomb";
+                                divergence = -250;
+                                delay_max = 120;
+                                cooldown = (60*5);
+                                cost = 50;
+                        };
+                        class ac119_orbit
+                        {
+                                displayname = $STR_VN_ARTILLERY_AIRCRAFT_SUPPORT_AC119_NAME;
+                                icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_29tas_ca.paa";
+                                description = $STR_VN_ARTILLERY_AIRCRAFT_SUPPORT_AC119_DESCRIPTION;
+                                function = "vnx_fnc_artillery_ac119_orbit";
+                                divergence = -1000;
+                                delay_max = 120;
+                                cooldown = (60*5);
+                                cost = 50;
+                        };
+                };
+                */
         };
         class artillery
         {
@@ -309,7 +658,7 @@ class vn_artillery_settings
                                 displayname = $STR_VN_ARTILLERY_ARTILLERY_HE_MIKE_3_NAME;
                                 icon = "vn\ui_f_vietnam\data\decals\vn_callsign_src_l119_ca.paa";
                                 description = $STR_VN_ARTILLERY_ARTILLERY_HE_MIKE_3_DESCRIPTION;
-                                ammo[] = {"vn_shell_81mm_m43_he_ammo","vn_shell_81mm_m43_he_ammo","vn_shell_81mm_m43_he_ammo","vn_shell_81mm_m43_he_ammo","vn_shell_81mm_m43_he_ammo","vn_shell_81mm_m43_he_ammo"};
+                                ammo[] = {"vn_shell_81mm_m374_he_ammo","vn_shell_81mm_m374_he_ammo","vn_shell_81mm_m374_he_ammo","vn_shell_81mm_m374_he_ammo","vn_shell_81mm_m374_he_ammo","vn_shell_81mm_m374_he_ammo"};
                                 allow_double = 1;
                                 cooldown = (60*5);
                                 divergence = 50;
@@ -387,6 +736,352 @@ class vn_artillery_settings
                                 divergence = 50;
                                 count = 1;
                                 cost = 16;
+                        };
+                };
+        };
+        class resupply
+        {
+                class medical
+                {
+                        displayname = $STR_VN_ARTILLERY_RESUPPLY_MEDICAL_NAME;
+                        class comanchero_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_COMANCHERO_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_RESUPPLY_MEDICAL_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                containerclass = "vn_b_ammobox_supply_03";
+                                // Use the items already in the crate
+                                items[] = {};
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                };
+                class static_weapons
+                {
+                        displayname = $STR_VN_ARTILLERY_RESUPPLY_STATIC_NAME;
+                        class condor_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_CONDOR_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_RESUPPLY_M60_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                containerclass = "vn_b_ammobox_wpn_06";
+                                // Use the items already in the crate
+                                items[] = {};
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class gators_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_GATORS_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_RESUPPLY_M250_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                containerclass = "vn_b_ammobox_wpn_01";
+                                // Use the items already in the crate
+                                items[] = {};
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class minutemen_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_MINUTEMEN_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_RESUPPLY_M2_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                containerclass = "vn_b_ammobox_wpn_08";
+                                // Use the items already in the crate
+                                items[] = {};
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class skychiefs_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_SKYCHIEFS_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_RESUPPLY_M29_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                containerclass = "vn_b_ammobox_wpn_09";
+                                // Use the items already in the crate
+                                items[] = {};
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                };
+                class ammo
+                {
+                        displayname = $STR_VN_ARTILLERY_RESUPPLY_AMMO_NAME;
+                        class ghostriders_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_GHOSTRIDERS_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_RESUPPLY_AMMO_SF_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                containerclass = "vn_b_ammobox_06";
+                                SF_FORCES
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class hostage_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_HOSTAGE_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_RESUPPLY_AMMO_US_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                containerclass = "vn_b_ammobox_06";
+                                US_FORCES
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class seawolves_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_SEAWOLVES_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_RESUPPLY_AMMO_SEAL_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                containerclass = "vn_b_ammobox_06";
+                                SEAL_FORCES
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class albatross_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_ALBATROSS_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_RESUPPLY_AMMO_AU_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                containerclass = "vn_b_ammobox_06";
+                                AUS_FORCES
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class thanchuy_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_THANCHUY_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_RESUPPLY_AMMO_US_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                containerclass = "vn_b_ammobox_06";
+                                US_FORCES
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class rutledge_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_RUTLEDGE_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_RESUPPLY_AMMO_US_DESCRIPTION;
+                                vehicleclass = "vn_i_air_ch34_02_02";
+                                containerclass = "vn_b_ammobox_06";
+                                US_FORCES
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class pestkiller_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_PESTKILLER_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_RESUPPLY_AMMO_US_DESCRIPTION;
+                                vehicleclass = "vn_i_air_ch34_02_02";
+                                containerclass = "vn_b_ammobox_06";
+                                US_FORCES
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class evileyes_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_EVILEYES_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_RESUPPLY_AMMO_US_DESCRIPTION;
+                                vehicleclass = "vn_i_air_ch34_02_02";
+                                containerclass = "vn_b_ammobox_06";
+                                US_FORCES
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class thandieu_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_THANDIEU_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_RESUPPLY_AMMO_CIDG_DESCRIPTION;
+                                vehicleclass = "vn_i_air_ch34_02_02";
+                                containerclass = "vn_b_ammobox_06";
+                                CIDG_FORCES
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class kingbee_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_KINGBEE_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_RESUPPLY_AMMO_SF_DESCRIPTION;
+                                vehicleclass = "vn_i_air_ch34_02_02";
+                                containerclass = "vn_b_ammobox_06";
+                                SF_FORCES
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                };
+        };
+        class transport
+        {
+                class seven_seats
+                {
+                        displayname = $STR_VN_ARTILLERY_TRANSPORT_SEVEN_SEATS_NAME;
+                        class hostage_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_HOSTAGE_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_UH1E_DESCRIPTION;
+                                vehicleclass = "vn_b_air_uh1e_03_04";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class seawolves_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_SEAWOLVES_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_UH1E_DESCRIPTION;
+                                vehicleclass = "vn_b_air_uh1e_03_04";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class albatross_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_ALBATROSS_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_UH1B_DESCRIPTION;
+                                vehicleclass = "vn_b_air_uh1c_07_07";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                };
+                class eleven_seats
+                {
+                        displayname = $STR_VN_ARTILLERY_TRANSPORT_ELEVEN_SEATS_NAME;
+                        class comanchero_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_COMANCHERO_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_UH1D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class condor_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_CONDOR_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_UH1D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class gators_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_GATORS_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_UH1D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class minutemen_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_MINUTEMEN_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_UH1D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class skychiefs_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_SKYCHIEFS_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_UH1D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class ghostriders_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_GHOSTRIDERS_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_UH1D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class thanchuy_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_THANCHUY_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_UH1D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_uh1d_02_01";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class rutledge_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_RUTLEDGE_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_CH3D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_ch34_02_02";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class pestkiller_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_PESTKILLER_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_CH3D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_ch34_02_02";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class evileyes_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_EVILEYES_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_CH3D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_ch34_02_02";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class thandieu_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_THANDIEU_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_CH3D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_ch34_02_02";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
+                        };
+                        class kingbee_1
+                        {
+                                displayname = $STR_VN_ARTILLERY_KINGBEE_NAME;
+                                //icon = "vn\ui_f_vietnam\data\decals\";
+                                description = $STR_VN_ARTILLERY_TRANSPORT_CH3D_DESCRIPTION;
+                                vehicleclass = "vn_i_air_ch34_02_02";
+                                hook = 1;
+                                cooldown = (60*5);
+                                cost = 0;
                         };
                 };
         };

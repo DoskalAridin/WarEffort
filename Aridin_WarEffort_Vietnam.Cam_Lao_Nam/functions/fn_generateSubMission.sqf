@@ -232,18 +232,11 @@ switch (_objectiveType) do {
         private _objCage = createVehicle ["Land_vn_o_prop_cong_cage_01", _spawnPos, [], 0, "CAN_COLLIDE"];
         private _objGroup = createGroup west;
         private _objObject = _objGroup createUnit ["vn_b_men_lrrp_01", _spawnPos, [], 0, "CAN_COLLIDE"];
-        [_objObject] remoteExec ["ARDN_fnc_POWcaptive", 2];
+        [_objObject] remoteExec ["ARDN_fnc_POWcaptive"];
         _objObject setVariable ["objectiveNumber", ObjectiveCount];
         _objObject setVariable ["objectiveAO", _selectedAO];
         _objObject setVariable ["pow", true];
         _objObject setUnitRank "PRIVATE";
-        _objObject addAction ["<t color='#149616'>Follow me!</t>", {
-             _pow = _this select 0;
-             [_pow] remoteExec ["ARDN_fnc_POWcaptive", 2];
-             _player = _this select 1;
-             _group = group _player;
-             [_pow] join _group;
-        }, nil,6,true,true,"","_target getVariable ['captive', false] == true",4];
         _objObject addEventHandler ["Killed", {_obj = _this select 0; [_obj] remoteExec  ["ARDN_fnc_missionFailed", 2];}];
         _spawnPos = [_spawnPos, 0, 50, 5, 0, 0.3, 0, MACVterritory] call BIS_fnc_findSafePos;
         private _objUnit = [_spawnPos, EAST, _array_infantry, [], [], [], [], [2,0.1], 0, false] call BIS_fnc_spawnGroup;
@@ -276,12 +269,7 @@ switch (_objectiveType) do {
         _objPilot setVariable ["objectiveAO", _selectedAO];
         _objPilot setVariable ["pow", true];
         _objPilot setVariable ["bleeding", true];
-        _objPilot addAction ["<t color='#149616'>Follow me!</t>", {
-             private _pilot = _this select 0;
-             private _player = _this select 1;
-             private _group = group _player;
-             [_pilot] join _group;
-        }, nil,6,true,true,"","true",4];
+        [_objPilot, false] remoteExec ["ARDN_fnc_POWcaptive"];
         private _blood = createVehicle ["BloodPool_01_Medium_New_F", getPos _objPilot, [], 0, "NONE"];
         [_objPilot] spawn {
             params ["_objPilot"];
