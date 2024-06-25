@@ -74,7 +74,7 @@ array_air_BLUFOR = array_heli_NATO;
 
 // Load saved variabled from server
 if (isServer) then {
-    BLUFORresource = missionProfileNamespace getVariable ["BLUFORresource", 20];
+    BLUFORresource = missionProfileNamespace getVariable ["BLUFORresource", 50];
     diag_log format ["MISSION: Available resources: %1", BLUFORresource];
     publicVariable "BLUFORresource";
     BLUFORterritory = missionProfileNamespace getVariable ["BLUFORterritory", ["markerHQ"]];

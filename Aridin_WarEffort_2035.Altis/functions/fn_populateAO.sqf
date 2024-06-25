@@ -62,7 +62,7 @@ if (count _garrisonAvailablePos != 0) then {
 };
 
 // Spawn ground vehicles
-private _numVehicles = ceil ((random (_enemyStrength / 2)) + (2 + _minEnemy));
+private _numVehicles = ceil ((random (_enemyStrength / 2)) + _minEnemy);
 for "_i" from 1 to _numVehicles do
 {
     if (count units east < _AIlimit) then {
@@ -78,7 +78,7 @@ for "_i" from 1 to _numVehicles do
 };
 
 // Spawn anti-air units
-private _numAA = ceil ((random (_enemyStrength / 4)) + (1 + _minEnemy));
+private _numAA = ceil ((random (_enemyStrength / 4)) + _minEnemy);
 for "_i" from 1 to _numAA do
 {
     if (count units east < _AIlimit) then {
@@ -179,7 +179,7 @@ for "_i" from 1 to _numPatrols do
     if (count units east < _AIlimit) then {
         private _array_infantry = [];
         _array_infantry pushBack (array_infantry select 0);
-        for "_i" from 1 to 5 do {
+        for "_i" from 1 to 4 do {
             _array_infantry pushBack (selectRandom array_infantry);
         };
         private _spawnPos = [_missionArea, 0, _aoSize, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;
@@ -191,13 +191,13 @@ for "_i" from 1 to _numPatrols do
     } else {OPFORreserves = OPFORreserves + 1; publicVariable "OPFORreserves"};
 };
 // Spawn idle squads (main infantry force)
-private _numSquadUnits = ceil ((random (_enemyStrength / 2)) + (3 + _minEnemy)); //idle main force
+private _numSquadUnits = ceil ((random (_enemyStrength / 2)) + _minEnemy); //idle main force
 for "_i" from 1 to _numSquadUnits do
 {
     if (count units east < _AIlimit) then {
         private _array_infantry = [];
         _array_infantry pushBack (array_infantry select 0);
-        for "_i" from 1 to 10 do {
+        for "_i" from 1 to 6 do {
             _array_infantry pushBack (selectRandom array_infantry);
         };
         private _spawnPos = [_missionArea, 0, _aoSize, 5, 0, 0.3, 0, _blackList] call BIS_fnc_findSafePos;

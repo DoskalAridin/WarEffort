@@ -176,7 +176,7 @@ enemyStrengthMarker_low = [];
 listHeli = 
 [
     ["B_Heli_Light_01_F", 0], 
-    ["B_Heli_Light_01_dynamicLoadout_F", 10], 
+    ["B_Heli_Light_01_dynamicLoadout_F", 5], 
     ["B_Heli_Transport_01_F", 0], 
     ["B_Heli_Transport_03_F", 0], 
     ["B_Heli_Attack_01_dynamicLoadout_F", 15]
@@ -280,6 +280,19 @@ if (compat_ARDNCAF == true) then {
     listGround append _CAF_vic;
     listHeli append _CAF_heli;
     listFixedWing append _CAF_FixedWing;
+};
+
+if (compat_ADFU == true) then {
+    private _vic = [
+        ["ADFU_armour_aslav_t1", 10]
+    ];
+    private _heli = [
+        ["ADF_S70_E", 0], 
+        ["ADF_S70_T", 0],
+        ["ADF_S70", 0]
+    ];
+    listGround append _vic;
+    listHeli append _heli;
 };
 
 {
