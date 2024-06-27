@@ -13,7 +13,7 @@ switch (buyType) do
 	case "ground": { _array = listGround; _spawnPos = getMarkerPos "spawnPoint_vic"; _spawnDir = markerDir "spawnPoint_vic"; _arrayMarkers = ["spawnPoint_vic","spawnPoint_vic_1","spawnPoint_vic_2"]};
 	case "fixedWing": { _array = listFixedWing; _spawnPos = getMarkerPos "spawnPoint_plane"; _spawnDir = markerDir "spawnPoint_plane"; _arrayMarkers = ["spawnPoint_plane","spawnPoint_plane_1","spawnPoint_plane_2","spawnPoint_plane_3"]};
     case "UAV": { _array = listUAV; _spawnPos = getMarkerPos "spawnPoint_plane"; _spawnDir = markerDir "spawnPoint_plane"; _arrayMarkers = ["spawnPoint_plane","spawnPoint_plane_1","spawnPoint_plane_2","spawnPoint_plane_3"]};
-    case "carrier": { _array = listCarrier; _spawnPos = getMarkerPos "spawnPoint_carrier"; _spawnDir = markerDir "spawnPoint_carrier"; _arrayMarkers = ["spawnPoint_carrier","spawnPoint_carrier_1","spawnPoint_carrier_2","spawnPoint_carrier_3"]};
+    case "carrier": { _array = listCarrier; _spawnPos = getMarkerPos "spawnPoint_carrier"; _spawnDir = 213.617; _arrayMarkers = ["spawnPoint_carrier","spawnPoint_carrier_1","spawnPoint_carrier_2","spawnPoint_carrier_3"]};
 	default { _array = listHeli; _spawnPos = getMarkerPos "spawnPoint_heli"; _spawnDir = markerDir "spawnPoint_heli"; _arrayMarkers = ["spawnPoint_heli","spawnPoint_heli_1","spawnPoint_heli_2","spawnPoint_heli_3","spawnPoint_heli_4"]};
 };
 

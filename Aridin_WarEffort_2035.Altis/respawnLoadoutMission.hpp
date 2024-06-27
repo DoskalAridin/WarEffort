@@ -33,6 +33,7 @@ player addEventHandler ["Respawn", {
 	missionProfileNamespace setVariable [format ["%1_%2", getPlayerUID player, ARDN_varName], getUnitLoadout player];
 	saveMissionProfileNamespace;
 	systemChat "Loadout saved to mission";
+    execVM "scripts\disableUAVs.sqf";
 }] call CBA_fnc_addEventHandler;
 
 [missionNamespace, "arsenalClosed", {
@@ -41,4 +42,5 @@ player addEventHandler ["Respawn", {
 	missionProfileNamespace setVariable [format ["%1_%2", getPlayerUID player, ARDN_varName], getUnitLoadout player];
 	saveMissionProfileNamespace;
 	systemChat "Loadout saved to mission";
+    execVM "scripts\disableUAVs.sqf";
 }] call BIS_fnc_addScriptedEventHandler;

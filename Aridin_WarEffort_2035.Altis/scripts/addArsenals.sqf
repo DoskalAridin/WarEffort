@@ -130,7 +130,7 @@ if (compat_UKSOF == true) then {
         "7Rnd_mas_ukl_408_Mag","7Rnd_mas_ukl_408_APDS_Mag","30Rnd_mas_ukl_556x45sd_Stanag","30Rnd_mas_ukl_556x45_Stanag","30Rnd_mas_ukl_556x45UW_Stanag","150Rnd_mas_ukl_556x45SD_Drum_Mag_F","150Rnd_mas_ukl_556x45_Drum_Mag_F","200Rnd_mas_ukl_556x45SD_Drum_Mag_F","200Rnd_mas_ukl_556x45_Drum_Mag_F","LMG_mas_ukl_03_F","150Rnd_mas_ukl_762x51_Mag","20Rnd_mas_ukl_762x51sd_Mag","20Rnd_mas_ukl_762x51_Mag","40Rnd_46x30SD_mas_ukl_mag","30Rnd_mas_ukl_9x21sd_Stanag","7Rnd_mas_ukl_12Gauge_Pellets","7Rnd_mas_ukl_12Gauge_Slug","20Rnd_mas_ukl_762x51sd_Mag","20Rnd_mas_ukl_762x51_Mag","Stinger_mas_ukl","jav_AP_mas_ukl","jav_AT_mas_ukl"
     ];
 };
-if (compat_CAFSOF == true) then [
+if (compat_CAFSOF == true) then {
     arsenalItems append [
         "NVGoggles_mas_can_hv","NVGoggles_mas_can_h","NVGoggles_mas_can_hr"
     ];
@@ -143,14 +143,14 @@ if (compat_CAFSOF == true) then [
     arsenalMags append [
         "150Rnd_mas_can_762x51_Mag","200Rnd_mas_can_556x45SD_Drum_Mag_F","200Rnd_mas_can_556x45_Drum_Mag_F","30Rnd_mas_can_556x45sd_Stanag","30Rnd_mas_can_556x45_Stanag","30Rnd_mas_can_556x45UW_Stanag","40Rnd_46x30SD_mas_can_mag","30Rnd_mas_can_9x21sd_Stanag","7Rnd_mas_can_12Gauge_Pellets","7Rnd_mas_can_12Gauge_Slug","20Rnd_mas_can_762x51sd_Mag","20Rnd_mas_can_762x51_Mag"
     ];
-];
-if (compat_FRACOS == true) then [
+};
+if (compat_FRACOS == true) then {
     arsenalItems append [
         "NVGoggles_mas_fra_hv","NVGoggles_mas_fra_h","NVGoggles_mas_fra_hr"
     ];
     arsenalGear append [
         "U_mas_fra_B_suite_CQB","U_mas_fra_B_suite_WINT","U_mas_fra_B_suite_VEG","U_mas_fra_B_CombatUniform_aor2","U_mas_fra_B_CombatUniform_S_SWAT","U_mas_fra_B_CombatUniform_aor1","U_mas_fra_B_CombatUniform_multi","U_mas_fra_B_CombatUniform_S_aor2","U_mas_fra_B_CombatUniform_S_aor1","U_mas_fra_B_CombatUniform_T_aor2","U_mas_fra_B_CombatUniform_T_aor1","U_mas_fra_B_CombatUniform_T_multi","U_mas_fra_B_Wetsuit","U_mas_fra_B_Wetunif","U_mas_fra_B_GhillieSuit","U_mas_fra_B_CombatUniform_S_leg","U_mas_fra_B_CombatUniform_D_leg","U_mas_fra_B_CombatUniform_wint2","U_mas_fra_B_CombatUniform_wint","U_mas_fra_B_CombatUniform_mcu2","U_mas_fra_B_CombatUniform_mcu","H_mas_fra_Beret_a","H_mas_fra_Beret_p","H_mas_fra_ach_b","H_mas_fra_ach_aor2","H_mas_fra_ach_aor1","H_mas_fra_ach","H_mas_fra_airframe_d","H_mas_fra_airframe","H_mas_fra_airframe_w","H_mas_fra_airframe_v","H_mas_fra_beanie_b","H_mas_fra_beanie_w","H_mas_fra_beanie_gog","H_mas_fra_beanie_gogw","H_mas_fra_Booniehat_aor2","H_mas_fra_Booniehat_aor1","H_mas_fra_Booniehat_mul","H_mas_fra_Beret_n","H_mas_fra_felin","H_mas_fra_felin_d","H_mas_fra_headset","H_mas_fra_headset_b","H_mas_fra_gign","H_mas_fra_hood","H_mas_fra_hood_w","H_mas_fra_Beret","H_mas_fra_mich_b","H_mas_fra_mich_v","H_mas_fra_mich","H_mas_fra_mich_w","H_mas_fra_opscore_b","H_mas_fra_opscore_aor2","H_mas_fra_opscore_aor1","H_mas_fra_opscore_g","H_mas_fra_opscore","H_mas_fra_opscorn","H_mas_fra_opscore_t","H_mas_fra_opscore_w","H_mas_fra_opscore_gog_b","H_mas_fra_opscore_gog_aor2","H_mas_fra_opscore_gog_aor2","H_mas_fra_opscore_gog_aor1","H_mas_fra_opscore_gog_g","H_mas_fra_opscore_gog","H_mas_fra_opscorn_gog","H_mas_fra_opscore_gog_t","H_mas_fra_opscore_gog_w","V_mas_fra_belt_carrier_LR_wint","V_mas_fra_belt_carrier_LR_green","V_mas_fra_belt_carrier_LR_swat","V_mas_fra_belt_carrier_LR","V_mas_fra_PlateCarrierAR_wint","V_mas_fra_PlateCarrierAR_swat","V_mas_fra_PlateCarrierAR_rgr","V_mas_fra_PlateCarrierAR_tan","V_mas_fra_PlateCarrierAR_green","V_mas_fra_PlateCarrier1_wint","V_mas_fra_PlateCarrier1_swat","V_mas_fra_PlateCarrier1_rgr","V_mas_fra_PlateCarrier1_tan","V_mas_fra_PlateCarrier1_green","V_mas_fra_PlateCarrierLR_wint","V_mas_fra_PlateCarrierLR_swat","V_mas_fra_PlateCarrierLR_rgr","V_mas_fra_PlateCarrierLR_tan","V_mas_fra_PlateCarrierLR_green","V_mas_fra_PlateCarrierRF_wint","V_mas_fra_PlateCarrierRF_swat","V_mas_fra_PlateCarrierRF_green","V_mas_fra_PlateCarrierRF_rgr","V_mas_fra_PlateCarrierRF_tan","V_mas_fra_RebreatherB","G_mas_fra_bala_b","G_mas_fra_bala_T","G_mas_fra_bala_W","G_mas_fra_balaM_b","G_mas_fra_balaM_T","G_mas_fra_balaM_T","G_mas_fra_beard","G_mas_fra_beard_gog","G_mas_fra_beard_mask","G_mas_fra_gog","G_mas_fra_jumpmask","G_mas_fra_mask_b","G_mas_fra_mask","G_mas_fra_gasmask","G_mas_fra_shemag","G_mas_fra_shemag_gog_l","G_mas_fra_shemag_gog","G_mas_fra_shemag_low","G_mas_fra_shemag_mask","G_mas_fra_wrap_B","G_mas_fra_wrap_T","G_mas_fra_Bandanna_W","G_mas_fra_wrap_gog_B","G_mas_fra_wrap_gog_T"
-,    ];
+    ];
     arsenalBackpacks append [
         "B_mas_fra_Kitbag_b","B_mas_fra_Kitbag_m","B_mas_fra_Kitbag_d","B_mas_fra_Kitbag_w2","B_mas_fra_Kitbag_w","B_mas_fra_Kitbag_g","B_mas_fra_Kitbag_LT","B_mas_fra_Kitbag_LD","B_mas_fra_Kitbag_LW"
     ];
@@ -160,8 +160,8 @@ if (compat_FRACOS == true) then [
     arsenalMags append [
         "7Rnd_mas_fra_12Gauge_Pellets","7Rnd_mas_fra_12Gauge_Slug","7Rnd_mas_fra_408_Mag","7Rnd_mas_fra_408_APDS_Mag","30Rnd_mas_fra_556x45sd_Stanag","30Rnd_mas_fra_556x45_Stanag","30Rnd_mas_fra_556x45UW_Stanag","200Rnd_mas_fra_556x45SD_Drum_Mag_F","200Rnd_mas_fra_556x45_Drum_Mag_F","30Rnd_mas_fra_556x45sd_Stanag","30Rnd_mas_fra_556x45_Stanag","150Rnd_mas_fra_762x51_Mag","30Rnd_mas_fra_556x45UW_Stanag","20Rnd_mas_fra_762x51sd_Mag","20Rnd_mas_fra_762x51_Mag","40Rnd_46x30SD_mas_fra_mag","jav_AP_mas_fra","jav_AT_mas_fra","Stinger_mas_fra"
     ];
-];
-if (compat_NORSOF == true) then [
+};
+if (compat_NORSOF == true) then {
     arsenalItems append [
         "NVGoggles_mas_nor_hv","NVGoggles_mas_nor_h","NVGoggles_mas_nor_hr"
     ];
@@ -177,8 +177,8 @@ if (compat_NORSOF == true) then [
     arsenalMags append [
         "7Rnd_mas_nor_408_Mag","7Rnd_mas_nor_408_APDS_Mag","150Rnd_mas_nor_762x51_Mag","200Rnd_mas_nor_556x45SD_Drum_Mag_F","200Rnd_mas_nor_556x45_Drum_Mag_F","30Rnd_mas_nor_556x45sd_Stanag","30Rnd_mas_nor_556x45_Stanag","150Rnd_mas_nor_762x51_Mag","30Rnd_mas_nor_556x45UW_Stanag","20Rnd_mas_nor_762x51sd_Mag","20Rnd_mas_nor_762x51_Mag","40Rnd_46x30SD_mas_nor_mag","30Rnd_mas_nor_9x21sd_Stanag","8Rnd_mas_nor_12Gauge_Pellets","8Rnd_mas_nor_12Gauge_Slug","7Rnd_mas_ukl_408_Mag","jav_AP_mas_nor","jav_AT_mas_nor","Stinger_mas_nor"
     ];
-];
-if (compat_ADFU == true) then [
+};
+if (compat_ADFU == true) then {
     arsenalItems append [
         "ADFU_optic_ElcanC79","ADFU_optic_ElcanS","ADFU_optic_ElcanS_b","ADFU_optic_EoMAG","ADFU_swarovski_optic","ADFU_optic_TA31","ADFU_optic_TA648RMR"
     ];
@@ -194,7 +194,7 @@ if (compat_ADFU == true) then [
     arsenalMags append [
         "ADFU_30Rnd_556x45_B","ADFU_30Rnd_556x45_T","ADFU_100Rnd_762x51","ADFU_100Rnd_762x51_Tracer","ADFU_100Rnd_556x45","ADFU_100Rnd_556x45_Tracer","ADFU_200Rnd_556x45","ADFU_200Rnd_556x45_Tracer","ADFU_100Rnd_762x51","ADFU_100Rnd_762x51_Tracer","ADFU_13Rnd_45ACP_Mag","ADFU_m3CG_HE","ADFU_m3CG_SMOKE","ADFU_m3CG_HEDP","ADFU_m3CG_HEAT","ADFU_m3CG_HEATRAP"
     ];
-];
+};
 
 if (compat_ace == true) then {
     arsenalItems append [

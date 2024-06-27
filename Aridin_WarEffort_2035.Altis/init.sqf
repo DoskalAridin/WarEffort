@@ -77,7 +77,7 @@ if (isServer) then {
     BLUFORresource = missionProfileNamespace getVariable ["BLUFORresource", 50];
     diag_log format ["MISSION: Available resources: %1", BLUFORresource];
     publicVariable "BLUFORresource";
-    BLUFORterritory = missionProfileNamespace getVariable ["BLUFORterritory", ["markerHQ"]];
+    BLUFORterritory = missionProfileNamespace getVariable ["BLUFORterritory", ["markerHQ","markerHQ_1"]];
     publicVariable "BLUFORterritory";
     AOmarkersMain = AOmarkersMain - BLUFORterritory;
     publicVariable "AOmarkersMain";
@@ -108,7 +108,7 @@ if (isServer) then {
 private _carrierSpawnPos = ["spawnPoint_carrier","spawnPoint_carrier_1","spawnPoint_carrier_2","spawnPoint_carrier_3"];
 {
     private _pos = MarkerPos _x;
-    _pos set [2, 209.498];
+    _pos set [2, 116.5];
     _x setMarkerPos _pos;
 } forEach _carrierSpawnPos;
 

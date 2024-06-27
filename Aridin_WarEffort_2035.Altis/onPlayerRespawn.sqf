@@ -12,3 +12,5 @@ private _cmdr = _this select 0;
 if (player getVariable ["isCommander", false] == true && commanderZeus == true) then {
   [_cmdr] remoteExec ["ARDN_fnc_giveCommanderZeus"];
 };
+
+execVM "scripts\disableUAVs.sqf";
