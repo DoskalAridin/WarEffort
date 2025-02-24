@@ -5,8 +5,8 @@
 # WarEffort
 <br/>
 Steam workshop:<br/>
-[Cam Mao Nam](https://steamcommunity.com/sharedfiles/filedetails/?id=3257635684)<br/>
-[Altis](https://steamcommunity.com/sharedfiles/filedetails/?id=3260238783)<br/>
+[Cam Mao Nam](https://steamcommunity.com/sharedfiles/filedetails/?id=3257635684) <br/>
+[Altis](https://steamcommunity.com/sharedfiles/filedetails/?id=3260238783) <br/>
 <br/>
 Arma 3 procedural &amp; persistent mission.<br/>
 Sort of a Mike Force "light" / Dynamic Recon Ops scenario. Intended to be something left running on a dedicated server, providing passive activity for players to join freely at anytime and have something to do, while also having a larger goal for when your community has an Ops night.
