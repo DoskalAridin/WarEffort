@@ -5,7 +5,7 @@
 # WarEffort
 <br/>
 Steam workshop:<br/>
-[Cam Mao Nam](https://steamcommunity.com/sharedfiles/filedetails/?id=3257635684) <br/>
+[Cam Lao Nam](https://steamcommunity.com/sharedfiles/filedetails/?id=3257635684)<br/>
 [Altis](https://steamcommunity.com/sharedfiles/filedetails/?id=3260238783) <br/>
 <br/>
 Arma 3 procedural &amp; persistent mission.<br/>
